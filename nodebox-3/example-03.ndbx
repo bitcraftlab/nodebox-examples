@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="18" type="file" uuid="99990375-1fba-40ba-b83c-23ad65326577">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="align1">
+        <node name="align1" position="2.00,13.00" prototype="corevector.align"/>
+        <node name="group1" position="2.00,11.00" prototype="corevector.group"/>
+        <node name="integer1" position="8.00,1.00" prototype="math.integer">
+            <port name="value" type="int" value="20"/>
+        </node>
+        <node name="range1" position="7.00,4.00" prototype="math.range">
+            <port name="start" type="float" value="1.0"/>
+            <port name="end" type="float" value="43.0"/>
+        </node>
+        <node name="resample1" position="2.00,7.00" prototype="corevector.resample">
+            <port name="length" type="float" value="7.0"/>
+            <port name="points" type="int" value="120"/>
+        </node>
+        <node name="stack1" position="2.00,9.00" prototype="corevector.stack">
+            <port name="direction" type="string" value="s"/>
+        </node>
+        <node name="textpath1" position="2.00,1.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="digital erosion"/>
+            <port name="font_size" type="float" value="42.0"/>
+        </node>
+        <conn input="resample1.shape" output="textpath1"/>
+        <conn input="resample1.length" output="range1"/>
+        <conn input="stack1.shapes" output="resample1"/>
+        <conn input="range1.end" output="integer1"/>
+        <conn input="group1.shapes" output="stack1"/>
+        <conn input="align1.shape" output="group1"/>
+    </node>
+</ndbx>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="18" type="file" uuid="e8551b72-2cd0-44c6-9078-cba0c640a0d4">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="colorize1">
+        <node name="colorize1" position="4.00,13.00" prototype="corevector.colorize">
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="integer1" position="2.00,2.00" prototype="math.integer">
+            <port name="value" type="int" value="5"/>
+        </node>
+        <node name="polygon1" position="2.00,4.00" prototype="corevector.polygon"/>
+        <node name="range1" position="8.00,4.00" prototype="math.range">
+            <port name="start" type="float" value="100.0"/>
+            <port name="end" type="float" value="50.0"/>
+            <port name="step" type="float" value="-2.0"/>
+        </node>
+        <node name="rgb_color1" position="8.00,7.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="255.0"/>
+            <port name="blue" type="float" value="100.0"/>
+        </node>
+        <node name="rgb_color2" position="11.00,7.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="150.0"/>
+            <port name="blue" type="float" value="50.0"/>
+        </node>
+        <node name="scale1" position="4.00,7.00" prototype="corevector.scale"/>
+        <conn input="colorize1.fill" output="rgb_color1"/>
+        <conn input="colorize1.shape" output="scale1"/>
+        <conn input="scale1.scale" output="range1"/>
+        <conn input="colorize1.stroke" output="rgb_color2"/>
+        <conn input="scale1.shape" output="polygon1"/>
+        <conn input="polygon1.sides" output="integer1"/>
+    </node>
+</ndbx>

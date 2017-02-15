@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="18" type="file" uuid="69358bed-78c6-43ef-a8bf-297398223a06">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="ringelpietz">
+        <node position="-58.00,-1.00" prototype="math.divide">
+            <port name="value2" type="float" value="10.0"/>
+        </node>
+        <node name="divide1" position="-60.00,-9.00" prototype="math.divide">
+            <port name="value2" type="float" value="30.0"/>
+        </node>
+        <node position="-58.00,-3.00" prototype="core.frame"/>
+        <node name="frame1" position="-60.00,-11.00" prototype="core.frame"/>
+        <node name="ringelpietz" position="-56.00,2.00" prototype="core.network" renderedChild="group1">
+            <node name="add1" position="23.00,20.00" prototype="math.add">
+                <port name="value2" type="float" value="100.0"/>
+            </node>
+            <node name="add2" position="18.00,31.00" prototype="math.add">
+                <port name="value2" type="float" value="1.0"/>
+            </node>
+            <node name="align1" position="9.00,43.00" prototype="corevector.align"/>
+            <node name="angle1" position="18.00,43.00" prototype="math.angle"/>
+            <node name="characters1" position="14.00,4.00" prototype="string.characters">
+                <port name="string" type="string" value="Ringelpietz mit Anfassen ... "/>
+            </node>
+            <node name="colorize1" position="5.00,43.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#0000981e"/>
+            </node>
+            <node name="combine1" position="8.00,46.00" prototype="list.combine"/>
+            <node name="convert_range2" position="18.00,25.00" prototype="math.convert_range">
+                <port name="target_end" type="float" value="100.0"/>
+                <port name="method" type="string" value="wrap"/>
+            </node>
+            <node name="count1" position="14.00,14.00" prototype="list.count"/>
+            <node name="divide2" position="2.00,12.00" prototype="math.divide">
+                <port name="value2" type="float" value="10.0"/>
+            </node>
+            <node name="group1" position="17.00,55.00" prototype="corevector.group"/>
+            <node name="point_on_path1" position="13.00,31.00" prototype="corevector.point_on_path"/>
+            <node name="point_on_path2" position="18.00,36.00" prototype="corevector.point_on_path"/>
+            <node name="polygon1" position="5.00,39.00" prototype="corevector.polygon">
+                <port name="radius" type="float" value="55.0"/>
+            </node>
+            <node name="polygon2" position="7.00,12.00" prototype="corevector.polygon">
+                <port name="sides" type="int" value="5"/>
+            </node>
+            <node name="r1" position="2.00,4.00" prototype="math.number">
+                <port name="value" type="float" value="200.0"/>
+            </node>
+            <node name="range1" position="14.00,20.00" prototype="math.range"/>
+            <node name="resample1" position="7.00,16.00" prototype="corevector.resample">
+                <port name="length" type="float" value="1.0"/>
+                <port name="points" type="int" value="5"/>
+            </node>
+            <node name="rotate1" position="17.00,52.00" prototype="corevector.rotate"/>
+            <node name="shift" position="20.00,4.00" prototype="math.number">
+                <port name="value" type="float" value="153.0"/>
+            </node>
+            <node name="textpath1" position="9.00,36.00" prototype="corevector.textpath">
+                <port name="font_size" type="float" value="40.0"/>
+            </node>
+            <port childReference="characters1.string" description="" label="" name="input_text" range="value" type="string" value="Ringelpietz mit Anfassen ... " widget="string"/>
+            <port childReference="shift.value" description="" label="" name="shift" range="value" type="float" value="153.0" widget="float"/>
+            <port childReference="r1.value" description="" label="" name="r1" range="value" type="float" value="200.0" widget="float"/>
+            <port childReference="polygon1.radius" description="The size of the polygon." label="" min="0.0" name="r2" range="value" type="float" value="55.0" widget="float"/>
+            <conn input="point_on_path1.shape" output="resample1"/>
+            <conn input="count1.list" output="characters1"/>
+            <conn input="range1.end" output="count1"/>
+            <conn input="textpath1.text" output="characters1"/>
+            <conn input="rotate1.origin" output="point_on_path1"/>
+            <conn input="convert_range2.value" output="range1"/>
+            <conn input="convert_range2.source_end" output="count1"/>
+            <conn input="textpath1.position" output="point_on_path1"/>
+            <conn input="combine1.list1" output="colorize1"/>
+            <conn input="align1.shape" output="textpath1"/>
+            <conn input="align1.position" output="point_on_path1"/>
+            <conn input="combine1.list2" output="align1"/>
+            <conn input="polygon1.position" output="point_on_path1"/>
+            <conn input="colorize1.shape" output="polygon1"/>
+            <conn input="point_on_path1.t" output="convert_range2"/>
+            <conn input="angle1.point1" output="point_on_path1"/>
+            <conn input="point_on_path2.shape" output="resample1"/>
+            <conn input="add2.value1" output="convert_range2"/>
+            <conn input="point_on_path2.t" output="add2"/>
+            <conn input="angle1.point2" output="point_on_path2"/>
+            <conn input="rotate1.angle" output="angle1"/>
+            <conn input="convert_range2.target_end" output="add1"/>
+            <conn input="resample1.shape" output="polygon2"/>
+            <conn input="textpath1.font_size" output="divide2"/>
+            <conn input="rotate1.shape" output="combine1"/>
+            <conn input="group1.shapes" output="rotate1"/>
+            <conn input="polygon2.radius" output="r1"/>
+            <conn input="divide2.value1" output="r1"/>
+            <conn input="add1.value1" output="shift"/>
+            <conn input="convert_range2.target_start" output="shift"/>
+        </node>
+        <conn input="divide1.value1" output="frame1"/>
+        <conn input="ringelpietz.shift" output="divide"/>
+        <conn input="divide.value1" output="frame"/>
+    </node>
+</ndbx>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="18" type="file" uuid="69358bed-78c6-43ef-a8bf-297398223a06">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="text_on_path1">
+        <node name="divide1" position="3.00,5.00" prototype="math.divide"/>
+        <node name="ellipse1" position="-1.00,1.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="400.0"/>
+            <port name="height" type="float" value="400.0"/>
+        </node>
+        <node name="frame1" position="3.00,2.00" prototype="core.frame"/>
+        <node name="number1" position="7.00,2.00" prototype="math.number">
+            <port name="value" type="float" value="10.0"/>
+        </node>
+        <node name="string2" position="-5.00,0.00" prototype="string.string">
+            <port name="value" type="string" value="Ringelpietz mit Anfassen ..."/>
+        </node>
+        <node name="text_on_path1" position="-1.00,8.00" prototype="corevector.text_on_path">
+            <port name="font_name" type="string" value="Futura-Bold"/>
+            <port name="font_size" type="float" value="73.0"/>
+            <port name="alignment" type="string" value="trailing"/>
+        </node>
+        <conn input="text_on_path1.text" output="string2"/>
+        <conn input="text_on_path1.path" output="ellipse1"/>
+        <conn input="divide1.value2" output="number1"/>
+        <conn input="divide1.value1" output="frame1"/>
+        <conn input="text_on_path1.margin" output="divide1"/>
+    </node>
+</ndbx>

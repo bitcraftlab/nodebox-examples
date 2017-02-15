@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="18" type="file" uuid="67c29678-b755-44de-84ee-9ab1f2c12154">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="stack1">
+        <node name="arrow1" position="4.00,11.00" prototype="core.network" renderedChild="translate2">
+            <node name="STROKE" position="-29.00,-6.00" prototype="math.number">
+                <port name="value" type="float" value="1.0"/>
+            </node>
+            <node name="align1" position="-29.00,-12.00" prototype="corevector.align">
+                <port name="valign" type="string" value="bottom"/>
+            </node>
+            <node name="align2" position="-34.00,-12.00" prototype="corevector.align">
+                <port name="valign" type="string" value="top"/>
+            </node>
+            <node name="colorize1" position="-32.00,-4.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#ff0000ff"/>
+            </node>
+            <node name="compound1" position="-32.00,-7.00" prototype="corevector.compound"/>
+            <node name="polygon1" position="-28.00,-14.00" prototype="corevector.polygon">
+                <port name="radius" type="float" value="50.0"/>
+                <port name="align" type="boolean" value="true"/>
+            </node>
+            <node name="rect1" position="-34.00,-14.00" prototype="corevector.rect">
+                <port name="position" type="point" value="45.00,-10.00"/>
+                <port name="width" type="float" value="50.0"/>
+                <port name="height" type="float" value="50.0"/>
+            </node>
+            <node name="translate1" position="-34.00,-9.00" prototype="corevector.translate">
+                <port name="translate" type="point" value="0.00,-1.00"/>
+            </node>
+            <node name="translate2" position="-32.00,-2.00" prototype="corevector.translate"/>
+            <port childReference="translate2.translate" description="The amount of translation." label="" name="translate" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="colorize1.fill" description="The new fill color. Set alpha to 0 for no fill." label="" name="fill" range="value" type="color" value="#ff0000ff" widget="color"/>
+            <conn input="align1.shape" output="polygon1"/>
+            <conn input="align2.shape" output="rect1"/>
+            <conn input="translate1.shape" output="align2"/>
+            <conn input="colorize1.strokeWidth" output="STROKE"/>
+            <conn input="compound1.shape1" output="translate1"/>
+            <conn input="colorize1.shape" output="compound1"/>
+            <conn input="compound1.shape2" output="align1"/>
+            <conn input="translate2.shape" output="colorize1"/>
+        </node>
+        <node name="combine1" position="4.00,16.00" prototype="list.combine"/>
+        <node name="count1" position="10.00,5.00" prototype="list.count"/>
+        <node name="grid1" position="4.00,1.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="5"/>
+            <port name="width" type="float" value="126.0"/>
+            <port name="height" type="float" value="186.0"/>
+        </node>
+        <node name="group1" position="4.00,13.00" prototype="corevector.group"/>
+        <node name="random_hues" position="6.00,9.00" prototype="core.network" renderedChild="hsb_color1">
+            <node name="hsb_color1" position="2.00,7.00" prototype="color.hsb_color">
+                <port name="saturation" type="float" value="150.0"/>
+                <port name="brightness" type="float" value="255.0"/>
+            </node>
+            <node name="random_numbers1" position="2.00,5.00" prototype="math.random_numbers">
+                <port name="amount" type="int" value="36"/>
+                <port name="start" type="float" value="10.0"/>
+                <port name="end" type="float" value="30.0"/>
+            </node>
+            <port childReference="random_numbers1.amount" description="" label="" min="0.0" name="amount" range="value" type="int" value="36" widget="int"/>
+            <conn input="hsb_color1.hue" output="random_numbers1"/>
+        </node>
+        <node name="stack1" position="4.00,18.00" prototype="corevector.stack">
+            <port name="direction" type="string" value="s"/>
+            <port name="margin" type="float" value="19.0"/>
+        </node>
+        <node name="subtitle" position="10.00,11.00" prototype="core.network" renderedChild="textpath1">
+            <node name="concatenate1" position="9.00,7.00" prototype="string.concatenate"/>
+            <node name="string1" position="10.00,3.00" prototype="string.string">
+                <port name="value" type="string" value=" Arrows"/>
+            </node>
+            <node name="textpath1" position="9.00,9.00" prototype="corevector.textpath">
+                <port name="font_name" type="string" value="Verdana-Bold"/>
+                <port name="font_size" type="float" value="32.0"/>
+            </node>
+            <port childReference="concatenate1.string1" description="" label="" name="string1" range="value" type="string" value="" widget="string"/>
+            <conn input="concatenate1.string2" output="string1"/>
+            <conn input="textpath1.text" output="concatenate1"/>
+        </node>
+        <conn input="count1.list" output="grid1"/>
+        <conn input="arrow1.translate" output="grid1"/>
+        <conn input="arrow1.fill" output="random_hues"/>
+        <conn input="random_hues.amount" output="count1"/>
+        <conn input="combine1.list1" output="group1"/>
+        <conn input="group1.shapes" output="arrow1"/>
+        <conn input="stack1.shapes" output="combine1"/>
+        <conn input="subtitle.string1" output="count1"/>
+        <conn input="combine1.list2" output="subtitle"/>
+    </node>
+</ndbx>
