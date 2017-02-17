@@ -31,6 +31,7 @@
             </node>
             <node name="polygon1" position="-3.00,14.00" prototype="corevector.polygon">
                 <port name="radius" type="float" value="78.0"/>
+                <port name="align" type="boolean" value="true"/>
             </node>
             <node name="range1" position="2.00,17.00" prototype="math.range">
                 <port name="start" type="float" value="100.0"/>
@@ -65,10 +66,10 @@
         <node name="vanishing" position="18.00,2.00" prototype="corevector.point"/>
         <conn input="sweet_poly.radius" output="number1"/>
         <conn input="sweet_poly.sides" output="sides"/>
-        <conn input="sweet_poly.outlines" output="outlines"/>
         <conn input="sweet_poly.position" output="grid1"/>
         <conn input="sort1.shapes" output="sweet_poly"/>
         <conn input="sort1.position" output="vanishing"/>
         <conn input="sweet_poly.vanishing point" output="vanishing"/>
+        <conn input="sweet_poly.outlines" output="outlines"/>
     </node>
 </ndbx>
