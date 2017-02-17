@@ -1,6 +1,6 @@
 {
-    "title": "example05",
-    "color": "teal",
+    "title": "example-05",
+    "color": "orange",
     "dependencies": {
         "core/g": "dev"
     },
