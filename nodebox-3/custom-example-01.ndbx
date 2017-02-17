@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="e1dd0aac-7044-47f2-b80b-df052f88b453">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <link href="python:libraries/combinatoric.py" rel="functions"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="6.00,11.00" prototype="corevector.colorize"/>
+        <node name="combine1" position="5.00,14.00" prototype="list.combine"/>
+        <node name="ellipse1" position="6.00,8.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="20.0"/>
+            <port name="height" type="float" value="20.0"/>
+        </node>
+        <node name="ellipse2" position="2.00,8.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="40.0"/>
+            <port name="height" type="float" value="40.0"/>
+        </node>
+        <node name="number1" position="6.00,-5.00" prototype="math.number">
+            <port name="value" type="float" value="2.0"/>
+        </node>
+        <node name="number2" position="10.00,-5.00" prototype="math.number">
+            <port name="value" type="float" value="110.0"/>
+        </node>
+        <node name="number3" position="2.00,-5.00" prototype="math.number">
+            <port name="value" type="float" value="64.0"/>
+        </node>
+        <node function="combinatoric/productPoint" name="product" outputRange="list" outputType="point" position="6.00,3.00">
+            <port description="" label="" name="item1" range="list" type="" widget="none"/>
+            <port description="" label="" name="item2" range="list" type="" widget="none"/>
+        </node>
+        <node name="random_numbers1" position="4.00,0.00" prototype="math.random_numbers">
+            <port name="start" type="float" value="-500.0"/>
+            <port name="end" type="float" value="500.0"/>
+        </node>
+        <node name="random_numbers2" position="8.00,0.00" prototype="math.random_numbers">
+            <port name="start" type="float" value="-500.0"/>
+            <port name="end" type="float" value="500.0"/>
+        </node>
+        <node name="rgb_color1" position="10.00,8.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="255.0"/>
+            <port name="green" type="float" value="255.0"/>
+            <port name="blue" type="float" value="255.0"/>
+        </node>
+        <conn input="product.item1" output="random_numbers1"/>
+        <conn input="product.item2" output="random_numbers2"/>
+        <conn input="random_numbers1.seed" output="number1"/>
+        <conn input="random_numbers2.seed" output="number2"/>
+        <conn input="random_numbers1.amount" output="number3"/>
+        <conn input="random_numbers2.amount" output="number3"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="colorize1.fill" output="rgb_color1"/>
+        <conn input="combine1.list1" output="ellipse2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="ellipse2.position" output="product"/>
+        <conn input="ellipse1.position" output="product"/>
+    </node>
+</ndbx>

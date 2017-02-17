@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="e1dd0aac-7044-47f2-b80b-df052f88b453">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <link href="python:libraries/combinatoric.py" rel="functions"/>
+    <node name="root" prototype="core.network" renderedChild="crystal">
+        <node name="add1" position="12.00,1.00" prototype="math.add"/>
+        <node name="alpha" position="22.00,-5.00" prototype="math.number">
+            <port name="value" type="float" value="30.0"/>
+        </node>
+        <node name="count1" position="12.00,-2.00" prototype="list.count"/>
+        <node name="crystal" position="16.00,8.00" prototype="core.network" renderedChild="align1">
+            <node name="add1" position="3.00,4.00" prototype="math.add">
+                <port name="value2" type="float" value="1.0"/>
+            </node>
+            <node name="align1" position="-1.00,25.00" prototype="corevector.align"/>
+            <node name="colorize3" position="-1.00,21.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#79000013"/>
+                <port name="strokeWidth" type="float" value="0.5"/>
+            </node>
+            <node name="connect3" position="-1.00,17.00" prototype="corevector.connect">
+                <port name="points" range="value" type="list"/>
+            </node>
+            <node name="group1" position="-1.00,23.00" prototype="corevector.group"/>
+            <node name="hsb_color1" position="3.00,16.00" prototype="color.hsb_color">
+                <port name="saturation" type="float" value="255.0"/>
+                <port name="brightness" type="float" value="255.0"/>
+                <port name="alpha" type="float" value="10.0"/>
+            </node>
+            <node name="make_point1" position="-1.00,10.00" prototype="corevector.make_point"/>
+            <node name="multiply1" position="-5.00,10.00" prototype="math.multiply"/>
+            <node name="points" position="-3.00,-2.00" prototype="math.integer">
+                <port name="value" type="int" value="5"/>
+            </node>
+            <node name="pow1" position="-7.00,7.00" prototype="math.pow">
+                <port name="value1" type="float" value="0.75"/>
+            </node>
+            <node description="combinatoric product" function="combinatoric/product" name="product" outputRange="list" outputType="point" position="-1.00,15.00">
+                <port description="" label="" name="x" range="list" type="" widget="none"/>
+                <port description="" label="" name="y" range="list" type="" widget="none"/>
+                <port description="" label="" name="z" range="list" type="" widget="none"/>
+            </node>
+            <node name="random_numbers1" position="-3.00,7.00" prototype="math.random_numbers">
+                <port name="start" type="float" value="-50.0"/>
+                <port name="end" type="float" value="50.0"/>
+            </node>
+            <node name="random_numbers2" position="3.00,7.00" prototype="math.random_numbers">
+                <port name="start" type="float" value="-50.0"/>
+                <port name="end" type="float" value="50.0"/>
+            </node>
+            <node name="random_numbers3" position="7.00,7.00" prototype="math.random_numbers">
+                <port name="end" type="float" value="255.0"/>
+            </node>
+            <node name="seed" position="3.00,-2.00" prototype="math.integer"/>
+            <port childReference="seed.value" description="" label="" name="seed" range="value" type="int" value="0" widget="int"/>
+            <port childReference="align1.position" description="The alignment point." label="" name="position" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="points.value" description="" label="" name="points" range="value" type="int" value="5" widget="int"/>
+            <port childReference="multiply1.value2" description="" label="" name="alpha" range="value" type="float" value="1.0" widget="float"/>
+            <conn input="make_point1.x" output="random_numbers1"/>
+            <conn input="make_point1.y" output="random_numbers2"/>
+            <conn input="product.x" output="make_point1"/>
+            <conn input="product.y" output="make_point1"/>
+            <conn input="product.z" output="make_point1"/>
+            <conn input="colorize3.shape" output="connect3"/>
+            <conn input="colorize3.fill" output="hsb_color1"/>
+            <conn input="hsb_color1.hue" output="random_numbers3"/>
+            <conn input="group1.shapes" output="colorize3"/>
+            <conn input="align1.shape" output="group1"/>
+            <conn input="connect3.points" output="product"/>
+            <conn input="colorize3.stroke" output="hsb_color1"/>
+            <conn input="random_numbers2.seed" output="add1"/>
+            <conn input="random_numbers1.amount" output="points"/>
+            <conn input="random_numbers2.amount" output="points"/>
+            <conn input="random_numbers3.seed" output="seed"/>
+            <conn input="random_numbers1.seed" output="seed"/>
+            <conn input="add1.value1" output="seed"/>
+            <conn input="pow1.value2" output="points"/>
+            <conn input="multiply1.value1" output="pow1"/>
+            <conn input="hsb_color1.alpha" output="multiply1"/>
+        </node>
+        <node name="grid1" position="12.00,-5.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="4"/>
+            <port name="rows" type="int" value="3"/>
+            <port name="width" type="float" value="400.0"/>
+        </node>
+        <node name="points" position="17.00,-5.00" prototype="math.integer">
+            <port max="7.0" min="3.0" name="value" type="int" value="5"/>
+        </node>
+        <node name="range1" position="12.00,4.00" prototype="math.range"/>
+        <node name="seed" position="7.00,-5.00" prototype="math.integer">
+            <port name="value" type="int" value="72"/>
+        </node>
+        <conn input="count1.list" output="grid1"/>
+        <conn input="crystal.position" output="grid1"/>
+        <conn input="crystal.seed" output="range1"/>
+        <conn input="add1.value2" output="count1"/>
+        <conn input="range1.end" output="add1"/>
+        <conn input="range1.start" output="seed"/>
+        <conn input="add1.value1" output="seed"/>
+        <conn input="crystal.points" output="points"/>
+        <conn input="crystal.alpha" output="alpha"/>
+    </node>
+</ndbx>
