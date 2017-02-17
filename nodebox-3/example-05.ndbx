@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ndbx formatVersion="18" type="file" uuid="69358bed-78c6-43ef-a8bf-297398223a06">
+<ndbx formatVersion="21" type="file" uuid="69358bed-78c6-43ef-a8bf-297398223a06">
     <property name="canvasHeight" value="1000"/>
     <property name="canvasWidth" value="1000"/>
     <property name="canvasX" value="0"/>
@@ -13,7 +13,7 @@
         </node>
         <node position="-58.00,-3.00" prototype="core.frame"/>
         <node name="frame1" position="-60.00,-11.00" prototype="core.frame"/>
-        <node name="ringelpietz" position="-56.00,2.00" prototype="core.network" renderedChild="group1">
+        <node name="ringelpietz" position="-58.00,2.00" prototype="core.network" renderedChild="group1">
             <node name="add1" position="23.00,20.00" prototype="math.add">
                 <port name="value2" type="float" value="100.0"/>
             </node>
@@ -50,10 +50,6 @@
                 <port name="value" type="float" value="200.0"/>
             </node>
             <node name="range1" position="14.00,20.00" prototype="math.range"/>
-            <node name="resample1" position="7.00,16.00" prototype="corevector.resample">
-                <port name="length" type="float" value="1.0"/>
-                <port name="points" type="int" value="5"/>
-            </node>
             <node name="rotate1" position="17.00,52.00" prototype="corevector.rotate"/>
             <node name="shift" position="20.00,4.00" prototype="math.number">
                 <port name="value" type="float" value="153.0"/>
@@ -65,7 +61,6 @@
             <port childReference="shift.value" description="" label="" name="shift" range="value" type="float" value="153.0" widget="float"/>
             <port childReference="r1.value" description="" label="" name="r1" range="value" type="float" value="200.0" widget="float"/>
             <port childReference="polygon1.radius" description="The size of the polygon." label="" min="0.0" name="r2" range="value" type="float" value="55.0" widget="float"/>
-            <conn input="point_on_path1.shape" output="resample1"/>
             <conn input="count1.list" output="characters1"/>
             <conn input="range1.end" output="count1"/>
             <conn input="textpath1.text" output="characters1"/>
@@ -81,13 +76,11 @@
             <conn input="colorize1.shape" output="polygon1"/>
             <conn input="point_on_path1.t" output="convert_range2"/>
             <conn input="angle1.point1" output="point_on_path1"/>
-            <conn input="point_on_path2.shape" output="resample1"/>
             <conn input="add2.value1" output="convert_range2"/>
             <conn input="point_on_path2.t" output="add2"/>
             <conn input="angle1.point2" output="point_on_path2"/>
             <conn input="rotate1.angle" output="angle1"/>
             <conn input="convert_range2.target_end" output="add1"/>
-            <conn input="resample1.shape" output="polygon2"/>
             <conn input="textpath1.font_size" output="divide2"/>
             <conn input="rotate1.shape" output="combine1"/>
             <conn input="group1.shapes" output="rotate1"/>
@@ -95,6 +88,8 @@
             <conn input="divide2.value1" output="r1"/>
             <conn input="add1.value1" output="shift"/>
             <conn input="convert_range2.target_start" output="shift"/>
+            <conn input="point_on_path2.shape" output="polygon2"/>
+            <conn input="point_on_path1.shape" output="polygon2"/>
         </node>
         <conn input="divide1.value1" output="frame1"/>
         <conn input="ringelpietz.shift" output="divide"/>
