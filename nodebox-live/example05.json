@@ -13,14 +13,14 @@
             "nodes": [
                 {
                     "name": "frame1",
-                    "x": 45,
-                    "y": 45,
+                    "x": 65,
+                    "y": 75,
                     "fn": "g.frame"
                 },
                 {
                     "name": "divide1",
-                    "x": 45,
-                    "y": 145,
+                    "x": 65,
+                    "y": 175,
                     "fn": "g.divide",
                     "values": {
                         "b": 1000
@@ -29,7 +29,7 @@
                 {
                     "name": "ringelpietz1",
                     "x": 55,
-                    "y": 445,
+                    "y": 475,
                     "fn": "example05.ringelpietz",
                     "values": {
                         "input_text": "Ringelpietz mit Anfassen",
@@ -38,8 +38,8 @@
                 },
                 {
                     "name": "offset",
-                    "x": 185,
-                    "y": 145,
+                    "x": 215,
+                    "y": 175,
                     "fn": "example05.slider",
                     "values": {
                         "percent": 0
@@ -47,7 +47,7 @@
                 },
                 {
                     "name": "add1",
-                    "x": 45,
+                    "x": 65,
                     "y": 295,
                     "fn": "g.add"
                 }
@@ -75,7 +75,37 @@
                 }
             ],
             "parameters": [],
-            "returnsList": true
+            "returnsList": true,
+            "stickies": [
+                {
+                    "x": 215,
+                    "y": 125,
+                    "width": 115,
+                    "height": 35,
+                    "text": "change the offset using the slider"
+                },
+                {
+                    "x": 65,
+                    "y": 25,
+                    "width": 115,
+                    "height": 35,
+                    "text": "press play to start the animation"
+                },
+                {
+                    "x": 55,
+                    "y": 385,
+                    "width": 115,
+                    "height": 75,
+                    "text": "change the animated text, or the radius of the outer and inner polygons"
+                },
+                {
+                    "x": 782,
+                    "y": 94,
+                    "width": 200,
+                    "height": 50,
+                    "text": "Double-click to edit"
+                }
+            ]
         },
         {
             "name": "ringelpietz",
