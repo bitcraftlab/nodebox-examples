@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ndbx formatVersion="18" type="file" uuid="26cf48d6-7a87-47c4-aecd-fd09f5e686ed">
+<ndbx formatVersion="21" type="file" uuid="26cf48d6-7a87-47c4-aecd-fd09f5e686ed">
     <property name="canvasHeight" value="1000"/>
     <property name="canvasWidth" value="1000"/>
     <property name="canvasX" value="0"/>
@@ -10,7 +10,7 @@
             <port name="step" type="float" value="10.0"/>
         </node>
         <node name="rect1" position="1.00,1.00" prototype="corevector.rect">
-            <port name="width" type="float" value="296.0"/>
+            <port name="width" type="float" value="300.0"/>
             <port name="height" type="float" value="8.0"/>
         </node>
         <node name="rotate1" position="1.00,5.00" prototype="corevector.rotate"/>
