@@ -1,0 +1,304 @@
+{
+    "title": "example06",
+    "color": "teal",
+    "dependencies": {
+        "core/g": "dev"
+    },
+    "assets": {},
+    "functions": [
+        {
+            "name": "main",
+            "type": "network",
+            "renderedNode": "shapeSort1",
+            "nodes": [
+                {
+                    "name": "sides",
+                    "x": 65,
+                    "y": 75,
+                    "fn": "g.integer",
+                    "values": {
+                        "v": 5
+                    }
+                },
+                {
+                    "name": "outlines",
+                    "x": 205,
+                    "y": 75,
+                    "fn": "g.integer",
+                    "values": {
+                        "v": 25
+                    }
+                },
+                {
+                    "name": "radius",
+                    "x": 345,
+                    "y": 75,
+                    "fn": "g.number",
+                    "values": {
+                        "v": 25
+                    }
+                },
+                {
+                    "name": "grid1",
+                    "x": 485,
+                    "y": 75,
+                    "fn": "g.grid",
+                    "values": {
+                        "columns": 5,
+                        "rows": 5
+                    }
+                },
+                {
+                    "name": "vanishing",
+                    "x": 665,
+                    "y": 75,
+                    "fn": "g.makePoint",
+                    "values": {}
+                },
+                {
+                    "name": "sweet_poly1",
+                    "x": 365,
+                    "y": 285,
+                    "fn": "example06.sweet_poly",
+                    "values": {
+                        "Position": {
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                },
+                {
+                    "name": "shapeSort1",
+                    "x": 365,
+                    "y": 485,
+                    "fn": "g.shapeSort",
+                    "values": {
+                        "orderBy": "distance"
+                    }
+                }
+            ],
+            "connections": [
+                {
+                    "output": "sides",
+                    "input": "sweet_poly1",
+                    "parameter": "Sides"
+                },
+                {
+                    "output": "outlines",
+                    "input": "sweet_poly1",
+                    "parameter": "Outlines"
+                },
+                {
+                    "output": "radius",
+                    "input": "sweet_poly1",
+                    "parameter": "Radius"
+                },
+                {
+                    "output": "sweet_poly1",
+                    "input": "shapeSort1",
+                    "parameter": "shapes"
+                },
+                {
+                    "output": "vanishing",
+                    "input": "shapeSort1",
+                    "parameter": "point"
+                },
+                {
+                    "output": "vanishing",
+                    "input": "sweet_poly1",
+                    "parameter": "Vanishing point"
+                },
+                {
+                    "output": "grid1",
+                    "input": "sweet_poly1",
+                    "parameter": "Position"
+                }
+            ],
+            "parameters": [],
+            "returnsList": true
+        },
+        {
+            "name": "sweet_poly",
+            "type": "network",
+            "renderedNode": "group1",
+            "nodes": [
+                {
+                    "name": "range1",
+                    "x": 65,
+                    "y": 265,
+                    "fn": "g.range",
+                    "values": {
+                        "step": -0.01,
+                        "max": 1,
+                        "min": 1
+                    }
+                },
+                {
+                    "name": "scale1",
+                    "x": 215,
+                    "y": 425,
+                    "fn": "g.scale"
+                },
+                {
+                    "name": "colorize1",
+                    "x": 215,
+                    "y": 545,
+                    "fn": "g.colorize"
+                },
+                {
+                    "name": "rgbColor1",
+                    "x": 365,
+                    "y": 425,
+                    "fn": "g.rgbColor",
+                    "values": {
+                        "green": 0,
+                        "blue": 0.4
+                    }
+                },
+                {
+                    "name": "rgbColor2",
+                    "x": 505,
+                    "y": 425,
+                    "fn": "g.rgbColor",
+                    "values": {
+                        "green": 0,
+                        "blue": 0.2,
+                        "red": 0.6
+                    }
+                },
+                {
+                    "name": "group1",
+                    "x": 215,
+                    "y": 645,
+                    "fn": "g.group"
+                },
+                {
+                    "name": "polygon1",
+                    "x": 215,
+                    "y": 165,
+                    "fn": "g.polygon"
+                },
+                {
+                    "name": "divide1",
+                    "x": 65,
+                    "y": 165,
+                    "fn": "g.divide",
+                    "values": {
+                        "b": 100
+                    }
+                },
+                {
+                    "name": "subtract1",
+                    "x": 65,
+                    "y": 215,
+                    "fn": "g.subtract",
+                    "values": {
+                        "a": 1
+                    }
+                }
+            ],
+            "connections": [
+                {
+                    "output": "scale1",
+                    "input": "colorize1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "rgbColor1",
+                    "input": "colorize1",
+                    "parameter": "fill"
+                },
+                {
+                    "output": "rgbColor2",
+                    "input": "colorize1",
+                    "parameter": "stroke"
+                },
+                {
+                    "output": "colorize1",
+                    "input": "group1",
+                    "parameter": "shapes"
+                },
+                {
+                    "inlet": "Sides",
+                    "input": "polygon1",
+                    "parameter": "sides"
+                },
+                {
+                    "inlet": "Radius",
+                    "input": "polygon1",
+                    "parameter": "radius"
+                },
+                {
+                    "inlet": "Position",
+                    "input": "polygon1",
+                    "parameter": "position"
+                },
+                {
+                    "output": "polygon1",
+                    "input": "scale1",
+                    "parameter": "shape"
+                },
+                {
+                    "inlet": "Vanishing point",
+                    "input": "scale1",
+                    "parameter": "origin"
+                },
+                {
+                    "output": "range1",
+                    "input": "scale1",
+                    "parameter": "scale"
+                },
+                {
+                    "inlet": "Outlines",
+                    "input": "divide1",
+                    "parameter": "a"
+                },
+                {
+                    "output": "divide1",
+                    "input": "subtract1",
+                    "parameter": "b"
+                },
+                {
+                    "output": "subtract1",
+                    "input": "range1",
+                    "parameter": "max"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "Sides",
+                    "type": "int",
+                    "value": 5
+                },
+                {
+                    "name": "Outlines",
+                    "type": "int",
+                    "value": 25
+                },
+                {
+                    "name": "Radius",
+                    "type": "float",
+                    "value": 25
+                },
+                {
+                    "name": "Position",
+                    "type": "point",
+                    "value": {
+                        "x": 0,
+                        "y": 0
+                    }
+                },
+                {
+                    "name": "Vanishing point",
+                    "type": "point",
+                    "value": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "returnsList": true
+        }
+    ],
+    "id": "example06"
+}
