@@ -1,0 +1,149 @@
+{
+    "title": "example-04",
+    "color": "orange",
+    "dependencies": {
+        "core/g": "dev"
+    },
+    "assets": {
+        "FiraSans-Bold.otf": "c4f07f1f84fa6bc1867bf6dc5d4c6636"
+    },
+    "functions": [
+        {
+            "name": "main",
+            "type": "network",
+            "renderedNode": "transform1",
+            "nodes": [
+                {
+                    "name": "string1",
+                    "x": 55,
+                    "y": 125,
+                    "fn": "g.string",
+                    "values": {
+                        "s": "Ringelpietz mit anfassen"
+                    }
+                },
+                {
+                    "name": "textPath1",
+                    "x": 55,
+                    "y": 235,
+                    "fn": "g.textPath",
+                    "values": {
+                        "fontFamily": "FiraSans-Bold.otf",
+                        "fontSize": 48
+                    }
+                },
+                {
+                    "name": "transform1",
+                    "x": 55,
+                    "y": 415,
+                    "fn": "example04.transform",
+                    "values": {
+                        "offset": {
+                            "x": -161,
+                            "y": 98
+                        },
+                        "factor": {
+                            "x": 100,
+                            "y": 100
+                        },
+                        "pivot": {
+                            "x": 100,
+                            "y": 100
+                        }
+                    }
+                },
+                {
+                    "name": "frame1",
+                    "x": 215,
+                    "y": 125,
+                    "fn": "g.frame"
+                },
+                {
+                    "name": "makePoint1",
+                    "x": 215,
+                    "y": 235,
+                    "fn": "g.makePoint",
+                    "values": {
+                        "y": 100
+                    }
+                }
+            ],
+            "connections": [
+                {
+                    "output": "string1",
+                    "input": "textPath1",
+                    "parameter": "text"
+                },
+                {
+                    "output": "textPath1",
+                    "input": "transform1",
+                    "parameter": "v"
+                },
+                {
+                    "output": "textPath1",
+                    "input": "transform1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "makePoint1",
+                    "input": "transform1",
+                    "parameter": "pivot"
+                },
+                {
+                    "output": "frame1",
+                    "input": "makePoint1",
+                    "parameter": "x"
+                }
+            ],
+            "parameters": [],
+            "returnsList": true
+        },
+        {
+            "name": "transform",
+            "type": "code",
+            "outputType": "float",
+            "parameters": [
+                {
+                    "name": "shape",
+                    "type": "shape",
+                    "value": ""
+                },
+                {
+                    "name": "transform",
+                    "type": "string",
+                    "value": "polar",
+                    "choices": [
+                        [
+                            "polar",
+                            "polar"
+                        ],
+                        [
+                            "shift",
+                            "shift"
+                        ]
+                    ]
+                },
+                {
+                    "name": "pivot",
+                    "type": "point",
+                    "value": {
+                        "x": 0,
+                        "y": 0
+                    }
+                },
+                {
+                    "name": "factor",
+                    "type": "point",
+                    "value": {
+                        "x": 10,
+                        "y": 10
+                    }
+                }
+            ],
+            "source": "example04.transform = function (shape, transform, pivot, factor) {\n\n\n    // sanity check for pivot\n    if (pivot === undefined) {\n        pivot = {\n            x: 0,\n            y: 0\n        };\n    } else if (typeof pivot === 'number') {\n        pivot = {\n            x: pivot,\n            y: pivot\n        };\n    };\n\n    // sanity check for factor\n    if (factor === undefined) {\n        factor = {\n            x: 10,\n            y: 10\n        };\n    } else if (typeof pivot === 'number') {\n        factor = {\n            x: factor,\n            y: factor\n        };\n    };\n\n\n    var fns = {\n\n        // shift transform\n        shift: function (cmd, xattr, yattr) {\n            if (xattr in cmd) {\n                cmd[xattr] += pivot.x;\n            }\n            if (yattr in cmd) {\n                cmd[yattr] += pivot.y;\n            }\n        },\n\n        // polar transform\n        polar: function (cmd, xattr, yattr) {\n            if (xattr in cmd && yattr in cmd) {\n                var ang = (cmd[xattr] - pivot.x) / factor.x;\n                var d = (cmd[yattr] - pivot.y) / 100 * factor.y;\n                cmd[xattr] = Math.cos(ang) * d;\n                cmd[yattr] = Math.sin(ang) * d;\n            }\n        }\n\n    };\n\n    if (transform in fns) {\n\n        // select transform function\n        var fn = fns[transform];\n\n        // modify all commands\n        if (shape.commands) {\n            var commands = shape.commands;\n            for (var i = 0; i < commands.length; i++) {\n                var cmd = commands[i];\n                fn(cmd, 'x', 'y');\n                fn(cmd, 'x1', 'y1');\n                fn(cmd, 'x2', 'y2');\n            };\n        };\n\n    }\n\n\n    return shape;\n\n};",
+            "ref": "",
+            "category": ""
+        }
+    ],
+    "id": "example04"
+}
