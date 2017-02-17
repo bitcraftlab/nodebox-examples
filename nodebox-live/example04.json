@@ -11,7 +11,7 @@
         {
             "name": "main",
             "type": "network",
-            "renderedNode": "transform1",
+            "renderedNode": "makePoint1",
             "nodes": [
                 {
                     "name": "string1",
@@ -25,7 +25,7 @@
                 {
                     "name": "textPath1",
                     "x": 55,
-                    "y": 235,
+                    "y": 195,
                     "fn": "g.textPath",
                     "values": {
                         "fontFamily": "FiraSans-Bold.otf",
@@ -35,7 +35,7 @@
                 {
                     "name": "transform1",
                     "x": 55,
-                    "y": 415,
+                    "y": 335,
                     "fn": "example04.transform",
                     "values": {
                         "offset": {
@@ -44,7 +44,7 @@
                         },
                         "factor": {
                             "x": 100,
-                            "y": 100
+                            "y": 200
                         },
                         "pivot": {
                             "x": 100,
@@ -61,11 +61,43 @@
                 {
                     "name": "makePoint1",
                     "x": 215,
-                    "y": 235,
+                    "y": 195,
                     "fn": "g.makePoint",
                     "values": {
                         "y": 100
                     }
+                },
+                {
+                    "name": "transform2",
+                    "x": 235,
+                    "y": 495,
+                    "fn": "example04.transform",
+                    "values": {
+                        "pivot": {
+                            "x": 3,
+                            "y": -4
+                        },
+                        "factor": {
+                            "x": 200,
+                            "y": 50
+                        }
+                    }
+                },
+                {
+                    "name": "choice1",
+                    "x": 125,
+                    "y": 685,
+                    "fn": "example04.choice",
+                    "values": {
+                        "input1": 6,
+                        "choice": 1
+                    }
+                },
+                {
+                    "name": "align1",
+                    "x": 55,
+                    "y": 495,
+                    "fn": "g.align"
                 }
             ],
             "connections": [
@@ -93,10 +125,74 @@
                     "output": "frame1",
                     "input": "makePoint1",
                     "parameter": "x"
+                },
+                {
+                    "output": "transform1",
+                    "input": "transform2",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "transform1",
+                    "input": "align1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "align1",
+                    "input": "choice1",
+                    "parameter": "input1"
+                },
+                {
+                    "output": "transform2",
+                    "input": "choice1",
+                    "parameter": "input2"
                 }
             ],
             "parameters": [],
-            "returnsList": true
+            "returnsList": true,
+            "stickies": [
+                {
+                    "x": 55,
+                    "y": 285,
+                    "width": 115,
+                    "height": 35,
+                    "text": "transform to.polar coordinates"
+                },
+                {
+                    "x": 55,
+                    "y": 435,
+                    "width": 115,
+                    "height": 45,
+                    "text": "add a node as workaround for an update bug"
+                },
+                {
+                    "x": 55,
+                    "y": 65,
+                    "width": 115,
+                    "height": 45,
+                    "text": "text to be turned into vector graphics"
+                },
+                {
+                    "x": 235,
+                    "y": 435,
+                    "width": 115,
+                    "height": 45,
+                    "text": "second polar coordinate transform"
+                },
+                {
+                    "x": 125,
+                    "y": 615,
+                    "width": 115,
+                    "height": 55,
+                    "text": "click the choice node to select one of the inputs"
+                },
+                {
+                    "x": 215,
+                    "y": 65,
+                    "width": 115,
+                    "height": 45,
+                    "text": "press play to move the pivot point"
+                }
+            ]
         },
         {
             "name": "transform",
@@ -143,6 +239,64 @@
             "source": "example04.transform = function (shape, transform, pivot, factor) {\n\n\n    // sanity check for pivot\n    if (pivot === undefined) {\n        pivot = {\n            x: 0,\n            y: 0\n        };\n    } else if (typeof pivot === 'number') {\n        pivot = {\n            x: pivot,\n            y: pivot\n        };\n    };\n\n    // sanity check for factor\n    if (factor === undefined) {\n        factor = {\n            x: 10,\n            y: 10\n        };\n    } else if (typeof pivot === 'number') {\n        factor = {\n            x: factor,\n            y: factor\n        };\n    };\n\n\n    var fns = {\n\n        // shift transform\n        shift: function (cmd, xattr, yattr) {\n            if (xattr in cmd) {\n                cmd[xattr] += pivot.x;\n            }\n            if (yattr in cmd) {\n                cmd[yattr] += pivot.y;\n            }\n        },\n\n        // polar transform\n        polar: function (cmd, xattr, yattr) {\n            if (xattr in cmd && yattr in cmd) {\n                var ang = (cmd[xattr] - pivot.x) / factor.x;\n                var d = (cmd[yattr] - pivot.y) / 100 * factor.y;\n                cmd[xattr] = Math.cos(ang) * d;\n                cmd[yattr] = Math.sin(ang) * d;\n            }\n        }\n\n    };\n\n    if (transform in fns) {\n\n        // select transform function\n        var fn = fns[transform];\n\n        // modify all commands\n        if (shape.commands) {\n            var commands = shape.commands;\n            for (var i = 0; i < commands.length; i++) {\n                var cmd = commands[i];\n                fn(cmd, 'x', 'y');\n                fn(cmd, 'x1', 'y1');\n                fn(cmd, 'x2', 'y2');\n            };\n        };\n\n    }\n\n\n    return shape;\n\n};",
             "ref": "",
             "category": ""
+        },
+        {
+            "name": "choice",
+            "type": "network",
+            "renderedNode": "switch1",
+            "nodes": [
+                {
+                    "name": "switch1",
+                    "x": 15,
+                    "y": 145,
+                    "fn": "g.switch"
+                }
+            ],
+            "connections": [
+                {
+                    "inlet": "input1",
+                    "input": "switch1",
+                    "parameter": "l1"
+                },
+                {
+                    "inlet": "input2",
+                    "input": "switch1",
+                    "parameter": "l2"
+                },
+                {
+                    "inlet": "choice",
+                    "input": "switch1",
+                    "parameter": "index"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "choice",
+                    "type": "int",
+                    "value": 0,
+                    "choices": [
+                        [
+                            0,
+                            "Input 1"
+                        ],
+                        [
+                            1,
+                            "Input 2"
+                        ]
+                    ]
+                },
+                {
+                    "name": "input1",
+                    "type": "",
+                    "value": 1
+                },
+                {
+                    "name": "input2",
+                    "type": "",
+                    "value": 1
+                }
+            ],
+            "returnsList": true
         }
     ],
     "id": "example04"
