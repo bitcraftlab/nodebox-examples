@@ -1,0 +1,59 @@
+{
+    "title": "example-01",
+    "color": "orange",
+    "dependencies": {
+        "core/g": "dev"
+    },
+    "assets": {},
+    "functions": [
+        {
+            "name": "main",
+            "type": "network",
+            "renderedNode": "rotate1",
+            "nodes": [
+                {
+                    "name": "rect1",
+                    "x": 45,
+                    "y": 35,
+                    "fn": "g.rect",
+                    "values": {
+                        "width": 300,
+                        "height": 8
+                    }
+                },
+                {
+                    "name": "rotate1",
+                    "x": 45,
+                    "y": 215,
+                    "fn": "g.rotate"
+                },
+                {
+                    "name": "range1",
+                    "x": 175,
+                    "y": 35,
+                    "fn": "g.range",
+                    "values": {
+                        "max": 360,
+                        "step": 10
+                    }
+                }
+            ],
+            "connections": [
+                {
+                    "output": "rect1",
+                    "input": "rotate1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "range1",
+                    "input": "rotate1",
+                    "parameter": "angle"
+                }
+            ],
+            "parameters": [],
+            "returnsList": true
+        }
+    ],
+    "id": "example01",
+    "description": ""
+}

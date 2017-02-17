@@ -1,0 +1,106 @@
+{
+    "title": "example-03",
+    "color": "orange",
+    "dependencies": {
+        "core/g": "dev"
+    },
+    "assets": {},
+    "functions": [
+        {
+            "name": "main",
+            "type": "network",
+            "renderedNode": "align1",
+            "nodes": [
+                {
+                    "name": "textPath1",
+                    "x": 36,
+                    "y": 85,
+                    "fn": "g.textPath",
+                    "values": {
+                        "text": "digital erosion"
+                    }
+                },
+                {
+                    "name": "resampleByLength1",
+                    "x": 35,
+                    "y": 295,
+                    "fn": "g.resampleByLength",
+                    "values": {
+                        "maxLength": 5
+                    }
+                },
+                {
+                    "name": "range1",
+                    "x": 165,
+                    "y": 195,
+                    "fn": "g.range"
+                },
+                {
+                    "name": "integer1",
+                    "x": 225,
+                    "y": 85,
+                    "fn": "g.integer",
+                    "values": {
+                        "v": 20
+                    }
+                },
+                {
+                    "name": "stack1",
+                    "x": 35,
+                    "y": 385,
+                    "fn": "g.stack",
+                    "values": {
+                        "direction": "s"
+                    }
+                },
+                {
+                    "name": "group1",
+                    "x": 35,
+                    "y": 475,
+                    "fn": "g.group"
+                },
+                {
+                    "name": "align1",
+                    "x": 35,
+                    "y": 565,
+                    "fn": "g.align"
+                }
+            ],
+            "connections": [
+                {
+                    "output": "textPath1",
+                    "input": "resampleByLength1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "range1",
+                    "input": "resampleByLength1",
+                    "parameter": "maxLength"
+                },
+                {
+                    "output": "integer1",
+                    "input": "range1",
+                    "parameter": "max"
+                },
+                {
+                    "output": "resampleByLength1",
+                    "input": "stack1",
+                    "parameter": "shapes"
+                },
+                {
+                    "output": "stack1",
+                    "input": "group1",
+                    "parameter": "shapes"
+                },
+                {
+                    "output": "group1",
+                    "input": "align1",
+                    "parameter": "shape"
+                }
+            ],
+            "parameters": [],
+            "returnsList": true
+        }
+    ],
+    "id": "example03"
+}
