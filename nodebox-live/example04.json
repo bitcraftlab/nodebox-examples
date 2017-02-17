@@ -11,7 +11,7 @@
         {
             "name": "main",
             "type": "network",
-            "renderedNode": "makePoint1",
+            "renderedNode": "choice1",
             "nodes": [
                 {
                     "name": "string1",
@@ -79,7 +79,7 @@
                         },
                         "factor": {
                             "x": 200,
-                            "y": 50
+                            "y": 100
                         }
                     }
                 },
@@ -89,8 +89,7 @@
                     "y": 685,
                     "fn": "example04.choice",
                     "values": {
-                        "input1": 6,
-                        "choice": 1
+                        "input1": 6
                     }
                 },
                 {
