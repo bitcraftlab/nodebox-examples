@@ -19,7 +19,7 @@
                     "y": 125,
                     "fn": "g.string",
                     "values": {
-                        "s": "Ringelpietz mit anfassen"
+                        "s": "Ringelpiez mit Anfassen"
                     }
                 },
                 {
@@ -89,7 +89,8 @@
                     "y": 685,
                     "fn": "example04.choice",
                     "values": {
-                        "input1": 6
+                        "input1": 6,
+                        "choice": 1
                     }
                 },
                 {
@@ -121,11 +122,6 @@
                     "parameter": "pivot"
                 },
                 {
-                    "output": "frame1",
-                    "input": "makePoint1",
-                    "parameter": "x"
-                },
-                {
                     "output": "transform1",
                     "input": "transform2",
                     "parameter": "shape"
@@ -144,6 +140,11 @@
                     "output": "transform2",
                     "input": "choice1",
                     "parameter": "input2"
+                },
+                {
+                    "output": "frame1",
+                    "input": "makePoint1",
+                    "parameter": "x"
                 }
             ],
             "parameters": [],
@@ -190,6 +191,13 @@
                     "width": 115,
                     "height": 45,
                     "text": "press play to move the pivot point"
+                },
+                {
+                    "x": 125,
+                    "y": 735,
+                    "width": 105,
+                    "height": 95,
+                    "text": "try to export an animated gif of the infinity loop with 600 x 400 pixels and 628 frames"
                 }
             ]
         },
