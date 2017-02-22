@@ -391,7 +391,7 @@
                 {
                     "name": "alpha",
                     "type": "float",
-                    "value": 0.03
+                    "value": 0.2
                 }
             ],
             "returnsList": true
