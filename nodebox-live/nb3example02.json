@@ -1,0 +1,165 @@
+{
+    "title": "nb3-example-02",
+    "color": "teal",
+    "dependencies": {
+        "core/g": "dev"
+    },
+    "assets": {},
+    "functions": [
+        {
+            "name": "main",
+            "type": "network",
+            "renderedNode": "mesh1",
+            "nodes": [
+                {
+                    "name": "ellipse1",
+                    "x": -45,
+                    "y": 45,
+                    "fn": "g.ellipse",
+                    "values": {
+                        "width": 300,
+                        "height": 300
+                    }
+                },
+                {
+                    "name": "resampleByLength1",
+                    "x": -45,
+                    "y": 105,
+                    "fn": "g.resampleByLength",
+                    "values": {
+                        "maxLength": 50
+                    }
+                },
+                {
+                    "name": "toPoints1",
+                    "x": -45,
+                    "y": 165,
+                    "fn": "g.toPoints"
+                },
+                {
+                    "name": "count1",
+                    "x": 45,
+                    "y": 325,
+                    "fn": "g.count"
+                },
+                {
+                    "name": "range1",
+                    "x": 45,
+                    "y": 395,
+                    "fn": "g.range"
+                },
+                {
+                    "name": "mesh1",
+                    "x": -45,
+                    "y": 535,
+                    "fn": "nb3example02.mesh"
+                }
+            ],
+            "connections": [
+                {
+                    "output": "ellipse1",
+                    "input": "resampleByLength1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "resampleByLength1",
+                    "input": "toPoints1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "toPoints1",
+                    "input": "count1",
+                    "parameter": "l"
+                },
+                {
+                    "output": "count1",
+                    "input": "range1",
+                    "parameter": "max"
+                },
+                {
+                    "output": "toPoints1",
+                    "input": "mesh1",
+                    "parameter": "l"
+                },
+                {
+                    "output": "toPoints1",
+                    "input": "mesh1",
+                    "parameter": "point2"
+                },
+                {
+                    "output": "range1",
+                    "input": "mesh1",
+                    "parameter": "startIndex"
+                }
+            ],
+            "parameters": [],
+            "returnsList": true
+        },
+        {
+            "name": "mesh",
+            "type": "network",
+            "renderedNode": "line1",
+            "nodes": [
+                {
+                    "name": "line1",
+                    "x": 135,
+                    "y": 355,
+                    "fn": "g.line"
+                },
+                {
+                    "name": "slice1",
+                    "x": 45,
+                    "y": 175,
+                    "fn": "g.slice"
+                }
+            ],
+            "connections": [
+                {
+                    "output": "slice1",
+                    "input": "line1",
+                    "parameter": "point1"
+                },
+                {
+                    "inlet": "l",
+                    "input": "slice1",
+                    "parameter": "l"
+                },
+                {
+                    "inlet": "startIndex",
+                    "input": "slice1",
+                    "parameter": "startIndex"
+                },
+                {
+                    "inlet": "point2",
+                    "input": "line1",
+                    "parameter": "point2"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "l",
+                    "type": "object",
+                    "value": "undefined",
+                    "takesList": true
+                },
+                {
+                    "name": "startIndex",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "point2",
+                    "type": "point",
+                    "value": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "takesList": true
+                }
+            ],
+            "returnsList": true,
+            "async": false
+        }
+    ],
+    "id": "nb3example02"
+}
