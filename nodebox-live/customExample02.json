@@ -167,6 +167,11 @@
                     "output": "productPoint1",
                     "input": "lookup2",
                     "parameter": "table"
+                },
+                {
+                    "output": "points",
+                    "input": "randomNumbers2",
+                    "parameter": "amount"
                 }
             ],
             "parameters": [],
