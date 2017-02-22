@@ -1,0 +1,422 @@
+{
+    "title": "custom-example-03",
+    "color": "#f60",
+    "dependencies": {
+        "core/g": "dev"
+    },
+    "assets": {},
+    "functions": [
+        {
+            "name": "main",
+            "type": "network",
+            "renderedNode": "crystal1",
+            "nodes": [
+                {
+                    "name": "grid1",
+                    "x": 365,
+                    "y": 195,
+                    "fn": "g.grid",
+                    "values": {
+                        "columns": 4
+                    }
+                },
+                {
+                    "name": "range1",
+                    "x": 75,
+                    "y": 195,
+                    "fn": "g.range",
+                    "values": {
+                        "includeMax": true
+                    }
+                },
+                {
+                    "name": "crystal1",
+                    "x": 235,
+                    "y": 485,
+                    "fn": "customExample03.crystal",
+                    "values": {
+                        "alpha": 0.2
+                    }
+                },
+                {
+                    "name": "add1",
+                    "x": 145,
+                    "y": 325,
+                    "fn": "g.add",
+                    "values": {
+                        "b": 14
+                    }
+                },
+                {
+                    "name": "seed",
+                    "x": 215,
+                    "y": 195,
+                    "fn": "g.integer",
+                    "values": {
+                        "v": 35
+                    }
+                }
+            ],
+            "connections": [
+                {
+                    "output": "grid1",
+                    "input": "crystal1",
+                    "parameter": "position"
+                },
+                {
+                    "output": "range1",
+                    "input": "add1",
+                    "parameter": "a"
+                },
+                {
+                    "output": "add1",
+                    "input": "crystal1",
+                    "parameter": "seed"
+                },
+                {
+                    "output": "seed",
+                    "input": "add1",
+                    "parameter": "b"
+                }
+            ],
+            "parameters": [],
+            "returnsList": true
+        },
+        {
+            "name": "product",
+            "type": "code",
+            "outputType": "",
+            "parameters": [
+                {
+                    "name": "list1",
+                    "type": "",
+                    "value": 1,
+                    "takesList": true
+                },
+                {
+                    "name": "list2",
+                    "type": "",
+                    "value": 1,
+                    "takesList": true
+                },
+                {
+                    "name": "list3",
+                    "type": "",
+                    "value": 1,
+                    "takesList": true
+                }
+            ],
+            "source": "// cartesian product\n\ncustomExample03.product = function () {\n\n    var args = [].slice.call(arguments);\n    var end = args.length - 1;\n\n    var result = [];\n\n    function addTo(curr, start) {\n\n        var first = args[start];\n\n\n        var last = (start === end);\n\n        for (var i = 0; i < first.length; ++i) {\n            var copy = curr.slice();\n            copy.push(first[i]);\n            if (last) {\n                result.push(copy);\n            } else {\n                addTo(copy, start + 1);\n            }\n        };\n\n    };\n\n    if (args.length) {\n        addTo([], 0);\n    } else {\n        result.push([]);\n    };\n\n    return result;\n\n}",
+            "ref": "",
+            "category": "",
+            "returnsList": true
+        },
+        {
+            "name": "crystal",
+            "type": "network",
+            "renderedNode": "align1",
+            "nodes": [
+                {
+                    "name": "points",
+                    "x": 175,
+                    "y": 245,
+                    "fn": "g.integer"
+                },
+                {
+                    "name": "seed",
+                    "x": 345,
+                    "y": 245,
+                    "fn": "g.integer"
+                },
+                {
+                    "name": "pow1",
+                    "x": 585,
+                    "y": 405,
+                    "fn": "g.pow",
+                    "values": {
+                        "a": 0.75
+                    }
+                },
+                {
+                    "name": "randomNumbers1",
+                    "x": 445,
+                    "y": 405,
+                    "fn": "g.randomNumbers",
+                    "values": {
+                        "max": 1
+                    }
+                },
+                {
+                    "name": "randomNumbers2",
+                    "x": 305,
+                    "y": 515,
+                    "fn": "g.randomNumbers"
+                },
+                {
+                    "name": "add1",
+                    "x": 305,
+                    "y": 405,
+                    "fn": "g.add",
+                    "values": {
+                        "b": 1
+                    }
+                },
+                {
+                    "name": "randomNumbers3",
+                    "x": 185,
+                    "y": 515,
+                    "fn": "g.randomNumbers"
+                },
+                {
+                    "name": "makePoint1",
+                    "x": 235,
+                    "y": 605,
+                    "fn": "g.makePoint"
+                },
+                {
+                    "name": "align1",
+                    "x": -15,
+                    "y": 1045,
+                    "fn": "g.align"
+                },
+                {
+                    "name": "colorize1",
+                    "x": 235,
+                    "y": 825,
+                    "fn": "g.colorize",
+                    "values": {
+                        "strokeWidth": 0.5
+                    }
+                },
+                {
+                    "name": "group1",
+                    "x": 235,
+                    "y": 885,
+                    "fn": "g.group"
+                },
+                {
+                    "name": "product1",
+                    "x": 235,
+                    "y": 685,
+                    "fn": "customExample03.product"
+                },
+                {
+                    "name": "connectPoints1",
+                    "x": 235,
+                    "y": 755,
+                    "fn": "customExample03.connectPoints",
+                    "values": {
+                        "closed": true
+                    }
+                },
+                {
+                    "name": "hslColor1",
+                    "x": 445,
+                    "y": 665,
+                    "fn": "g.hslColor",
+                    "values": {
+                        "alpha": 0.57,
+                        "saturation": 1,
+                        "lightness": 0.5
+                    }
+                },
+                {
+                    "name": "multiply1",
+                    "x": 585,
+                    "y": 555,
+                    "fn": "g.multiply"
+                }
+            ],
+            "connections": [
+                {
+                    "output": "points",
+                    "input": "pow1",
+                    "parameter": "b"
+                },
+                {
+                    "output": "points",
+                    "input": "randomNumbers1",
+                    "parameter": "amount"
+                },
+                {
+                    "output": "points",
+                    "input": "randomNumbers2",
+                    "parameter": "amount"
+                },
+                {
+                    "output": "seed",
+                    "input": "add1",
+                    "parameter": "a"
+                },
+                {
+                    "output": "add1",
+                    "input": "randomNumbers2",
+                    "parameter": "seed"
+                },
+                {
+                    "output": "seed",
+                    "input": "randomNumbers1",
+                    "parameter": "seed"
+                },
+                {
+                    "inlet": "seed",
+                    "input": "seed",
+                    "parameter": "v"
+                },
+                {
+                    "output": "seed",
+                    "input": "randomNumbers3",
+                    "parameter": "seed"
+                },
+                {
+                    "output": "points",
+                    "input": "randomNumbers3",
+                    "parameter": "amount"
+                },
+                {
+                    "output": "randomNumbers3",
+                    "input": "makePoint1",
+                    "parameter": "x"
+                },
+                {
+                    "output": "randomNumbers2",
+                    "input": "makePoint1",
+                    "parameter": "y"
+                },
+                {
+                    "output": "colorize1",
+                    "input": "group1",
+                    "parameter": "shapes"
+                },
+                {
+                    "inlet": "position",
+                    "input": "align1",
+                    "parameter": "position"
+                },
+                {
+                    "output": "group1",
+                    "input": "align1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "makePoint1",
+                    "input": "product1",
+                    "parameter": "list1"
+                },
+                {
+                    "output": "makePoint1",
+                    "input": "product1",
+                    "parameter": "list2"
+                },
+                {
+                    "output": "product1",
+                    "input": "connectPoints1",
+                    "parameter": "v"
+                },
+                {
+                    "output": "randomNumbers1",
+                    "input": "hslColor1",
+                    "parameter": "hue"
+                },
+                {
+                    "output": "product1",
+                    "input": "connectPoints1",
+                    "parameter": "points"
+                },
+                {
+                    "inlet": "points",
+                    "input": "points",
+                    "parameter": "v"
+                },
+                {
+                    "output": "hslColor1",
+                    "input": "colorize1",
+                    "parameter": "fill"
+                },
+                {
+                    "output": "hslColor1",
+                    "input": "colorize1",
+                    "parameter": "stroke"
+                },
+                {
+                    "output": "makePoint1",
+                    "input": "product1",
+                    "parameter": "list3"
+                },
+                {
+                    "output": "connectPoints1",
+                    "input": "colorize1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "pow1",
+                    "input": "multiply1",
+                    "parameter": "a"
+                },
+                {
+                    "output": "multiply1",
+                    "input": "hslColor1",
+                    "parameter": "alpha"
+                },
+                {
+                    "inlet": "alpha",
+                    "input": "multiply1",
+                    "parameter": "b"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "seed",
+                    "type": "int",
+                    "value": 1
+                },
+                {
+                    "name": "position",
+                    "type": "point",
+                    "value": {
+                        "x": 0,
+                        "y": 0
+                    }
+                },
+                {
+                    "name": "points",
+                    "type": "int",
+                    "value": 5,
+                    "takesList": false,
+                    "maximum": 9,
+                    "enforceMaximum": "true",
+                    "enforceMinimum": "true",
+                    "minimum": 3
+                },
+                {
+                    "name": "alpha",
+                    "type": "float",
+                    "value": 0.03
+                }
+            ],
+            "returnsList": true
+        },
+        {
+            "name": "connectPoints",
+            "type": "code",
+            "outputType": "",
+            "parameters": [
+                {
+                    "name": "points",
+                    "type": "",
+                    "value": 1
+                },
+                {
+                    "name": "closed",
+                    "type": "boolean",
+                    "value": 1
+                }
+            ],
+            "source": "// connectPoints node that doesn't take lists ...\n\ncustomExample03.connectPoints = function (points, closed) {\n\n    return g.connectPoints(points, closed);\n\n};",
+            "ref": "",
+            "category": "",
+            "returnsList": false
+        }
+    ],
+    "id": "customExample03"
+}
