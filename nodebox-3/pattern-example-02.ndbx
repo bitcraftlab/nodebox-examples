@@ -161,7 +161,7 @@
             <port min="1.0" name="amount" type="int" value="4"/>
         </node>
         <node name="repetition" position="10.00,5.00" prototype="math.integer">
-            <port name="value" type="int" value="2"/>
+            <port name="value" type="int" value="3"/>
         </node>
         <node name="rot" position="21.00,9.00" prototype="color.rgb_color">
             <port name="red" type="float" value="220.0"/>
