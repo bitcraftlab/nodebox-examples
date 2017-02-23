@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="80d39114-1dda-40ec-abab-6423dd0b7835">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="colorize1">
+        <node name="align1" position="4.00,12.00" prototype="corevector.align"/>
+        <node name="blau" position="16.00,14.00" prototype="color.rgb_color">
+            <port name="blue" type="float" value="220.0"/>
+        </node>
+        <node name="colorize1" position="4.00,25.00" prototype="corevector.colorize">
+            <port name="stroke" type="color" value="#ffffff32"/>
+        </node>
+        <node name="dreieck" position="6.00,6.00" prototype="corevector.polygon">
+            <port name="radius" type="float" value="34.0"/>
+            <port name="align" type="boolean" value="true"/>
+        </node>
+        <node name="farbe" position="13.00,1.00" prototype="string.string">
+            <port name="value" type="string" value="rgb"/>
+        </node>
+        <node name="form" position="3.00,1.00" prototype="string.string">
+            <port name="value" type="string" value="1232"/>
+        </node>
+        <node name="gelb" position="15.00,13.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="220.0"/>
+            <port name="green" type="float" value="220.0"/>
+        </node>
+        <node name="grid1" position="8.00,9.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="12"/>
+            <port name="rows" type="int" value="8"/>
+            <port name="width" type="float" value="900.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="kreis" position="5.00,5.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="50.0"/>
+            <port name="height" type="float" value="50.0"/>
+        </node>
+        <node name="pattern1" position="3.00,9.00" prototype="core.network" renderedChild="lookup1">
+            <node name="characters1" position="4.00,7.00" prototype="string.characters">
+                <port name="string" type="string" value=""/>
+            </node>
+            <node name="characters2" position="-4.00,7.00" prototype="string.characters">
+                <port name="string" type="string" value="123"/>
+            </node>
+            <node name="combine1" position="0.00,7.00" prototype="list.combine"/>
+            <node name="lookup1" position="1.00,14.00" prototype="data.lookup"/>
+            <node name="zip_map1" position="-2.00,10.00" prototype="list.zip_map"/>
+            <port childReference="characters1.string" description="" label="" name="sequence" range="value" type="string" value="" widget="string"/>
+            <port childReference="characters2.string" description="" label="" name="alphabet" range="value" type="string" value="123" widget="string"/>
+            <port childReference="combine1.list1" description="The first list." label="" name="item1" range="list" type="list" widget="none"/>
+            <port childReference="combine1.list2" description="The second list." label="" name="item2" range="list" type="list" widget="none"/>
+            <port childReference="combine1.list3" description="The third list." label="" name="item3" range="list" type="list" widget="none"/>
+            <conn input="lookup1.key" output="characters1"/>
+            <conn input="zip_map1.keys" output="characters2"/>
+            <conn input="lookup1.list" output="zip_map1"/>
+            <conn input="zip_map1.values" output="combine1"/>
+        </node>
+        <node name="pattern2" position="13.00,17.00" prototype="core.network" renderedChild="lookup1">
+            <node name="characters1" position="4.00,7.00" prototype="string.characters">
+                <port name="string" type="string" value=""/>
+            </node>
+            <node name="characters2" position="-4.00,7.00" prototype="string.characters">
+                <port name="string" type="string" value="rgb"/>
+            </node>
+            <node name="combine1" position="0.00,7.00" prototype="list.combine"/>
+            <node name="lookup1" position="1.00,14.00" prototype="data.lookup"/>
+            <node name="zip_map1" position="-2.00,10.00" prototype="list.zip_map"/>
+            <port childReference="characters1.string" description="" label="" name="sequence" range="value" type="string" value="" widget="string"/>
+            <port childReference="characters2.string" description="" label="" name="alphabet" range="value" type="string" value="rgb" widget="string"/>
+            <port childReference="combine1.list1" description="The first list." label="" name="item1" range="list" type="list" widget="none"/>
+            <port childReference="combine1.list2" description="The second list." label="" name="item2" range="list" type="list" widget="none"/>
+            <port childReference="combine1.list3" description="The third list." label="" name="item3" range="list" type="list" widget="none"/>
+            <conn input="lookup1.key" output="characters1"/>
+            <conn input="zip_map1.keys" output="characters2"/>
+            <conn input="lookup1.list" output="zip_map1"/>
+            <conn input="zip_map1.values" output="combine1"/>
+        </node>
+        <node name="quadrat" position="4.00,4.00" prototype="corevector.rect">
+            <port name="width" type="float" value="50.0"/>
+            <port name="height" type="float" value="50.0"/>
+        </node>
+        <node name="rot" position="14.00,12.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="220.0"/>
+        </node>
+        <conn input="align1.position" output="grid1"/>
+        <conn input="colorize1.fill" output="pattern2"/>
+        <conn input="pattern2.item1" output="rot"/>
+        <conn input="pattern2.item2" output="gelb"/>
+        <conn input="pattern2.item3" output="blau"/>
+        <conn input="pattern2.sequence" output="farbe"/>
+        <conn input="colorize1.shape" output="align1"/>
+        <conn input="pattern1.item3" output="dreieck"/>
+        <conn input="pattern1.item2" output="kreis"/>
+        <conn input="pattern1.item1" output="quadrat"/>
+        <conn input="pattern1.sequence" output="form"/>
+        <conn input="align1.shape" output="pattern1"/>
+    </node>
+</ndbx>

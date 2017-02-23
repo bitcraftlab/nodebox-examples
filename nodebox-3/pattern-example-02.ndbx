@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="80d39114-1dda-40ec-abab-6423dd0b7835">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="blau" position="23.00,11.00" prototype="color.rgb_color">
+            <port name="blue" type="float" value="220.0"/>
+        </node>
+        <node name="circleLayout1" position="6.00,23.00" prototype="core.network" renderedChild="align1">
+            <node name="add1" position="3.00,17.00" prototype="math.add">
+                <port name="value2" type="float" value="1.0"/>
+            </node>
+            <node name="align1" position="-3.00,25.00" prototype="corevector.align"/>
+            <node name="count1" position="3.00,15.00" prototype="list.count"/>
+            <node name="ellipse1" position="-2.00,19.00" prototype="corevector.ellipse">
+                <port name="position" type="point" value="-250.00,0.00"/>
+                <port name="width" type="float" value="466.0"/>
+                <port name="height" type="float" value="252.0"/>
+            </node>
+            <node name="point_on_path1" position="-2.00,23.00" prototype="corevector.point_on_path"/>
+            <node name="radius" position="-2.00,17.00" prototype="math.number">
+                <port name="value" type="float" value="200.0"/>
+            </node>
+            <node name="sample1" position="3.00,19.00" prototype="math.sample"/>
+            <node name="shapes" position="-3.00,10.00" prototype="list.slice">
+                <port name="size" type="int" value="0"/>
+                <port name="invert" type="boolean" value="true"/>
+            </node>
+            <port childReference="shapes.list" description="The input list." label="" name="shapes" range="list" type="list" widget="none"/>
+            <port childReference="radius.value" description="" label="" name="radius" range="value" type="float" value="200.0" widget="float"/>
+            <port childReference="ellipse1.position" description="The center point of the ellipse." label="" name="position" range="value" type="point" value="-250.00,0.00" widget="point"/>
+            <conn input="point_on_path1.t" output="sample1"/>
+            <conn input="add1.value1" output="count1"/>
+            <conn input="sample1.amount" output="add1"/>
+            <conn input="ellipse1.width" output="radius"/>
+            <conn input="ellipse1.height" output="radius"/>
+            <conn input="point_on_path1.shape" output="ellipse1"/>
+            <conn input="align1.position" output="point_on_path1"/>
+            <conn input="count1.list" output="shapes"/>
+            <conn input="align1.shape" output="shapes"/>
+        </node>
+        <node name="circleLayout2" position="10.00,23.00" prototype="core.network" renderedChild="shape_on_path1">
+            <node name="count1" position="-20.00,17.00" prototype="list.count"/>
+            <node name="divide1" position="-24.00,20.00" prototype="math.divide"/>
+            <node name="divide2" position="-24.00,21.00" prototype="math.divide">
+                <port name="value2" type="float" value="2.0"/>
+            </node>
+            <node name="ellipse1" position="-28.00,19.00" prototype="corevector.ellipse">
+                <port name="position" type="point" value="250.00,0.00"/>
+            </node>
+            <node name="multiply1" position="-24.00,17.00" prototype="math.multiply"/>
+            <node name="pi1" position="-20.00,10.00" prototype="math.pi"/>
+            <node name="radius" position="-24.00,10.00" prototype="math.number">
+                <port name="value" type="float" value="200.0"/>
+            </node>
+            <node name="shape_on_path1" position="-30.00,25.00" prototype="corevector.shape_on_path">
+                <port name="alignment" type="string" value="distributed"/>
+                <port name="spacing" type="float" value="0.0"/>
+            </node>
+            <node name="slice1" position="-30.00,10.00" prototype="list.slice">
+                <port name="size" type="int" value="0"/>
+                <port name="invert" type="boolean" value="true"/>
+            </node>
+            <port childReference="slice1.list" description="The input list." label="" name="shapes" range="list" type="list" widget="none"/>
+            <port childReference="radius.value" description="" label="" name="radius" range="value" type="float" value="200.0" widget="float"/>
+            <port childReference="ellipse1.position" description="The center point of the ellipse." label="" name="position" range="value" type="point" value="250.00,0.00" widget="point"/>
+            <conn input="multiply1.value2" output="pi1"/>
+            <conn input="divide1.value1" output="multiply1"/>
+            <conn input="divide1.value2" output="count1"/>
+            <conn input="shape_on_path1.shape" output="slice1"/>
+            <conn input="count1.list" output="slice1"/>
+            <conn input="divide2.value1" output="divide1"/>
+            <conn input="shape_on_path1.margin" output="divide2"/>
+            <conn input="shape_on_path1.path" output="ellipse1"/>
+            <conn input="ellipse1.width" output="radius"/>
+            <conn input="ellipse1.height" output="radius"/>
+            <conn input="multiply1.value1" output="radius"/>
+        </node>
+        <node name="colorize1" position="10.00,29.00" prototype="corevector.colorize">
+            <port name="strokeWidth" type="float" value="4.0"/>
+        </node>
+        <node name="colorize2" position="2.00,29.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffffff"/>
+        </node>
+        <node name="colorize3" position="6.00,29.00" prototype="corevector.colorize">
+            <port name="strokeWidth" type="float" value="4.0"/>
+        </node>
+        <node name="combine1" position="6.00,34.00" prototype="list.combine"/>
+        <node name="dreieck" position="16.00,11.00" prototype="corevector.polygon">
+            <port name="radius" type="float" value="34.0"/>
+            <port name="align" type="boolean" value="true"/>
+        </node>
+        <node name="farbe" position="19.00,5.00" prototype="string.string">
+            <port name="value" type="string" value="rgb"/>
+        </node>
+        <node name="form" position="14.00,5.00" prototype="string.string">
+            <port name="value" type="string" value="1232"/>
+        </node>
+        <node name="gelb" position="22.00,10.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="220.0"/>
+            <port name="green" type="float" value="220.0"/>
+        </node>
+        <node name="kreis" position="15.00,10.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="50.0"/>
+            <port name="height" type="float" value="50.0"/>
+        </node>
+        <node name="pattern1" position="10.00,16.00" prototype="core.network" renderedChild="lookup1">
+            <node name="characters1" position="4.00,7.00" prototype="string.characters">
+                <port name="string" type="string" value=""/>
+            </node>
+            <node name="characters2" position="-4.00,7.00" prototype="string.characters">
+                <port name="string" type="string" value="123"/>
+            </node>
+            <node name="combine1" position="0.00,7.00" prototype="list.combine"/>
+            <node name="lookup1" position="1.00,14.00" prototype="data.lookup"/>
+            <node name="zip_map1" position="-2.00,10.00" prototype="list.zip_map"/>
+            <port childReference="characters1.string" description="" label="" name="sequence" range="value" type="string" value="" widget="string"/>
+            <port childReference="characters2.string" description="" label="" name="alphabet" range="value" type="string" value="123" widget="string"/>
+            <port childReference="combine1.list1" description="The first list." label="" name="item1" range="list" type="list" widget="none"/>
+            <port childReference="combine1.list2" description="The second list." label="" name="item2" range="list" type="list" widget="none"/>
+            <port childReference="combine1.list3" description="The third list." label="" name="item3" range="list" type="list" widget="none"/>
+            <conn input="lookup1.key" output="characters1"/>
+            <conn input="zip_map1.keys" output="characters2"/>
+            <conn input="lookup1.list" output="zip_map1"/>
+            <conn input="zip_map1.values" output="combine1"/>
+        </node>
+        <node name="pattern2" position="19.00,16.00" prototype="core.network" renderedChild="lookup1">
+            <node name="characters1" position="4.00,7.00" prototype="string.characters">
+                <port name="string" type="string" value=""/>
+            </node>
+            <node name="characters2" position="-4.00,7.00" prototype="string.characters">
+                <port name="string" type="string" value="rgb"/>
+            </node>
+            <node name="combine1" position="0.00,7.00" prototype="list.combine"/>
+            <node name="lookup1" position="1.00,14.00" prototype="data.lookup"/>
+            <node name="zip_map1" position="-2.00,10.00" prototype="list.zip_map"/>
+            <port childReference="characters1.string" description="" label="" name="sequence" range="value" type="string" value="" widget="string"/>
+            <port childReference="characters2.string" description="" label="" name="alphabet" range="value" type="string" value="rgb" widget="string"/>
+            <port childReference="combine1.list1" description="The first list." label="" name="item1" range="list" type="list" widget="none"/>
+            <port childReference="combine1.list2" description="The second list." label="" name="item2" range="list" type="list" widget="none"/>
+            <port childReference="combine1.list3" description="The third list." label="" name="item3" range="list" type="list" widget="none"/>
+            <conn input="lookup1.key" output="characters1"/>
+            <conn input="zip_map1.keys" output="characters2"/>
+            <conn input="lookup1.list" output="zip_map1"/>
+            <conn input="zip_map1.values" output="combine1"/>
+        </node>
+        <node name="quadrat" position="14.00,9.00" prototype="corevector.rect">
+            <port name="width" type="float" value="50.0"/>
+            <port name="height" type="float" value="50.0"/>
+        </node>
+        <node name="radius" position="2.00,5.00" prototype="math.number">
+            <port name="value" type="float" value="250.0"/>
+        </node>
+        <node name="rect1" position="2.00,23.00" prototype="corevector.rect">
+            <port name="width" type="float" value="1000.0"/>
+            <port name="height" type="float" value="1000.0"/>
+        </node>
+        <node name="repeat1" position="10.00,9.00" prototype="list.repeat">
+            <port min="1.0" name="amount" type="int" value="4"/>
+        </node>
+        <node name="repetition" position="10.00,5.00" prototype="math.integer">
+            <port name="value" type="int" value="2"/>
+        </node>
+        <node name="rot" position="21.00,9.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="220.0"/>
+        </node>
+        <node name="scale" position="6.00,5.00" prototype="math.number">
+            <port name="value" type="float" value="50.0"/>
+        </node>
+        <node name="scale1" position="10.00,19.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="50.00,50.00"/>
+        </node>
+        <conn input="colorize1.fill" output="pattern2"/>
+        <conn input="pattern2.item1" output="rot"/>
+        <conn input="pattern2.item2" output="gelb"/>
+        <conn input="pattern2.item3" output="blau"/>
+        <conn input="pattern2.sequence" output="farbe"/>
+        <conn input="pattern1.item3" output="dreieck"/>
+        <conn input="pattern1.item2" output="kreis"/>
+        <conn input="pattern1.item1" output="quadrat"/>
+        <conn input="repeat1.list" output="form"/>
+        <conn input="pattern1.sequence" output="repeat1"/>
+        <conn input="circleLayout1.radius" output="radius"/>
+        <conn input="circleLayout2.radius" output="radius"/>
+        <conn input="colorize2.shape" output="rect1"/>
+        <conn input="colorize1.shape" output="circleLayout2"/>
+        <conn input="colorize3.shape" output="circleLayout1"/>
+        <conn input="colorize3.fill" output="pattern2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="combine1.list2" output="colorize3"/>
+        <conn input="combine1.list3" output="colorize1"/>
+        <conn input="scale1.shape" output="pattern1"/>
+        <conn input="circleLayout2.shapes" output="scale1"/>
+        <conn input="circleLayout1.shapes" output="scale1"/>
+        <conn input="scale1.scale" output="scale"/>
+        <conn input="repeat1.amount" output="repetition"/>
+    </node>
+</ndbx>
