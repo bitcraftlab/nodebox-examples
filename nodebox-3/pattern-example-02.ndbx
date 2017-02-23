@@ -167,7 +167,7 @@
             <port name="red" type="float" value="220.0"/>
         </node>
         <node name="scale" position="6.00,5.00" prototype="math.number">
-            <port name="value" type="float" value="50.0"/>
+            <port name="value" type="float" value="75.0"/>
         </node>
         <node name="scale1" position="10.00,19.00" prototype="corevector.scale">
             <port name="scale" type="point" value="50.00,50.00"/>
