@@ -1,0 +1,310 @@
+{
+    "title": "pattern-example-01",
+    "color": "teal",
+    "dependencies": {
+        "core/g": "dev"
+    },
+    "assets": {},
+    "functions": [
+        {
+            "name": "main",
+            "type": "network",
+            "renderedNode": "colorize1",
+            "nodes": [
+                {
+                    "name": "quadrat",
+                    "x": 155,
+                    "y": 95,
+                    "fn": "g.rect",
+                    "values": {
+                        "width": 25,
+                        "height": 25
+                    }
+                },
+                {
+                    "name": "kreis",
+                    "x": 195,
+                    "y": 155,
+                    "fn": "g.ellipse",
+                    "values": {
+                        "width": 25,
+                        "height": 25
+                    }
+                },
+                {
+                    "name": "dreieck",
+                    "x": 235,
+                    "y": 215,
+                    "fn": "g.polygon",
+                    "values": {
+                        "radius": 17
+                    }
+                },
+                {
+                    "name": "pattern1",
+                    "x": 122.89389063324059,
+                    "y": 329.29594630261124,
+                    "fn": "patternExample01.pattern"
+                },
+                {
+                    "name": "form",
+                    "x": 115,
+                    "y": -15,
+                    "fn": "g.string",
+                    "values": {
+                        "s": "1232"
+                    }
+                },
+                {
+                    "name": "grid1",
+                    "x": 402.5729089116375,
+                    "y": 234.31061934013678,
+                    "fn": "g.grid",
+                    "values": {
+                        "columns": 12,
+                        "rows": 8,
+                        "columnWidth": 40,
+                        "rowHeight": 40
+                    }
+                },
+                {
+                    "name": "align1",
+                    "x": 125,
+                    "y": 465,
+                    "fn": "g.align"
+                },
+                {
+                    "name": "pattern2",
+                    "x": 225,
+                    "y": 765,
+                    "fn": "patternExample01.pattern",
+                    "values": {
+                        "alphabet": "rgb"
+                    }
+                },
+                {
+                    "name": "colorize1",
+                    "x": 125,
+                    "y": 885,
+                    "fn": "g.colorize"
+                },
+                {
+                    "name": "blau",
+                    "x": 375,
+                    "y": 655,
+                    "fn": "g.rgbColor",
+                    "values": {
+                        "red": 0,
+                        "green": 0,
+                        "blue": 1
+                    }
+                },
+                {
+                    "name": "rot",
+                    "x": 325,
+                    "y": 545,
+                    "fn": "g.rgbColor",
+                    "values": {
+                        "green": 0
+                    }
+                },
+                {
+                    "name": "gelb",
+                    "x": 345,
+                    "y": 595,
+                    "fn": "g.rgbColor",
+                    "values": {
+                        "green": 1
+                    }
+                },
+                {
+                    "name": "string1",
+                    "x": 325.05169666541696,
+                    "y": -18.21121231593688,
+                    "fn": "g.string",
+                    "values": {
+                        "s": "rgb"
+                    }
+                }
+            ],
+            "connections": [
+                {
+                    "output": "quadrat",
+                    "input": "pattern1",
+                    "parameter": "item1"
+                },
+                {
+                    "output": "kreis",
+                    "input": "pattern1",
+                    "parameter": "item2"
+                },
+                {
+                    "output": "dreieck",
+                    "input": "pattern1",
+                    "parameter": "item3"
+                },
+                {
+                    "output": "form",
+                    "input": "pattern1",
+                    "parameter": "sequence"
+                },
+                {
+                    "output": "grid1",
+                    "input": "align1",
+                    "parameter": "position"
+                },
+                {
+                    "output": "pattern1",
+                    "input": "align1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "align1",
+                    "input": "colorize1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "pattern2",
+                    "input": "colorize1",
+                    "parameter": "fill"
+                },
+                {
+                    "output": "rot",
+                    "input": "pattern2",
+                    "parameter": "item1"
+                },
+                {
+                    "output": "gelb",
+                    "input": "pattern2",
+                    "parameter": "item2"
+                },
+                {
+                    "output": "blau",
+                    "input": "pattern2",
+                    "parameter": "item3"
+                },
+                {
+                    "output": "string1",
+                    "input": "pattern2",
+                    "parameter": "sequence"
+                }
+            ],
+            "parameters": [],
+            "returnsList": true
+        },
+        {
+            "name": "pattern",
+            "type": "network",
+            "renderedNode": "lookup1",
+            "nodes": [
+                {
+                    "name": "toCharacters1",
+                    "x": 35,
+                    "y": 115,
+                    "fn": "g.toCharacters"
+                },
+                {
+                    "name": "toCharacters2",
+                    "x": 185,
+                    "y": 115,
+                    "fn": "g.toCharacters"
+                },
+                {
+                    "name": "zipMap1",
+                    "x": 185,
+                    "y": 285,
+                    "fn": "g.zipMap"
+                },
+                {
+                    "name": "combine1",
+                    "x": 345,
+                    "y": 115,
+                    "fn": "g.combine"
+                },
+                {
+                    "name": "lookup1",
+                    "x": 185,
+                    "y": 445,
+                    "fn": "g.lookup"
+                }
+            ],
+            "connections": [
+                {
+                    "inlet": "item1",
+                    "input": "combine1",
+                    "parameter": "list1"
+                },
+                {
+                    "inlet": "item2",
+                    "input": "combine1",
+                    "parameter": "list2"
+                },
+                {
+                    "inlet": "item3",
+                    "input": "combine1",
+                    "parameter": "list3"
+                },
+                {
+                    "inlet": "sequence",
+                    "input": "toCharacters1",
+                    "parameter": "s"
+                },
+                {
+                    "output": "toCharacters1",
+                    "input": "lookup1",
+                    "parameter": "key"
+                },
+                {
+                    "inlet": "alphabet",
+                    "input": "toCharacters2",
+                    "parameter": "s"
+                },
+                {
+                    "output": "toCharacters2",
+                    "input": "zipMap1",
+                    "parameter": "keys"
+                },
+                {
+                    "output": "combine1",
+                    "input": "zipMap1",
+                    "parameter": "vals"
+                },
+                {
+                    "output": "zipMap1",
+                    "input": "lookup1",
+                    "parameter": "table"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "sequence",
+                    "type": "string",
+                    "value": "",
+                    "takesList": false
+                },
+                {
+                    "name": "alphabet",
+                    "type": "string",
+                    "value": "123"
+                },
+                {
+                    "name": "item1",
+                    "type": "",
+                    "value": 1
+                },
+                {
+                    "name": "item2",
+                    "type": "",
+                    "value": 1
+                },
+                {
+                    "name": "item3",
+                    "type": "",
+                    "value": 1
+                }
+            ],
+            "returnsList": true
+        }
+    ],
+    "id": "patternExample01"
+}
