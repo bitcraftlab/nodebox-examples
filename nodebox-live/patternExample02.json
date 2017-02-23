@@ -1,0 +1,792 @@
+{
+    "title": "pattern-example-02",
+    "color": "teal",
+    "dependencies": {
+        "core/g": "dev"
+    },
+    "assets": {},
+    "functions": [
+        {
+            "name": "main",
+            "type": "network",
+            "renderedNode": "combine1",
+            "nodes": [
+                {
+                    "name": "quadrat",
+                    "x": 295,
+                    "y": 75,
+                    "fn": "g.rect",
+                    "values": {
+                        "width": 25,
+                        "height": 25
+                    }
+                },
+                {
+                    "name": "kreis",
+                    "x": 315,
+                    "y": 125,
+                    "fn": "g.ellipse",
+                    "values": {
+                        "width": 25,
+                        "height": 25
+                    }
+                },
+                {
+                    "name": "dreieck",
+                    "x": 345,
+                    "y": 175,
+                    "fn": "g.polygon",
+                    "values": {
+                        "radius": 17
+                    }
+                },
+                {
+                    "name": "pattern1",
+                    "x": 125,
+                    "y": 325,
+                    "fn": "patternExample02.pattern"
+                },
+                {
+                    "name": "form",
+                    "x": 125,
+                    "y": -15,
+                    "fn": "g.string",
+                    "values": {
+                        "s": "1232"
+                    }
+                },
+                {
+                    "name": "pattern2",
+                    "x": 275,
+                    "y": 775,
+                    "fn": "patternExample02.pattern",
+                    "values": {
+                        "alphabet": "rgb"
+                    }
+                },
+                {
+                    "name": "colorize1",
+                    "x": -25,
+                    "y": 945,
+                    "fn": "g.colorize",
+                    "values": {
+                        "strokeWidth": 2,
+                        "stroke": "rgba(0, 0, 0, 1)"
+                    }
+                },
+                {
+                    "name": "blau",
+                    "x": 475,
+                    "y": 645,
+                    "fn": "g.rgbColor",
+                    "values": {
+                        "red": 0,
+                        "green": 0,
+                        "blue": 1
+                    }
+                },
+                {
+                    "name": "rot",
+                    "x": 415,
+                    "y": 545,
+                    "fn": "g.rgbColor",
+                    "values": {
+                        "green": 0
+                    }
+                },
+                {
+                    "name": "gelb",
+                    "x": 445,
+                    "y": 595,
+                    "fn": "g.rgbColor",
+                    "values": {
+                        "green": 1
+                    }
+                },
+                {
+                    "name": "farbe",
+                    "x": 275,
+                    "y": -15,
+                    "fn": "g.string",
+                    "values": {
+                        "s": "rgb"
+                    }
+                },
+                {
+                    "name": "repeat1",
+                    "x": 125,
+                    "y": 85,
+                    "fn": "g.repeat",
+                    "values": {}
+                },
+                {
+                    "name": "scale",
+                    "x": -61.33677505136686,
+                    "y": -17.917887026047094,
+                    "fn": "g.number",
+                    "values": {
+                        "v": 0.75
+                    }
+                },
+                {
+                    "name": "radius",
+                    "x": -205,
+                    "y": -15,
+                    "fn": "g.number",
+                    "values": {
+                        "v": 125
+                    }
+                },
+                {
+                    "name": "scale1",
+                    "x": 125,
+                    "y": 405,
+                    "fn": "g.scale"
+                },
+                {
+                    "name": "circleLayout1",
+                    "x": -25,
+                    "y": 625,
+                    "fn": "patternExample02.circleLayout1",
+                    "values": {
+                        "position": {
+                            "x": -125,
+                            "y": 0
+                        }
+                    }
+                },
+                {
+                    "name": "circleLayout2",
+                    "x": 125,
+                    "y": 625,
+                    "fn": "patternExample02.circleLayout2",
+                    "values": {
+                        "position": {
+                            "x": 125,
+                            "y": 0
+                        }
+                    }
+                },
+                {
+                    "name": "colorize2",
+                    "x": 125,
+                    "y": 945,
+                    "fn": "g.colorize",
+                    "values": {
+                        "strokeWidth": 2,
+                        "stroke": "rgba(0, 0, 0, 1)"
+                    }
+                },
+                {
+                    "name": "combine1",
+                    "x": 55,
+                    "y": 1105,
+                    "fn": "g.combine"
+                }
+            ],
+            "connections": [
+                {
+                    "output": "quadrat",
+                    "input": "pattern1",
+                    "parameter": "item1"
+                },
+                {
+                    "output": "kreis",
+                    "input": "pattern1",
+                    "parameter": "item2"
+                },
+                {
+                    "output": "dreieck",
+                    "input": "pattern1",
+                    "parameter": "item3"
+                },
+                {
+                    "output": "pattern2",
+                    "input": "colorize1",
+                    "parameter": "fill"
+                },
+                {
+                    "output": "rot",
+                    "input": "pattern2",
+                    "parameter": "item1"
+                },
+                {
+                    "output": "gelb",
+                    "input": "pattern2",
+                    "parameter": "item2"
+                },
+                {
+                    "output": "blau",
+                    "input": "pattern2",
+                    "parameter": "item3"
+                },
+                {
+                    "output": "farbe",
+                    "input": "pattern2",
+                    "parameter": "sequence"
+                },
+                {
+                    "output": "form",
+                    "input": "repeat1",
+                    "parameter": "l"
+                },
+                {
+                    "output": "repeat1",
+                    "input": "pattern1",
+                    "parameter": "sequence"
+                },
+                {
+                    "output": "pattern1",
+                    "input": "scale1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "scale",
+                    "input": "scale1",
+                    "parameter": "scale"
+                },
+                {
+                    "output": "scale1",
+                    "input": "circleLayout1",
+                    "parameter": "shapes"
+                },
+                {
+                    "output": "circleLayout1",
+                    "input": "colorize1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "scale1",
+                    "input": "circleLayout2",
+                    "parameter": "shapes"
+                },
+                {
+                    "output": "radius",
+                    "input": "circleLayout1",
+                    "parameter": "radius"
+                },
+                {
+                    "output": "radius",
+                    "input": "circleLayout2",
+                    "parameter": "radius"
+                },
+                {
+                    "output": "pattern2",
+                    "input": "colorize2",
+                    "parameter": "fill"
+                },
+                {
+                    "output": "circleLayout2",
+                    "input": "colorize2",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "colorize1",
+                    "input": "combine1",
+                    "parameter": "list1"
+                },
+                {
+                    "output": "colorize2",
+                    "input": "combine1",
+                    "parameter": "list2"
+                }
+            ],
+            "parameters": [],
+            "returnsList": true
+        },
+        {
+            "name": "pattern",
+            "type": "network",
+            "renderedNode": "lookup1",
+            "nodes": [
+                {
+                    "name": "toCharacters1",
+                    "x": 55,
+                    "y": 115,
+                    "fn": "g.toCharacters"
+                },
+                {
+                    "name": "toCharacters2",
+                    "x": 195,
+                    "y": 115,
+                    "fn": "g.toCharacters"
+                },
+                {
+                    "name": "zipMap1",
+                    "x": 195,
+                    "y": 195,
+                    "fn": "g.zipMap"
+                },
+                {
+                    "name": "combine1",
+                    "x": 335,
+                    "y": 115,
+                    "fn": "g.combine"
+                },
+                {
+                    "name": "lookup1",
+                    "x": 195,
+                    "y": 285,
+                    "fn": "g.lookup"
+                }
+            ],
+            "connections": [
+                {
+                    "inlet": "item1",
+                    "input": "combine1",
+                    "parameter": "list1"
+                },
+                {
+                    "inlet": "item2",
+                    "input": "combine1",
+                    "parameter": "list2"
+                },
+                {
+                    "inlet": "item3",
+                    "input": "combine1",
+                    "parameter": "list3"
+                },
+                {
+                    "inlet": "sequence",
+                    "input": "toCharacters1",
+                    "parameter": "s"
+                },
+                {
+                    "output": "toCharacters1",
+                    "input": "lookup1",
+                    "parameter": "key"
+                },
+                {
+                    "inlet": "alphabet",
+                    "input": "toCharacters2",
+                    "parameter": "s"
+                },
+                {
+                    "output": "toCharacters2",
+                    "input": "zipMap1",
+                    "parameter": "keys"
+                },
+                {
+                    "output": "combine1",
+                    "input": "zipMap1",
+                    "parameter": "vals"
+                },
+                {
+                    "output": "zipMap1",
+                    "input": "lookup1",
+                    "parameter": "table"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "sequence",
+                    "type": "string",
+                    "value": "",
+                    "takesList": false
+                },
+                {
+                    "name": "alphabet",
+                    "type": "string",
+                    "value": "123"
+                },
+                {
+                    "name": "item1",
+                    "type": "",
+                    "value": 1
+                },
+                {
+                    "name": "item2",
+                    "type": "",
+                    "value": 1
+                },
+                {
+                    "name": "item3",
+                    "type": "",
+                    "value": 1
+                }
+            ],
+            "returnsList": true,
+            "stickies": [
+                {
+                    "x": 25,
+                    "y": 75,
+                    "width": 445,
+                    "height": 265,
+                    "text": "turn character sequence into a shape sequence"
+                }
+            ]
+        },
+        {
+            "name": "circleLayout1",
+            "type": "network",
+            "renderedNode": "align1",
+            "nodes": [
+                {
+                    "name": "count1",
+                    "x": 245,
+                    "y": 155,
+                    "fn": "g.count"
+                },
+                {
+                    "name": "sample1",
+                    "x": 245,
+                    "y": 235,
+                    "fn": "g.sample",
+                    "values": {
+                        "circular": true,
+                        "max": 1
+                    }
+                },
+                {
+                    "name": "pointOnPath1",
+                    "x": 55,
+                    "y": 375,
+                    "fn": "g.pointOnPath"
+                },
+                {
+                    "name": "ellipse1",
+                    "x": 55,
+                    "y": 235,
+                    "fn": "g.ellipse"
+                },
+                {
+                    "name": "align1",
+                    "x": 55,
+                    "y": 545,
+                    "fn": "g.align"
+                }
+            ],
+            "connections": [
+                {
+                    "output": "count1",
+                    "input": "sample1",
+                    "parameter": "amount"
+                },
+                {
+                    "inlet": "radius",
+                    "input": "ellipse1",
+                    "parameter": "width"
+                },
+                {
+                    "inlet": "radius",
+                    "input": "ellipse1",
+                    "parameter": "height"
+                },
+                {
+                    "inlet": "position",
+                    "input": "ellipse1",
+                    "parameter": "position"
+                },
+                {
+                    "output": "ellipse1",
+                    "input": "pointOnPath1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "sample1",
+                    "input": "pointOnPath1",
+                    "parameter": "t"
+                },
+                {
+                    "inlet": "shapes",
+                    "input": "count1",
+                    "parameter": "l"
+                },
+                {
+                    "inlet": "shapes",
+                    "input": "align1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "pointOnPath1",
+                    "input": "align1",
+                    "parameter": "position"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "shapes",
+                    "type": "geometry",
+                    "value": 1,
+                    "takesList": true
+                },
+                {
+                    "name": "radius",
+                    "type": "float",
+                    "value": 200
+                },
+                {
+                    "name": "position",
+                    "type": "point",
+                    "value": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "returnsList": true,
+            "stickies": [
+                {
+                    "x": 35,
+                    "y": 115,
+                    "width": 345,
+                    "height": 485,
+                    "text": "align shapes along a circular path"
+                },
+                {
+                    "x": 1395,
+                    "y": 1350,
+                    "width": 200,
+                    "height": 50,
+                    "text": "Double-click to edit"
+                }
+            ]
+        },
+        {
+            "name": "circleLayout2",
+            "type": "network",
+            "renderedNode": "align1",
+            "nodes": [
+                {
+                    "name": "ellipse1",
+                    "x": 55,
+                    "y": 295,
+                    "fn": "g.ellipse"
+                },
+                {
+                    "name": "pathAngle1",
+                    "x": 225,
+                    "y": 425,
+                    "fn": "patternExample02.pathAngle"
+                },
+                {
+                    "name": "sample1",
+                    "x": 225,
+                    "y": 295,
+                    "fn": "g.sample",
+                    "values": {
+                        "circular": true,
+                        "max": 1
+                    }
+                },
+                {
+                    "name": "pointOnPath1",
+                    "x": 55,
+                    "y": 425,
+                    "fn": "g.pointOnPath"
+                },
+                {
+                    "name": "align1",
+                    "x": 145,
+                    "y": 635,
+                    "fn": "g.align"
+                },
+                {
+                    "name": "count1",
+                    "x": 225,
+                    "y": 175,
+                    "fn": "g.count"
+                },
+                {
+                    "name": "rotate1",
+                    "x": 145,
+                    "y": 515,
+                    "fn": "g.rotate"
+                }
+            ],
+            "connections": [
+                {
+                    "output": "ellipse1",
+                    "input": "pathAngle1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "ellipse1",
+                    "input": "pointOnPath1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "sample1",
+                    "input": "pointOnPath1",
+                    "parameter": "t"
+                },
+                {
+                    "output": "sample1",
+                    "input": "pathAngle1",
+                    "parameter": "t"
+                },
+                {
+                    "inlet": "radius",
+                    "input": "ellipse1",
+                    "parameter": "width"
+                },
+                {
+                    "inlet": "radius",
+                    "input": "ellipse1",
+                    "parameter": "height"
+                },
+                {
+                    "inlet": "position",
+                    "input": "ellipse1",
+                    "parameter": "position"
+                },
+                {
+                    "output": "pointOnPath1",
+                    "input": "align1",
+                    "parameter": "position"
+                },
+                {
+                    "inlet": "shapes",
+                    "input": "count1",
+                    "parameter": "l"
+                },
+                {
+                    "output": "count1",
+                    "input": "sample1",
+                    "parameter": "amount"
+                },
+                {
+                    "output": "pathAngle1",
+                    "input": "rotate1",
+                    "parameter": "angle"
+                },
+                {
+                    "inlet": "shapes",
+                    "input": "rotate1",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "rotate1",
+                    "input": "align1",
+                    "parameter": "shape"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "shapes",
+                    "type": "geometry",
+                    "value": 1,
+                    "takesList": true
+                },
+                {
+                    "name": "radius",
+                    "type": "float",
+                    "value": 100
+                },
+                {
+                    "name": "position",
+                    "type": "point",
+                    "value": {
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            ],
+            "returnsList": true,
+            "outputType": "",
+            "stickies": [
+                {
+                    "x": 25,
+                    "y": 145,
+                    "width": 335,
+                    "height": 545,
+                    "text": "align and rotate shapes along a circular path"
+                }
+            ]
+        },
+        {
+            "name": "pathAngle",
+            "type": "network",
+            "renderedNode": "angle1",
+            "nodes": [
+                {
+                    "name": "pointOnPath1",
+                    "x": 35,
+                    "y": 155,
+                    "fn": "g.pointOnPath"
+                },
+                {
+                    "name": "pointOnPath2",
+                    "x": 135,
+                    "y": 275,
+                    "fn": "g.pointOnPath"
+                },
+                {
+                    "name": "addDelta",
+                    "x": 225,
+                    "y": 155,
+                    "fn": "g.add",
+                    "values": {
+                        "b": 0.001
+                    }
+                },
+                {
+                    "name": "angle1",
+                    "x": 135,
+                    "y": 365,
+                    "fn": "g.angle"
+                }
+            ],
+            "connections": [
+                {
+                    "inlet": "shape",
+                    "input": "pointOnPath1",
+                    "parameter": "shape"
+                },
+                {
+                    "inlet": "t",
+                    "input": "pointOnPath1",
+                    "parameter": "t"
+                },
+                {
+                    "inlet": "shape",
+                    "input": "pointOnPath2",
+                    "parameter": "shape"
+                },
+                {
+                    "inlet": "t",
+                    "input": "addDelta",
+                    "parameter": "a"
+                },
+                {
+                    "output": "addDelta",
+                    "input": "pointOnPath2",
+                    "parameter": "t"
+                },
+                {
+                    "output": "pointOnPath1",
+                    "input": "angle1",
+                    "parameter": "point1"
+                },
+                {
+                    "output": "pointOnPath2",
+                    "input": "angle1",
+                    "parameter": "point2"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "shape",
+                    "type": "shape",
+                    "value": 1
+                },
+                {
+                    "name": "t",
+                    "type": "ratio",
+                    "value": 0
+                }
+            ],
+            "returnsList": true,
+            "stickies": [
+                {
+                    "x": 25,
+                    "y": 115,
+                    "width": 335,
+                    "height": 295,
+                    "text": "angle of a point on a path"
+                }
+            ]
+        }
+    ],
+    "id": "patternExample02"
+}
