@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="c7908e45-1ed8-4552-969b-ee18430ba8fe">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <link href="python:libraries/turtle.py" rel="functions"/>
+    <node name="root" prototype="core.network" renderedChild="colorize1">
+        <node name="colorize1" position="-2.00,26.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#c80000ff"/>
+        </node>
+        <node function="turtle/forward" name="forward" position="-2.00,0.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" name="step" range="value" type="float" value="100.0" widget="float"/>
+        </node>
+        <node function="turtle/forward" name="forward1" position="-2.00,4.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" name="step" range="value" type="float" value="100.0" widget="float"/>
+        </node>
+        <node function="turtle/forward" name="forward2" position="-2.00,8.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" name="step" range="value" type="float" value="100.0" widget="float"/>
+        </node>
+        <node function="turtle/forward" name="forward3" position="-2.00,12.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" name="step" range="value" type="float" value="100.0" widget="float"/>
+        </node>
+        <node function="turtle/forward" name="forward4" position="-2.00,16.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" name="step" range="value" type="float" value="100.0" widget="float"/>
+        </node>
+        <node function="turtle/forward" name="forward7" position="-2.00,20.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" name="step" range="value" type="float" value="100.0" widget="float"/>
+        </node>
+        <node function="turtle/forward" name="forward8" position="-2.00,24.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" name="step" range="value" type="float" value="100.0" widget="float"/>
+        </node>
+        <node function="turtle/right" name="right1" position="-2.00,2.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" max="360.0" min="0.0" name="degree" range="value" type="float" value="45.0" widget="float"/>
+        </node>
+        <node function="turtle/right" name="right2" position="-2.00,6.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" max="360.0" min="0.0" name="degree" range="value" type="float" value="45.0" widget="float"/>
+        </node>
+        <node function="turtle/right" name="right3" position="-2.00,10.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" max="360.0" min="0.0" name="degree" range="value" type="float" value="45.0" widget="float"/>
+        </node>
+        <node function="turtle/right" name="right4" position="-2.00,14.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" max="360.0" min="0.0" name="degree" range="value" type="float" value="45.0" widget="float"/>
+        </node>
+        <node function="turtle/right" name="right5" position="-2.00,18.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" max="360.0" min="0.0" name="degree" range="value" type="float" value="45.0" widget="float"/>
+        </node>
+        <node function="turtle/right" name="right6" position="-2.00,22.00">
+            <port description="" label="" name="turtle" range="value" type="turtle" widget="none"/>
+            <port description="" label="" max="360.0" min="0.0" name="degree" range="value" type="float" value="45.0" widget="float"/>
+        </node>
+        <node function="turtle/create" name="turtle" position="-2.00,-2.00">
+            <port description="" label="" name="pos" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port description="" label="" name="dir" range="value" type="float" value="0.0" widget="float"/>
+        </node>
+        <conn input="right1.turtle" output="forward"/>
+        <conn input="forward1.turtle" output="right1"/>
+        <conn input="right2.turtle" output="forward1"/>
+        <conn input="forward2.turtle" output="right2"/>
+        <conn input="forward.turtle" output="turtle"/>
+        <conn input="forward3.turtle" output="right3"/>
+        <conn input="right4.turtle" output="forward3"/>
+        <conn input="forward4.turtle" output="right4"/>
+        <conn input="right3.turtle" output="forward2"/>
+        <conn input="forward7.turtle" output="right5"/>
+        <conn input="right6.turtle" output="forward7"/>
+        <conn input="forward8.turtle" output="right6"/>
+        <conn input="right5.turtle" output="forward4"/>
+        <conn input="colorize1.shape" output="forward8"/>
+    </node>
+</ndbx>
