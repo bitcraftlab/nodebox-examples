@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="f740c22a-8801-4049-b5a6-8c3ab38419fb">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="align1" position="-11.00,-11.00" prototype="corevector.align"/>
+        <node name="colorize1" position="-9.00,15.00" prototype="corevector.colorize"/>
+        <node name="combine1" position="-11.00,18.00" prototype="list.combine"/>
+        <node name="compound2" position="-9.00,7.00" prototype="corevector.compound">
+            <port name="function" type="string" value="intersected"/>
+        </node>
+        <node name="count1" position="-4.00,7.00" prototype="list.count"/>
+        <node name="hsb_color1" position="-4.00,11.00" prototype="color.hsb_color">
+            <port name="saturation" type="float" value="255.0"/>
+            <port name="brightness" type="float" value="255.0"/>
+            <port name="alpha" type="float" value="100.0"/>
+        </node>
+        <node name="point1" position="-7.00,-5.00" prototype="corevector.point"/>
+        <node name="random_numbers1" position="-4.00,9.00" prototype="math.random_numbers">
+            <port name="end" type="float" value="255.0"/>
+        </node>
+        <node name="resample1" position="-7.00,-7.00" prototype="corevector.resample">
+            <port name="length" type="float" value="100.0"/>
+            <port name="points" type="int" value="36"/>
+        </node>
+        <node name="shuffle1" position="-5.00,-2.00" prototype="list.shuffle"/>
+        <node name="shuffle2" position="-4.00,1.00" prototype="list.shuffle"/>
+        <node name="textpath1" position="-11.00,-13.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="U"/>
+            <port name="font_name" type="string" value="Verdana-Bold"/>
+            <port name="font_size" type="float" value="1000.0"/>
+        </node>
+        <node name="triangles" outputType="point" position="-7.00,4.00" prototype="core.network" renderedChild="connect1">
+            <node name="combine1" prototype="list.combine"/>
+            <node name="connect1" position="4.00,6.00" prototype="corevector.connect"/>
+            <port childReference="combine1.list1" description="The first list." label="" name="item1" range="value" type="list" widget="none"/>
+            <port childReference="combine1.list2" description="The second list." label="" name="item2" range="value" type="list" widget="none"/>
+            <port childReference="combine1.list3" description="The third list." label="" name="item3" range="value" type="list" widget="none"/>
+            <conn input="connect1.points" output="combine1"/>
+        </node>
+        <conn input="point1.value" output="resample1"/>
+        <conn input="triangles.item1" output="point1"/>
+        <conn input="shuffle1.list" output="point1"/>
+        <conn input="triangles.item2" output="shuffle1"/>
+        <conn input="shuffle2.list" output="shuffle1"/>
+        <conn input="triangles.item3" output="shuffle2"/>
+        <conn input="count1.list" output="triangles"/>
+        <conn input="random_numbers1.amount" output="count1"/>
+        <conn input="hsb_color1.hue" output="random_numbers1"/>
+        <conn input="colorize1.fill" output="hsb_color1"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="compound2.shape2" output="triangles"/>
+        <conn input="colorize1.shape" output="compound2"/>
+        <conn input="align1.shape" output="textpath1"/>
+        <conn input="resample1.shape" output="align1"/>
+        <conn input="compound2.shape1" output="align1"/>
+        <conn input="combine1.list1" output="align1"/>
+    </node>
+</ndbx>
