@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="f740c22a-8801-4049-b5a6-8c3ab38419fb">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="align1" position="-1.00,0.00" prototype="corevector.align"/>
+        <node name="colorize1" position="-1.00,9.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="combine1" position="-1.00,13.00" prototype="list.combine"/>
+        <node name="divide1" position="9.00,1.00" prototype="math.divide"/>
+        <node name="frame1" position="11.00,-2.00" prototype="core.frame"/>
+        <node name="points" position="3.00,-2.00" prototype="math.integer">
+            <port name="value" type="int" value="400"/>
+        </node>
+        <node name="rgb_color1" position="15.00,-2.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="255.0"/>
+            <port name="alpha" type="float" value="100.0"/>
+        </node>
+        <node name="slice" position="7.00,-2.00" prototype="math.integer">
+            <port name="value" type="int" value="50"/>
+        </node>
+        <node name="textpath1" position="-1.00,-2.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="S"/>
+            <port name="font_size" type="float" value="1000.0"/>
+        </node>
+        <node name="triangles" position="3.00,9.00" prototype="core.network" renderedChild="slice1">
+            <node name="colorize1" position="-2.00,10.00" prototype="corevector.colorize">
+                <port name="strokeWidth" type="float" value="0.1"/>
+            </node>
+            <node name="point1" position="-2.00,0.00" prototype="corevector.point"/>
+            <node name="resample1" position="-2.00,-2.00" prototype="corevector.resample">
+                <port name="method" type="string" value="amount"/>
+            </node>
+            <node name="shift1" position="-2.00,2.00" prototype="list.shift">
+                <port name="amount" type="int" value="23"/>
+            </node>
+            <node name="shift2" position="-1.00,4.00" prototype="list.shift"/>
+            <node name="shift3" position="0.00,6.00" prototype="list.shift">
+                <port name="amount" type="int" value="45"/>
+            </node>
+            <node name="slice1" position="-2.00,12.00" prototype="list.slice">
+                <port name="size" type="int" value="11"/>
+            </node>
+            <node name="triangle" outputType="point" position="-2.00,8.00" prototype="core.network" renderedChild="connect1">
+                <node name="combine1" prototype="list.combine"/>
+                <node name="connect1" position="4.00,6.00" prototype="corevector.connect"/>
+                <port childReference="combine1.list1" description="The first list." label="" name="item1" range="value" type="list" widget="none"/>
+                <port childReference="combine1.list2" description="The second list." label="" name="item2" range="value" type="list" widget="none"/>
+                <port childReference="combine1.list3" description="The third list." label="" name="item3" range="value" type="list" widget="none"/>
+                <conn input="connect1.points" output="combine1"/>
+            </node>
+            <port childReference="resample1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+            <port childReference="resample1.points" description="The amount of output points." label="" min="1.0" name="total" range="value" type="int" value="10" widget="int"/>
+            <port childReference="slice1.size" description="The amount of items to take from the list." label="" min="0.0" name="slice" range="value" type="int" value="11" widget="int"/>
+            <port childReference="shift1.amount" description="The number of items to shift." label="" name="shift1" range="value" type="int" value="23" widget="int"/>
+            <port childReference="shift3.amount" description="The number of items to shift." label="" name="shift2" range="value" type="int" value="45" widget="int"/>
+            <port childReference="colorize1.fill" description="The new fill color. Set alpha to 0 for no fill." label="" name="color" range="value" type="color" value="#000000ff" widget="color"/>
+            <conn input="point1.value" output="resample1"/>
+            <conn input="slice1.list" output="colorize1"/>
+            <conn input="shift1.list" output="point1"/>
+            <conn input="shift2.list" output="shift1"/>
+            <conn input="shift3.list" output="shift2"/>
+            <conn input="triangle.item1" output="shift1"/>
+            <conn input="triangle.item2" output="shift2"/>
+            <conn input="triangle.item3" output="shift3"/>
+            <conn input="colorize1.shape" output="triangle"/>
+        </node>
+        <conn input="combine1.list1" output="colorize1"/>
+        <conn input="divide1.value1" output="frame1"/>
+        <conn input="combine1.list2" output="triangles"/>
+        <conn input="triangles.total" output="points"/>
+        <conn input="triangles.shift1" output="divide1"/>
+        <conn input="triangles.slice" output="slice"/>
+        <conn input="triangles.color" output="rgb_color1"/>
+        <conn input="align1.shape" output="textpath1"/>
+        <conn input="colorize1.shape" output="align1"/>
+        <conn input="triangles.shape" output="align1"/>
+    </node>
+</ndbx>

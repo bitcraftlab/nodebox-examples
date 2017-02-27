@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="f740c22a-8801-4049-b5a6-8c3ab38419fb">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="align1" position="-4.00,-3.00" prototype="corevector.align"/>
+        <node name="colorize1" position="-4.00,9.00" prototype="corevector.colorize"/>
+        <node name="colorize2" position="2.00,13.00" prototype="corevector.colorize">
+            <port name="stroke" type="color" value="#ffffff19"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="combine1" position="-8.00,18.00" prototype="list.combine"/>
+        <node name="frame1" position="6.00,-7.00" prototype="core.frame"/>
+        <node name="line1" position="2.00,11.00" prototype="corevector.line"/>
+        <node name="point1" position="2.00,3.00" prototype="corevector.point"/>
+        <node name="rect1" position="-8.00,-3.00" prototype="corevector.rect">
+            <port name="width" type="float" value="1000.0"/>
+            <port name="height" type="float" value="1000.0"/>
+        </node>
+        <node name="resample1" position="2.00,1.00" prototype="corevector.resample">
+            <port name="length" type="float" value="5.0"/>
+            <port name="points" type="int" value="1"/>
+        </node>
+        <node name="shift1" position="5.00,7.00" prototype="list.shift">
+            <port name="amount" type="int" value="-12"/>
+        </node>
+        <node name="textpath1" position="-4.00,-7.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="ABC"/>
+            <port name="font_name" type="string" value="Verdana-Italic"/>
+            <port name="font_size" type="float" value="400.0"/>
+        </node>
+        <conn input="shift1.list" output="point1"/>
+        <conn input="line1.point1" output="point1"/>
+        <conn input="line1.point2" output="shift1"/>
+        <conn input="shift1.amount" output="frame1"/>
+        <conn input="point1.value" output="resample1"/>
+        <conn input="colorize2.shape" output="line1"/>
+        <conn input="combine1.list3" output="colorize2"/>
+        <conn input="combine1.list1" output="rect1"/>
+        <conn input="align1.shape" output="textpath1"/>
+        <conn input="resample1.shape" output="align1"/>
+        <conn input="colorize1.shape" output="align1"/>
+        <conn input="combine1.list2" output="colorize1"/>
+    </node>
+</ndbx>
