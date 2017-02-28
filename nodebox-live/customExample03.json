@@ -2,7 +2,8 @@
     "title": "custom-example-03",
     "color": "#f60",
     "dependencies": {
-        "core/g": "dev"
+        "core/g": "dev",
+        "bitcraftlab/combinatoric": "dev"
     },
     "assets": {},
     "functions": [
@@ -80,36 +81,16 @@
                 }
             ],
             "parameters": [],
-            "returnsList": true
-        },
-        {
-            "name": "product",
-            "type": "code",
-            "outputType": "",
-            "parameters": [
+            "returnsList": true,
+            "stickies": [
                 {
-                    "name": "list1",
-                    "type": "",
-                    "value": 1,
-                    "takesList": true
-                },
-                {
-                    "name": "list2",
-                    "type": "",
-                    "value": 1,
-                    "takesList": true
-                },
-                {
-                    "name": "list3",
-                    "type": "",
-                    "value": 1,
-                    "takesList": true
+                    "x": 55,
+                    "y": 155,
+                    "width": 455,
+                    "height": 385,
+                    "text": "example using the cartesian product from the combinatoric dependency"
                 }
-            ],
-            "source": "// cartesian product\n\ncustomExample03.product = function () {\n\n    var args = [].slice.call(arguments);\n    var end = args.length - 1;\n\n    var result = [];\n\n    function addTo(curr, start) {\n\n        var first = args[start];\n\n\n        var last = (start === end);\n\n        for (var i = 0; i < first.length; ++i) {\n            var copy = curr.slice();\n            copy.push(first[i]);\n            if (last) {\n                result.push(copy);\n            } else {\n                addTo(copy, start + 1);\n            }\n        };\n\n    };\n\n    if (args.length) {\n        addTo([], 0);\n    } else {\n        result.push([]);\n    };\n\n    return result;\n\n}",
-            "ref": "",
-            "category": "",
-            "returnsList": true
+            ]
         },
         {
             "name": "crystal",
@@ -195,21 +176,6 @@
                     "fn": "g.group"
                 },
                 {
-                    "name": "product1",
-                    "x": 235,
-                    "y": 685,
-                    "fn": "customExample03.product"
-                },
-                {
-                    "name": "connectPoints1",
-                    "x": 235,
-                    "y": 755,
-                    "fn": "customExample03.connectPoints",
-                    "values": {
-                        "closed": true
-                    }
-                },
-                {
                     "name": "hslColor1",
                     "x": 445,
                     "y": 665,
@@ -225,6 +191,19 @@
                     "x": 585,
                     "y": 555,
                     "fn": "g.multiply"
+                },
+                {
+                    "name": "product1",
+                    "x": 235,
+                    "y": 685,
+                    "fn": "combinatoric.product"
+                },
+                {
+                    "name": "connectPoints1",
+                    "x": 235,
+                    "y": 755,
+                    "fn": "customExample03.connectPoints",
+                    "values": {}
                 }
             ],
             "connections": [
@@ -299,29 +278,9 @@
                     "parameter": "shape"
                 },
                 {
-                    "output": "makePoint1",
-                    "input": "product1",
-                    "parameter": "list1"
-                },
-                {
-                    "output": "makePoint1",
-                    "input": "product1",
-                    "parameter": "list2"
-                },
-                {
-                    "output": "product1",
-                    "input": "connectPoints1",
-                    "parameter": "v"
-                },
-                {
                     "output": "randomNumbers1",
                     "input": "hslColor1",
                     "parameter": "hue"
-                },
-                {
-                    "output": "product1",
-                    "input": "connectPoints1",
-                    "parameter": "points"
                 },
                 {
                     "inlet": "points",
@@ -339,16 +298,6 @@
                     "parameter": "stroke"
                 },
                 {
-                    "output": "makePoint1",
-                    "input": "product1",
-                    "parameter": "list3"
-                },
-                {
-                    "output": "connectPoints1",
-                    "input": "colorize1",
-                    "parameter": "shape"
-                },
-                {
                     "output": "pow1",
                     "input": "multiply1",
                     "parameter": "a"
@@ -362,6 +311,31 @@
                     "inlet": "alpha",
                     "input": "multiply1",
                     "parameter": "b"
+                },
+                {
+                    "output": "makePoint1",
+                    "input": "product1",
+                    "parameter": "list1"
+                },
+                {
+                    "output": "makePoint1",
+                    "input": "product1",
+                    "parameter": "list2"
+                },
+                {
+                    "output": "makePoint1",
+                    "input": "product1",
+                    "parameter": "list3"
+                },
+                {
+                    "output": "product1",
+                    "input": "connectPoints1",
+                    "parameter": "points"
+                },
+                {
+                    "output": "connectPoints1",
+                    "input": "colorize1",
+                    "parameter": "shape"
                 }
             ],
             "parameters": [
@@ -398,24 +372,41 @@
         },
         {
             "name": "connectPoints",
-            "type": "code",
-            "outputType": "",
+            "type": "network",
+            "renderedNode": "connectPoints",
+            "nodes": [
+                {
+                    "name": "connectPoints",
+                    "x": -35,
+                    "y": 155,
+                    "fn": "g.connectPoints"
+                }
+            ],
+            "connections": [
+                {
+                    "inlet": "points",
+                    "input": "connectPoints",
+                    "parameter": "points"
+                },
+                {
+                    "inlet": "closed",
+                    "input": "connectPoints",
+                    "parameter": "closed"
+                }
+            ],
             "parameters": [
                 {
                     "name": "points",
-                    "type": "",
-                    "value": 1
+                    "type": "points",
+                    "value": "undefined"
                 },
                 {
                     "name": "closed",
                     "type": "boolean",
-                    "value": 1
+                    "value": false
                 }
             ],
-            "source": "// connectPoints node that doesn't take lists ...\n\ncustomExample03.connectPoints = function (points, closed) {\n\n    return g.connectPoints(points, closed);\n\n};",
-            "ref": "",
-            "category": "",
-            "returnsList": false
+            "returnsList": true
         }
     ],
     "id": "customExample03"

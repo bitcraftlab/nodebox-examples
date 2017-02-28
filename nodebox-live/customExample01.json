@@ -2,14 +2,15 @@
     "title": "custom-example-01",
     "color": "#f60",
     "dependencies": {
-        "core/g": "dev"
+        "core/g": "dev",
+        "bitcraftlab/combinatoric": "dev"
     },
     "assets": {},
     "functions": [
         {
             "name": "main",
             "type": "network",
-            "renderedNode": "combine1",
+            "renderedNode": "productPoint1",
             "nodes": [
                 {
                     "name": "number1",
@@ -59,12 +60,6 @@
                     }
                 },
                 {
-                    "name": "productPoint1",
-                    "x": 235,
-                    "y": 355,
-                    "fn": "customExample01.productPoint"
-                },
-                {
                     "name": "ellipse1",
                     "x": 125,
                     "y": 505,
@@ -98,6 +93,12 @@
                     "x": 125,
                     "y": 705,
                     "fn": "g.combine"
+                },
+                {
+                    "name": "productPoint1",
+                    "x": 235,
+                    "y": 355,
+                    "fn": "combinatoric.productPoint"
                 }
             ],
             "connections": [
@@ -122,6 +123,21 @@
                     "parameter": "seed"
                 },
                 {
+                    "output": "ellipse2",
+                    "input": "colorize2",
+                    "parameter": "shape"
+                },
+                {
+                    "output": "ellipse1",
+                    "input": "combine1",
+                    "parameter": "list1"
+                },
+                {
+                    "output": "colorize2",
+                    "input": "combine1",
+                    "parameter": "list2"
+                },
+                {
                     "output": "randomNumbers1",
                     "input": "productPoint1",
                     "parameter": "list1"
@@ -140,57 +156,26 @@
                     "output": "productPoint1",
                     "input": "ellipse2",
                     "parameter": "position"
-                },
-                {
-                    "output": "ellipse2",
-                    "input": "colorize2",
-                    "parameter": "shape"
-                },
-                {
-                    "output": "ellipse1",
-                    "input": "combine1",
-                    "parameter": "list1"
-                },
-                {
-                    "output": "colorize2",
-                    "input": "combine1",
-                    "parameter": "list2"
                 }
             ],
             "parameters": [],
-            "returnsList": true
-        },
-        {
-            "name": "product",
-            "type": "code",
-            "outputType": "float",
-            "parameters": [],
-            "source": "\n// cartesian product\n\ncustomExample01.product = function()  {\n\n    var args = [].slice.call(arguments);\n    var end = args.length - 1;\n\n    var result = [];\n\n    function addTo(curr, start) {\n\n        var first = args[start];\n        var last = (start === end);\n\n        for (var i = 0; i < first.length; ++i) {\n            var copy = curr.slice();\n            copy.push(first[i]);\n            if (last) {\n                result.push(copy);\n            } else {\n                addTo(copy, start + 1);\n            }\n        }\n\n    };\n\n    if (args.length) {\n        addTo([], 0);\n    } else {\n        result.push([]);\n    };\n\n    return result;\n\n}\n",
-            "ref": "",
-            "category": ""
-        },
-        {
-            "name": "productPoint",
-            "type": "code",
-            "outputType": "point",
-            "parameters": [
+            "returnsList": true,
+            "stickies": [
                 {
-                    "name": "list1",
-                    "type": "",
-                    "value": 1,
-                    "takesList": true
+                    "x": 55,
+                    "y": 75,
+                    "width": 465,
+                    "height": 705,
+                    "text": "example using productPoint from the combinatoric dependency"
                 },
                 {
-                    "name": "list2",
-                    "type": "",
-                    "value": 1,
-                    "takesList": true
+                    "x": 924,
+                    "y": 211,
+                    "width": 200,
+                    "height": 50,
+                    "text": "Double-click to edit"
                 }
-            ],
-            "source": "\n// cartesian product of two numbers returnd as a point\n\ncustomExample01.productPoint = function(list1, list2) {\n\n   var makePoint = function(a) {\n     return {x:a[0], y:a[1]};\n   };\n\n   return customExample01.product(list1, list2).map(makePoint);\n\n}",
-            "ref": "",
-            "category": "",
-            "returnsList": true
+            ]
         }
     ],
     "id": "customExample01"
