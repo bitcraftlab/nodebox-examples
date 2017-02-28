@@ -1,0 +1,58 @@
+{
+    "id": "combinatoric",
+    "title": "Combinatoric",
+    "dependencies": {},
+    "functions": [
+        {
+            "name": "product",
+            "type": "code",
+            "outputType": "",
+            "parameters": [
+                {
+                    "name": "list1",
+                    "type": "",
+                    "takesList": true
+                },
+                {
+                    "name": "list2",
+                    "type": "",
+                    "value": 1,
+                    "takesList": true
+                },
+                {
+                    "name": "list3",
+                    "type": "",
+                    "value": 1,
+                    "takesList": true
+                }
+            ],
+            "source": "combinatoric.product = function () {\n\n\n    var args = [].slice.call(arguments);\n\n    console.log(args);\n    \n    var end = args.length - 1;\n\n    var result = [];\n\n    function addTo(curr, start) {\n\n        var first = args[start];\n\n\n        var last = (start === end);\n\n        for (var i = 0; i < first.length; ++i) {\n            var copy = curr.slice();\n            copy.push(first[i]);\n            if (last) {\n                result.push(copy);\n            } else {\n                addTo(copy, start + 1);\n            }\n        };\n\n    };\n\n    if (args.length) {\n        addTo([], 0);\n    } else {\n        result.push([]);\n    };\n\n    return result;\n\n}",
+            "ref": "cartesian product",
+            "category": "",
+            "returnsList": true
+        },
+        {
+            "name": "productPoint",
+            "type": "code",
+            "outputType": "point",
+            "parameters": [
+                {
+                    "name": "list1",
+                    "type": "",
+                    "value": 1,
+                    "takesList": true
+                },
+                {
+                    "name": "list2",
+                    "type": "",
+                    "value": 1,
+                    "takesList": true
+                }
+            ],
+            "source": "combinatoric.productPoint = function (list1, list2) {\n\n    var makePoint = function (a) {\n        return {\n            x: a[0],\n            y: a[1]\n        };\n    };\n\n    return combinatoric.product(list1, list2).map(makePoint);\n\n}",
+            "ref": "cartesian product of two numbers returned as a point\n",
+            "category": "",
+            "returnsList": true
+        }
+    ]
+}
