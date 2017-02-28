@@ -5,7 +5,7 @@
     <property name="canvasX" value="0"/>
     <property name="canvasY" value="0"/>
     <node name="root" prototype="core.network" renderedChild="combine1">
-        <node name="add1" position="28.00,0.00" prototype="math.add"/>
+        <node name="add1" position="27.00,-9.00" prototype="math.add"/>
         <node name="align1" position="17.00,35.00" prototype="corevector.align"/>
         <node name="colorize1" position="17.00,37.00" prototype="corevector.colorize">
             <port name="fill" type="color" value="#ffffffff"/>
@@ -26,9 +26,11 @@
         <node name="max" position="17.00,-17.00" prototype="math.number">
             <port name="value" type="float" value="100.0"/>
         </node>
-        <node name="min" position="13.00,-17.00" prototype="math.number"/>
-        <node name="mod1" position="5.00,9.00" prototype="math.mod"/>
-        <node name="multiply1" position="28.00,-10.00" prototype="math.multiply">
+        <node name="min" position="13.00,-17.00" prototype="math.number">
+            <port name="value" type="float" value="50.0"/>
+        </node>
+        <node name="mod1" position="5.00,-3.00" prototype="math.mod"/>
+        <node name="multiply1" position="25.00,-13.00" prototype="math.multiply">
             <port name="value2" type="float" value="5.0"/>
         </node>
         <node name="offset" position="25.00,-17.00" prototype="math.number">
@@ -37,31 +39,56 @@
         <node name="perdiod" position="21.00,-17.00" prototype="math.number">
             <port name="value" type="float" value="100.0"/>
         </node>
-        <node name="range1" position="28.00,-5.00" prototype="math.range">
+        <node name="range1" position="26.00,-11.00" prototype="math.range">
             <port name="end" type="float" value="200.0"/>
         </node>
         <node name="round1" position="17.00,31.00" prototype="math.round"/>
-        <node name="sawtooth" position="13.00,9.00" prototype="core.network" renderedChild="convert_range1">
-            <node name="add1" position="-4.00,6.00" prototype="math.add"/>
-            <node name="convert_range1" position="-8.00,10.00" prototype="math.convert_range">
+        <node name="sawtooth" position="14.00,-3.00" prototype="core.network" renderedChild="subtract1">
+            <node name="add1" position="-8.00,12.00" prototype="math.add"/>
+            <node name="add2" position="-11.00,16.00" prototype="math.add"/>
+            <node name="add3" position="-6.00,16.00" prototype="math.add"/>
+            <node name="compare1" position="-4.00,24.00" prototype="math.compare"/>
+            <node name="convert_range1" position="-8.00,24.00" prototype="math.convert_range">
                 <port name="value" type="float" value="0.0"/>
                 <port name="target_end" type="float" value="100.0"/>
                 <port name="method" type="string" value="wrap"/>
             </node>
-            <node name="phase" position="-8.00,3.00" prototype="math.number"/>
-            <port childReference="convert_range1.value" description="" label="" name="value" range="value" type="float" value="0.0" widget="float"/>
-            <port childReference="convert_range1.target_end" description="" label="" name="min" range="value" type="float" value="100.0" widget="float"/>
-            <port childReference="convert_range1.target_start" description="" label="" name="max" range="value" type="float" value="0.0" widget="float"/>
-            <port childReference="add1.value2" description="" label="" name="wavelength" range="value" type="float" value="0.0" widget="float"/>
-            <port childReference="phase.value" description="" label="" name="phase" range="value" type="float" value="0.0" widget="float"/>
-            <conn input="add1.value1" output="phase"/>
-            <conn input="convert_range1.source_start" output="phase"/>
-            <conn input="convert_range1.source_end" output="add1"/>
+            <node name="half" position="0.00,7.00" prototype="math.divide">
+                <port name="value2" type="float" value="2.0"/>
+            </node>
+            <node name="max" position="-1.00,16.00" prototype="math.number"/>
+            <node name="min" position="3.00,16.00" prototype="math.number"/>
+            <node name="multiply1" position="-4.00,28.00" prototype="math.multiply"/>
+            <node name="subtract1" position="-8.00,32.00" prototype="math.subtract"/>
+            <node name="subtract2" position="0.00,24.00" prototype="math.subtract"/>
+            <node name="wavelength" position="0.00,4.00" prototype="math.number"/>
+            <port childReference="add2.value1" description="" label="" name="value" range="value" type="float" value="0.0" widget="float"/>
+            <port childReference="min.value" description="" label="" name="min" range="value" type="float" value="0.0" widget="float"/>
+            <port childReference="max.value" description="" label="" name="max" range="value" type="float" value="0.0" widget="float"/>
+            <port childReference="wavelength.value" description="" label="" name="wavelength" range="value" type="float" value="0.0" widget="float"/>
+            <port childReference="add1.value1" description="" label="" name="phase" range="value" type="float" value="0.0" widget="float"/>
+            <conn input="convert_range1.target_end" output="min"/>
+            <conn input="convert_range1.target_start" output="max"/>
+            <conn input="convert_range1.value" output="add2"/>
+            <conn input="subtract1.value1" output="convert_range1"/>
+            <conn input="compare1.value1" output="add2"/>
+            <conn input="subtract2.value1" output="max"/>
+            <conn input="subtract2.value2" output="min"/>
+            <conn input="subtract1.value2" output="multiply1"/>
+            <conn input="multiply1.value2" output="subtract2"/>
+            <conn input="multiply1.value1" output="compare1"/>
+            <conn input="half.value1" output="wavelength"/>
+            <conn input="add3.value2" output="wavelength"/>
+            <conn input="convert_range1.source_end" output="add3"/>
+            <conn input="add2.value2" output="add1"/>
+            <conn input="convert_range1.source_start" output="add1"/>
+            <conn input="add1.value2" output="half"/>
+            <conn input="add3.value1" output="add1"/>
         </node>
-        <node name="sawtooth_wave" position="21.00,9.00" prototype="math.wave">
+        <node name="sawtooth_wave" position="22.00,-3.00" prototype="math.wave">
             <port name="type" type="string" value="sawtooth"/>
         </node>
-        <node name="sine" position="9.00,9.00" prototype="core.network" renderedChild="convert_range2">
+        <node name="sine" position="10.00,-3.00" prototype="core.network" renderedChild="convert_range2">
             <node name="add1" position="-17.00,9.00" prototype="math.add"/>
             <node name="convert_range1" position="-17.00,14.00" prototype="math.convert_range">
                 <port name="value" type="float" value="0.0"/>
@@ -74,24 +101,24 @@
                 <port name="target_end" type="float" value="100.0"/>
             </node>
             <node name="negate1" position="-12.00,9.00" prototype="math.negate"/>
-            <node name="phase" position="-19.00,4.00" prototype="math.number"/>
+            <node name="negate2" position="-19.00,5.00" prototype="math.negate"/>
             <node name="pi1" position="-12.00,4.00" prototype="math.pi"/>
             <node name="sin1" position="-17.00,17.00" prototype="math.sin"/>
             <port childReference="convert_range1.value" description="" label="" name="value" range="value" type="float" value="0.0" widget="float"/>
             <port childReference="convert_range2.target_start" description="" label="" name="min" range="value" type="float" value="0.0" widget="float"/>
             <port childReference="convert_range2.target_end" description="" label="" name="max" range="value" type="float" value="100.0" widget="float"/>
             <port childReference="add1.value2" description="" label="" name="wavelength" range="value" type="float" value="200.0" widget="float"/>
-            <port childReference="phase.value" description="" label="" name="phase" range="value" type="float" value="0.0" widget="float"/>
-            <conn input="add1.value1" output="phase"/>
-            <conn input="convert_range1.source_start" output="phase"/>
+            <port childReference="negate2.value" description="" label="" name="phase" range="value" type="float" value="0.0" widget="float"/>
             <conn input="convert_range1.source_end" output="add1"/>
             <conn input="negate1.value" output="pi1"/>
             <conn input="convert_range1.target_start" output="negate1"/>
             <conn input="convert_range1.target_end" output="pi1"/>
             <conn input="sin1.value" output="convert_range1"/>
             <conn input="convert_range2.value" output="sin1"/>
+            <conn input="add1.value1" output="negate2"/>
+            <conn input="convert_range1.source_start" output="negate2"/>
         </node>
-        <node name="sine_wave" position="17.00,9.00" prototype="math.wave"/>
+        <node name="sine_wave" position="18.00,-3.00" prototype="math.wave"/>
         <node name="slice1" position="13.00,26.00" prototype="list.slice">
             <port name="size" type="int" value="1"/>
         </node>
@@ -109,7 +136,6 @@
         </node>
         <conn input="make_point1.x" output="range1"/>
         <conn input="connect1.points" output="make_point1"/>
-        <conn input="sawtooth.value" output="range1"/>
         <conn input="switch1.input2" output="sawtooth"/>
         <conn input="make_point1.y" output="switch1"/>
         <conn input="combine1.list1" output="ellipse1"/>
@@ -146,10 +172,11 @@
         <conn input="sawtooth_wave.max" output="max"/>
         <conn input="sawtooth_wave.period" output="perdiod"/>
         <conn input="switch1.input4" output="sawtooth_wave"/>
+        <conn input="sine.phase" output="offset"/>
+        <conn input="sawtooth.value" output="range1"/>
         <conn input="sawtooth.min" output="min"/>
         <conn input="sawtooth.max" output="max"/>
-        <conn input="sine.phase" output="offset"/>
-        <conn input="sawtooth.phase" output="offset"/>
         <conn input="sawtooth.wavelength" output="perdiod"/>
+        <conn input="sawtooth.phase" output="offset"/>
     </node>
 </ndbx>
