@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="c4847819-2ac6-4726-9e61-6345bf782e02">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="addPoints" position="27.00,9.00" prototype="core.network" renderedChild="make_point1">
+            <node name="add3" position="23.00,13.00" prototype="math.add"/>
+            <node name="add4" position="28.00,13.00" prototype="math.add"/>
+            <node name="lookup3" position="19.00,9.00" prototype="data.lookup"/>
+            <node name="lookup4" position="23.00,9.00" prototype="data.lookup">
+                <port name="key" type="string" value="y"/>
+            </node>
+            <node name="lookup5" position="28.00,9.00" prototype="data.lookup"/>
+            <node name="lookup6" position="32.00,9.00" prototype="data.lookup">
+                <port name="key" type="string" value="y"/>
+            </node>
+            <node name="make_point1" position="26.00,16.00" prototype="corevector.make_point"/>
+            <node name="point1" position="19.00,6.00" prototype="corevector.point"/>
+            <node name="point2" position="28.00,6.00" prototype="corevector.point"/>
+            <port childReference="point1.value" description="The input point." label="" name="value_1" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="point2.value" description="The input point." label="" name="value_2" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <conn input="lookup3.list" output="point1"/>
+            <conn input="lookup4.list" output="point1"/>
+            <conn input="lookup5.list" output="point2"/>
+            <conn input="lookup6.list" output="point2"/>
+            <conn input="add3.value1" output="lookup3"/>
+            <conn input="add3.value2" output="lookup5"/>
+            <conn input="add4.value1" output="lookup4"/>
+            <conn input="add4.value2" output="lookup6"/>
+            <conn input="make_point1.x" output="add3"/>
+            <conn input="make_point1.y" output="add4"/>
+        </node>
+        <node name="colorize1" position="28.00,20.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffffff"/>
+        </node>
+        <node name="combine1" position="23.00,25.00" prototype="list.combine"/>
+        <node name="constellation" position="24.00,16.00" prototype="core.network" renderedChild="colorize1">
+            <node name="colorize1" position="-7.00,17.00" prototype="corevector.colorize">
+                <port name="strokeWidth" type="float" value="2.0"/>
+            </node>
+            <node name="convert_range1" position="0.00,12.00" prototype="math.convert_range">
+                <port name="target_start" type="float" value="255.0"/>
+                <port name="target_end" type="float" value="0.0"/>
+            </node>
+            <node name="distance1" position="0.00,10.00" prototype="math.distance"/>
+            <node name="first1" position="-7.00,4.00" prototype="list.first"/>
+            <node name="line1" position="-7.00,10.00" prototype="corevector.line"/>
+            <node name="rgb_color1" position="-4.00,14.00" prototype="color.rgb_color">
+                <port name="red" type="float" value="196.0"/>
+                <port name="green" type="float" value="194.0"/>
+                <port name="blue" type="float" value="255.0"/>
+            </node>
+            <node name="second1" position="0.00,4.00" prototype="list.second"/>
+            <node name="sort1" position="-2.00,0.00" prototype="corevector.sort">
+                <port name="order_by" type="string" value="distance"/>
+            </node>
+            <port childReference="sort1.position" description="The center point." label="" name="position" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="sort1.shapes" description="The list of shapes to sort." label="" name="shapes" range="list" type="geometry" widget="none"/>
+            <conn input="second1.list" output="sort1"/>
+            <conn input="first1.list" output="sort1"/>
+            <conn input="line1.point1" output="first1"/>
+            <conn input="line1.point2" output="second1"/>
+            <conn input="distance1.point1" output="first1"/>
+            <conn input="distance1.point2" output="second1"/>
+            <conn input="colorize1.shape" output="line1"/>
+            <conn input="convert_range1.value" output="distance1"/>
+            <conn input="colorize1.stroke" output="rgb_color1"/>
+            <conn input="rgb_color1.alpha" output="convert_range1"/>
+        </node>
+        <node name="ellipse1" position="29.00,16.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="10.0"/>
+            <port name="height" type="float" value="10.0"/>
+        </node>
+        <node name="ellipse2" position="21.00,-5.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="500.0"/>
+            <port name="height" type="float" value="500.0"/>
+        </node>
+        <node name="frame2" position="36.00,-5.00" prototype="core.frame"/>
+        <node name="number1" position="26.00,-5.00" prototype="math.number">
+            <port name="value" type="float" value="50.0"/>
+        </node>
+        <node name="rect1" position="16.00,-5.00" prototype="corevector.rect">
+            <port name="width" type="float" value="1000.0"/>
+            <port name="height" type="float" value="1000.0"/>
+        </node>
+        <node name="rect2" position="31.00,-5.00" prototype="corevector.rect">
+            <port name="width" type="float" value="2.0"/>
+            <port name="height" type="float" value="2.0"/>
+        </node>
+        <node name="scalePoint" position="30.00,6.00" prototype="core.network" renderedChild="make_point1">
+            <node name="lookup3" position="32.00,11.00" prototype="data.lookup"/>
+            <node name="lookup4" position="37.00,11.00" prototype="data.lookup">
+                <port name="key" type="string" value="y"/>
+            </node>
+            <node name="make_point1" position="35.00,17.00" prototype="corevector.make_point"/>
+            <node name="multiply3" position="32.00,14.00" prototype="math.multiply"/>
+            <node name="multiply4" position="37.00,14.00" prototype="math.multiply"/>
+            <node name="number1" position="37.00,8.00" prototype="math.number">
+                <port name="value" type="float" value="100.0"/>
+            </node>
+            <node name="point1" position="33.00,8.00" prototype="corevector.point"/>
+            <port childReference="point1.value" description="The input point." label="" name="value_1" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="number1.value" description="" label="" name="value_2" range="value" type="float" value="100.0" widget="float"/>
+            <conn input="lookup3.list" output="point1"/>
+            <conn input="lookup4.list" output="point1"/>
+            <conn input="multiply3.value1" output="lookup3"/>
+            <conn input="multiply3.value2" output="number1"/>
+            <conn input="multiply4.value1" output="lookup4"/>
+            <conn input="multiply4.value2" output="number1"/>
+            <conn input="make_point1.x" output="multiply3"/>
+            <conn input="make_point1.y" output="multiply4"/>
+        </node>
+        <node name="scatter2" position="31.00,1.00" prototype="corevector.scatter">
+            <port name="amount" type="int" value="100"/>
+            <port name="seed" type="int" value="1"/>
+        </node>
+        <node name="scatter3" position="24.00,1.00" prototype="corevector.scatter">
+            <port name="amount" type="int" value="200"/>
+        </node>
+        <node name="wrapPoint" position="27.00,11.00" prototype="core.network" renderedChild="make_point1">
+            <node name="lookup1" position="24.00,7.00" prototype="data.lookup"/>
+            <node name="lookup2" position="30.00,7.00" prototype="data.lookup">
+                <port name="key" type="string" value="y"/>
+            </node>
+            <node name="make_point1" position="26.00,13.00" prototype="corevector.make_point"/>
+            <node name="point1" position="28.00,3.00" prototype="corevector.point"/>
+            <node name="wave1" position="24.00,10.00" prototype="math.wave">
+                <port name="min" type="float" value="500.0"/>
+                <port name="max" type="float" value="-500.0"/>
+                <port name="period" type="float" value="1000.0"/>
+                <port name="type" type="string" value="sawtooth"/>
+            </node>
+            <node name="wave2" position="30.00,10.00" prototype="math.wave">
+                <port name="min" type="float" value="500.0"/>
+                <port name="max" type="float" value="-500.0"/>
+                <port name="period" type="float" value="1000.0"/>
+                <port name="offset" type="float" value="21.0"/>
+                <port name="type" type="string" value="sawtooth"/>
+            </node>
+            <port childReference="point1.value" description="The input point." label="" name="point" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="wave1.max" description="" label="" name="xmin" range="value" type="float" value="-500.0" widget="float"/>
+            <port childReference="wave1.min" description="" label="" name="xmax" range="value" type="float" value="500.0" widget="float"/>
+            <port childReference="wave2.max" description="" label="" name="ymin" range="value" type="float" value="-500.0" widget="float"/>
+            <port childReference="wave2.min" description="" label="" name="ymax" range="value" type="float" value="500.0" widget="float"/>
+            <conn input="lookup1.list" output="point1"/>
+            <conn input="lookup2.list" output="point1"/>
+            <conn input="wave1.offset" output="lookup1"/>
+            <conn input="make_point1.x" output="wave1"/>
+            <conn input="make_point1.y" output="wave2"/>
+            <conn input="wave2.offset" output="lookup2"/>
+        </node>
+        <conn input="scatter2.shape" output="rect2"/>
+        <conn input="addPoints.value_1" output="scatter3"/>
+        <conn input="scalePoint.value_2" output="frame2"/>
+        <conn input="scatter3.amount" output="number1"/>
+        <conn input="scatter2.amount" output="number1"/>
+        <conn input="ellipse1.position" output="wrapPoint"/>
+        <conn input="constellation.position" output="wrapPoint"/>
+        <conn input="constellation.shapes" output="wrapPoint"/>
+        <conn input="scalePoint.value_1" output="scatter2"/>
+        <conn input="addPoints.value_2" output="scalePoint"/>
+        <conn input="wrapPoint.point" output="addPoints"/>
+        <conn input="scatter3.shape" output="ellipse2"/>
+        <conn input="combine1.list1" output="rect1"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="combine1.list3" output="colorize1"/>
+        <conn input="combine1.list2" output="constellation"/>
+    </node>
+</ndbx>
