@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="926f7f47-b536-4d36-b60e-d2f59559d838">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="angle1" position="-5.00,1.00" prototype="math.angle"/>
+        <node name="colorize1" position="4.00,12.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffffff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="combine1" position="-2.00,13.00" prototype="list.combine"/>
+        <node name="ellipse1" position="5.00,2.00" prototype="corevector.ellipse"/>
+        <node name="hsb_color1" position="13.00,7.00" prototype="color.hsb_color">
+            <port name="hue" type="float" value="-31.0"/>
+            <port name="saturation" type="float" value="184.0"/>
+            <port name="brightness" type="float" value="255.0"/>
+        </node>
+        <node name="integer1" position="13.00,-12.00" prototype="math.integer">
+            <port name="value" type="int" value="500"/>
+        </node>
+        <node name="line_angle1" position="-1.00,0.00" prototype="corevector.line_angle">
+            <port name="distance" type="float" value="50.0"/>
+        </node>
+        <node name="mouse_position1" position="-6.00,-3.00" prototype="device.mouse_position"/>
+        <node name="point_on_path1" position="-1.00,2.00" prototype="corevector.point_on_path">
+            <port name="t" type="float" value="99.0"/>
+        </node>
+        <node name="polygon1" position="8.00,2.00" prototype="corevector.polygon">
+            <port name="radius" type="float" value="159.0"/>
+            <port name="align" type="boolean" value="true"/>
+        </node>
+        <node name="random_numbers1" position="8.00,-6.00" prototype="math.random_numbers">
+            <port name="amount" type="int" value="1"/>
+            <port name="end" type="float" value="360.0"/>
+        </node>
+        <node name="random_numbers2" position="13.00,2.00" prototype="math.random_numbers">
+            <port name="start" type="float" value="150.0"/>
+            <port name="end" type="float" value="200.0"/>
+        </node>
+        <node name="rect1" position="4.00,-12.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="800.0"/>
+        </node>
+        <node name="rect2" position="-7.00,6.00" prototype="corevector.rect">
+            <port name="width" type="float" value="950.0"/>
+            <port name="height" type="float" value="950.0"/>
+            <port name="roundness" type="point" value="50.00,50.00"/>
+        </node>
+        <node name="scatter1" position="-1.00,-6.00" prototype="corevector.scatter"/>
+        <node name="scatter2" position="4.00,-6.00" prototype="corevector.scatter">
+            <port name="seed" type="int" value="1"/>
+        </node>
+        <node name="stroke1" position="4.00,7.00" prototype="core.network" renderedChild="translate4">
+            <node name="angle1" position="-4.00,5.00" prototype="math.angle"/>
+            <node name="compound1" position="9.00,10.00" prototype="corevector.compound"/>
+            <node name="compound2" position="13.00,13.00" prototype="corevector.compound"/>
+            <node name="distance1" position="10.00,-11.00" prototype="math.distance"/>
+            <node name="divide1" position="10.00,-7.00" prototype="math.divide">
+                <port name="value2" type="float" value="2.0"/>
+            </node>
+            <node name="make_point1" position="6.00,2.00" prototype="corevector.make_point"/>
+            <node name="make_point2" position="10.00,-1.00" prototype="corevector.make_point"/>
+            <node name="negate1" position="10.00,-3.00" prototype="math.negate"/>
+            <node name="point1" position="-1.00,-19.00" prototype="corevector.point">
+                <port name="value" type="point" value="-100.00,0.00"/>
+            </node>
+            <node name="point2" position="10.00,-19.00" prototype="corevector.point">
+                <port name="value" type="point" value="100.00,0.00"/>
+            </node>
+            <node name="rect1" position="2.00,2.00" prototype="corevector.rect">
+                <port name="width" type="float" value="40.0"/>
+                <port name="height" type="float" value="10.0"/>
+            </node>
+            <node name="rotate1" position="13.00,18.00" prototype="corevector.rotate"/>
+            <node name="rotate2" position="18.00,6.00" prototype="corevector.rotate">
+                <port name="angle" type="float" value="-90.0"/>
+            </node>
+            <node name="rotate3" position="10.00,6.00" prototype="corevector.rotate">
+                <port name="angle" type="float" value="90.0"/>
+            </node>
+            <node name="scale1" position="10.00,5.00" prototype="corevector.scale"/>
+            <node name="scale2" position="18.00,5.00" prototype="corevector.scale"/>
+            <node name="translate1" position="10.00,8.00" prototype="corevector.translate">
+                <port name="translate" type="point" value="-20.00,0.00"/>
+            </node>
+            <node name="translate2" position="17.00,9.00" prototype="corevector.translate">
+                <port name="translate" type="point" value="20.00,0.00"/>
+            </node>
+            <node name="translate3" position="13.00,16.00" prototype="corevector.translate"/>
+            <node name="translate4" position="13.00,20.00" prototype="corevector.translate"/>
+            <node name="width" position="21.00,-19.00" prototype="math.number">
+                <port name="value" type="float" value="10.0"/>
+            </node>
+            <port childReference="point1.value" description="The input point." label="" name="point1" range="value" type="point" value="-100.00,0.00" widget="point"/>
+            <port childReference="point2.value" description="The input point." label="" name="point2" range="value" type="point" value="100.00,0.00" widget="point"/>
+            <port childReference="width.value" description="" label="" name="width" range="value" type="float" value="10.0" widget="float"/>
+            <port childReference="scale1.shape" description="The input shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+            <port childReference="scale2.shape" description="The input shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+            <conn input="compound1.shape1" output="rect1"/>
+            <conn input="compound1.shape2" output="translate1"/>
+            <conn input="compound2.shape1" output="compound1"/>
+            <conn input="compound2.shape2" output="translate2"/>
+            <conn input="translate1.translate" output="make_point1"/>
+            <conn input="make_point2.x" output="negate1"/>
+            <conn input="translate2.translate" output="make_point2"/>
+            <conn input="negate1.value" output="divide1"/>
+            <conn input="make_point1.x" output="divide1"/>
+            <conn input="distance1.point1" output="point1"/>
+            <conn input="distance1.point2" output="point2"/>
+            <conn input="scale1.scale" output="width"/>
+            <conn input="scale2.scale" output="width"/>
+            <conn input="rect1.height" output="width"/>
+            <conn input="rect1.width" output="distance1"/>
+            <conn input="divide1.value1" output="distance1"/>
+            <conn input="rotate2.shape" output="scale2"/>
+            <conn input="translate2.shape" output="rotate2"/>
+            <conn input="rotate3.shape" output="scale1"/>
+            <conn input="translate1.shape" output="rotate3"/>
+            <conn input="angle1.point1" output="point1"/>
+            <conn input="angle1.point2" output="point2"/>
+            <conn input="translate3.translate" output="make_point1"/>
+            <conn input="translate3.shape" output="compound2"/>
+            <conn input="rotate1.angle" output="angle1"/>
+            <conn input="rotate1.shape" output="translate3"/>
+            <conn input="translate4.shape" output="rotate1"/>
+            <conn input="translate4.translate" output="point1"/>
+        </node>
+        <conn input="scatter1.shape" output="rect1"/>
+        <conn input="scatter2.shape" output="rect1"/>
+        <conn input="stroke1.point1" output="scatter1"/>
+        <conn input="stroke1.shape1" output="ellipse1"/>
+        <conn input="stroke1.shape2" output="polygon1"/>
+        <conn input="scatter1.amount" output="integer1"/>
+        <conn input="scatter2.amount" output="integer1"/>
+        <conn input="colorize1.shape" output="stroke1"/>
+        <conn input="line_angle1.position" output="scatter1"/>
+        <conn input="point_on_path1.shape" output="line_angle1"/>
+        <conn input="stroke1.point2" output="point_on_path1"/>
+        <conn input="random_numbers1.amount" output="integer1"/>
+        <conn input="hsb_color1.hue" output="random_numbers2"/>
+        <conn input="random_numbers2.amount" output="integer1"/>
+        <conn input="line_angle1.angle" output="angle1"/>
+        <conn input="angle1.point1" output="mouse_position1"/>
+        <conn input="angle1.point2" output="scatter1"/>
+        <conn input="combine1.list1" output="rect2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+    </node>
+</ndbx>
