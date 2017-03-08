@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="926f7f47-b536-4d36-b60e-d2f59559d838">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="typeset">
+        <node name="debug" position="-26.00,44.00" prototype="math.boolean">
+            <port name="value" type="boolean" value="true"/>
+        </node>
+        <node name="font_dict" position="-34.00,44.00" prototype="core.network" renderedChild="zip_map1">
+            <node name="bar" position="13.00,12.00" prototype="core.network" renderedChild="translate1">
+                <node name="translate1" position="4.00,4.00" prototype="corevector.translate"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+            </node>
+            <node name="bar_bite" position="3.00,12.00" prototype="core.network" renderedChild="compound1">
+                <node name="compound1" position="3.00,9.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="scale1" position="6.00,6.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="30.00,30.00"/>
+                </node>
+                <node name="translate1" position="1.00,4.00" prototype="corevector.translate"/>
+                <node name="translate2" position="6.00,4.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="60.00,-90.00"/>
+                </node>
+                <port childReference="translate1.shape" description="The input shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+                <port childReference="translate2.shape" description="The input shape." label="" name="bite" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape1" output="translate1"/>
+                <conn input="scale1.shape" output="translate2"/>
+                <conn input="compound1.shape2" output="scale1"/>
+            </node>
+            <node name="bar_bot" position="21.00,10.00" prototype="core.network" renderedChild="translate3">
+                <node name="compound1" position="4.00,8.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="scale1" position="3.00,3.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="100.00,50.00"/>
+                </node>
+                <node name="scale2" position="7.00,3.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="25.00,25.00"/>
+                    <port name="origin" type="point" value="-56.00,0.00"/>
+                </node>
+                <node name="translate1" position="7.00,5.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="56.00,20.00"/>
+                </node>
+                <node name="translate2" position="3.00,5.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,12.00"/>
+                </node>
+                <node name="translate3" position="4.00,10.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,13.00"/>
+                </node>
+                <port childReference="scale1.shape" description="The input shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+                <port childReference="scale2.shape" description="The input shape." label="" name="decor" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape2" output="translate1"/>
+                <conn input="translate2.shape" output="scale1"/>
+                <conn input="compound1.shape1" output="translate2"/>
+                <conn input="translate1.shape" output="scale2"/>
+                <conn input="translate3.shape" output="compound1"/>
+            </node>
+            <node name="bar_bot_left" position="37.00,12.00" prototype="core.network" renderedChild="translate1">
+                <node name="scale1" position="3.00,3.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="-100.00,100.00"/>
+                </node>
+                <node name="translate1" position="3.00,5.00" prototype="corevector.translate"/>
+                <port childReference="scale1.shape" description="The input shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+                <conn input="translate1.shape" output="scale1"/>
+            </node>
+            <node name="bar_bot_right" position="41.00,12.00" prototype="core.network" renderedChild="translate1">
+                <node name="translate1" position="4.00,4.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="40.00,0.00"/>
+                </node>
+                <port childReference="translate1.shape" description="The input shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+            </node>
+            <node name="bar_left" position="9.00,12.00" prototype="core.network" renderedChild="compound1">
+                <node name="compound1" position="2.00,8.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="translate1" position="1.00,5.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="-40.00,0.00"/>
+                </node>
+                <port childReference="translate1.shape" description="The input shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+                <port childReference="compound1.shape2" description="The second shape." label="" name="decor" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape1" output="translate1"/>
+            </node>
+            <node name="bar_right" position="-1.00,12.00" prototype="core.network" renderedChild="translate1">
+                <node name="translate1" position="1.00,4.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="40.00,0.00"/>
+                </node>
+                <port childReference="translate1.shape" description="The input shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+            </node>
+            <node name="bar_top" position="15.00,10.00" prototype="core.network" renderedChild="compound1">
+                <node name="compound1" position="4.00,8.00" prototype="corevector.compound"/>
+                <node name="scale1" position="3.00,3.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="100.00,50.00"/>
+                </node>
+                <node name="translate1" position="8.00,4.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,-100.00"/>
+                </node>
+                <node name="translate2" position="3.00,5.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,-65.00"/>
+                </node>
+                <port childReference="scale1.shape" description="The input shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="decor" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape2" output="translate1"/>
+                <conn input="translate2.shape" output="scale1"/>
+                <conn input="compound1.shape1" output="translate2"/>
+            </node>
+            <node name="bar_top_left" position="29.00,12.00" prototype="core.network" renderedChild="translate1">
+                <node name="translate1" position="6.00,5.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="-40.00,0.00"/>
+                </node>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+            </node>
+            <node name="bar_top_right" position="33.00,12.00" prototype="core.network" renderedChild="translate1">
+                <node name="translate1" position="6.00,5.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="40.00,0.00"/>
+                </node>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+            </node>
+            <node name="bite" position="20.00,0.00" prototype="core.network" renderedChild="connect1">
+                <node name="combine1" position="10.00,8.00" prototype="list.combine"/>
+                <node name="connect1" position="10.00,12.00" prototype="corevector.connect"/>
+                <node name="point1" position="10.00,9.00" prototype="corevector.point"/>
+                <node name="rotate2" position="7.00,5.00" prototype="corevector.rotate">
+                    <port name="angle" type="float" value="7.0"/>
+                </node>
+                <node name="sort1" position="10.00,10.00" prototype="corevector.sort">
+                    <port name="order_by" type="string" value="angle"/>
+                </node>
+                <node name="star1" prototype="corevector.star">
+                    <port name="outer" type="float" value="100.0"/>
+                    <port name="inner" type="float" value="90.0"/>
+                </node>
+                <node name="star2" position="12.00,4.00" prototype="corevector.star">
+                    <port name="outer" type="float" value="100.0"/>
+                    <port name="inner" type="float" value="90.0"/>
+                </node>
+                <node name="teeth" position="12.00,1.00" prototype="math.integer">
+                    <port name="value" type="int" value="20"/>
+                </node>
+                <conn input="combine1.list2" output="star2"/>
+                <conn input="point1.value" output="combine1"/>
+                <conn input="sort1.shapes" output="point1"/>
+                <conn input="connect1.points" output="sort1"/>
+                <conn input="rotate2.shape" output="star1"/>
+                <conn input="combine1.list1" output="rotate2"/>
+                <conn input="star1.points" output="teeth"/>
+                <conn input="star2.points" output="teeth"/>
+            </node>
+            <node name="characters1" position="-18.00,28.00" prototype="string.characters"/>
+            <node name="circle" position="-13.00,15.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="-6.00,1.00" prototype="corevector.compound"/>
+                <node name="compound2" position="-2.00,12.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="compound1.shape2" description="The second shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <port childReference="compound2.shape2" description="The second shape." label="" name="decor" range="value" type="geometry" widget="none"/>
+                <conn input="compound2.shape1" output="compound1"/>
+            </node>
+            <node name="circle2" position="-8.00,15.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="-11.00,-13.00" prototype="corevector.compound"/>
+                <node name="compound2" position="-8.00,-6.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="scale1" position="-6.00,-13.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="30.00,30.00"/>
+                </node>
+                <node name="translate1" position="-6.00,-10.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="-42.00,-34.00"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="compound1.shape2" description="The second shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <port childReference="scale1.shape" description="The input shape." label="" name="decor" range="value" type="geometry" widget="none"/>
+                <conn input="translate1.shape" output="scale1"/>
+                <conn input="compound2.shape1" output="compound1"/>
+                <conn input="compound2.shape2" output="translate1"/>
+            </node>
+            <node name="combine1" position="-2.00,32.00" prototype="list.combine"/>
+            <node name="combine2" position="21.00,32.00" prototype="list.combine"/>
+            <node name="combine3" position="21.00,44.00" prototype="list.combine"/>
+            <node name="combine4" position="41.00,31.00" prototype="list.combine"/>
+            <node name="curve_bot" position="-11.00,0.00" prototype="core.network" renderedChild="compound2">
+                <node name="arc1" position="3.00,2.00" prototype="corevector.arc">
+                    <port name="start_angle" type="float" value="-180.0"/>
+                    <port name="degrees" type="float" value="180.0"/>
+                    <port name="type" type="string" value="chord"/>
+                </node>
+                <node name="arc3" position="3.00,2.00" prototype="corevector.arc">
+                    <port name="degrees" type="float" value="180.0"/>
+                </node>
+                <node name="compound1" position="5.00,5.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="compound2" position="5.00,5.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="ellipse1" position="7.00,2.00" prototype="corevector.ellipse">
+                    <port name="width" type="float" value="60.0"/>
+                    <port name="height" type="float" value="80.0"/>
+                </node>
+                <conn input="compound1.shape1" output="arc1"/>
+                <conn input="compound2.shape1" output="arc3"/>
+                <conn input="compound2.shape2" output="ellipse1"/>
+            </node>
+            <node name="curve_bot1" position="17.00,12.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="-5.00,7.00" prototype="corevector.compound"/>
+                <node name="compound2" position="-3.00,10.00" prototype="corevector.compound"/>
+                <node name="rect1" position="2.00,2.00" prototype="corevector.rect">
+                    <port name="position" type="point" value="40.00,-25.00"/>
+                    <port name="width" type="float" value="20.0"/>
+                    <port name="height" type="float" value="50.0"/>
+                </node>
+                <node name="rotate1" position="-3.00,2.00" prototype="corevector.rotate">
+                    <port name="angle" type="float" value="180.0"/>
+                </node>
+                <node name="translate1" position="-3.00,4.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="-40.00,0.00"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+                <port childReference="rotate1.shape" description="The input shape." label="" name="serif" range="value" type="geometry" widget="none"/>
+                <conn input="translate1.shape" output="rotate1"/>
+                <conn input="compound1.shape2" output="translate1"/>
+                <conn input="compound2.shape1" output="compound1"/>
+                <conn input="compound2.shape2" output="rect1"/>
+            </node>
+            <node name="curve_bot2" position="21.00,12.00" prototype="core.network" renderedChild="compound1">
+                <node name="compound1" position="-5.00,7.00" prototype="corevector.compound"/>
+                <node name="rotate1" position="-2.00,0.00" prototype="corevector.rotate">
+                    <port name="angle" type="float" value="180.0"/>
+                </node>
+                <node name="translate1" position="-2.00,3.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="40.00,0.00"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+                <port childReference="rotate1.shape" description="The input shape." label="" name="serif" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape2" output="translate1"/>
+                <conn input="translate1.shape" output="rotate1"/>
+            </node>
+            <node name="curve_bot3" position="25.00,12.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="9.00,8.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="compound2" position="10.00,11.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="intersected"/>
+                </node>
+                <node name="ellipse2" position="15.00,4.00" prototype="corevector.ellipse">
+                    <port name="position" type="point" value="0.00,-4.00"/>
+                </node>
+                <node name="rect1" position="11.00,2.00" prototype="corevector.rect">
+                    <port name="position" type="point" value="-54.00,0.00"/>
+                </node>
+                <node name="translate1" position="7.00,4.00" prototype="corevector.translate"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape1" output="translate1"/>
+                <conn input="compound2.shape2" output="ellipse2"/>
+                <conn input="compound2.shape1" output="compound1"/>
+                <conn input="compound1.shape2" output="rect1"/>
+            </node>
+            <node name="curve_flourish" position="26.00,15.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound2" position="0.00,11.00" prototype="corevector.compound"/>
+                <node name="rotate2" position="5.00,1.00" prototype="corevector.rotate">
+                    <port name="angle" type="float" value="-90.0"/>
+                </node>
+                <node name="translate2" position="5.00,5.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="-80.00,-37.30"/>
+                </node>
+                <node name="translate3" position="0.00,4.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="-40.00,-47.00"/>
+                </node>
+                <port childReference="translate3.shape" description="The input shape." label="" name="bow" range="value" type="geometry" widget="none"/>
+                <port childReference="rotate2.shape" description="The input shape." label="" name="flourish" range="value" type="geometry" widget="none"/>
+                <conn input="compound2.shape1" output="translate3"/>
+                <conn input="translate2.shape" output="rotate2"/>
+                <conn input="compound2.shape2" output="translate2"/>
+            </node>
+            <node name="curve_top" position="-15.00,0.00" prototype="core.network" renderedChild="compound2">
+                <node name="arc1" position="-19.00,-12.00" prototype="corevector.arc">
+                    <port name="start_angle" type="float" value="-180.0"/>
+                    <port name="degrees" type="float" value="180.0"/>
+                    <port name="type" type="string" value="chord"/>
+                </node>
+                <node name="arc3" position="-19.00,-12.00" prototype="corevector.arc">
+                    <port name="position" type="point" value="0.00,0.01"/>
+                    <port name="start_angle" type="float" value="-180.0"/>
+                    <port name="degrees" type="float" value="180.0"/>
+                    <port name="type" type="string" value="chord"/>
+                </node>
+                <node name="compound1" position="-17.00,-9.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="compound2" position="-17.00,-9.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="ellipse1" position="-15.00,-12.00" prototype="corevector.ellipse">
+                    <port name="position" type="point" value="0.00,0.01"/>
+                    <port name="width" type="float" value="60.0"/>
+                    <port name="height" type="float" value="80.0"/>
+                </node>
+                <conn input="compound1.shape1" output="arc1"/>
+                <conn input="compound2.shape1" output="arc3"/>
+                <conn input="compound2.shape2" output="ellipse1"/>
+            </node>
+            <node name="curve_top1" position="-13.00,12.00" prototype="core.network" renderedChild="compound1">
+                <node name="compound1" position="-5.00,7.00" prototype="corevector.compound"/>
+                <node name="translate1" position="-2.00,3.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="-40.00,0.00"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="serif" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape2" output="translate1"/>
+            </node>
+            <node name="curve_top2" position="-9.00,12.00" prototype="core.network" renderedChild="compound1">
+                <node name="arc1" position="3.00,8.00" prototype="corevector.arc">
+                    <port name="width" type="float" value="101.0"/>
+                    <port name="height" type="float" value="101.0"/>
+                    <port name="start_angle" type="float" value="1.0"/>
+                    <port name="degrees" type="float" value="-31.0"/>
+                </node>
+                <node name="compound1" position="4.00,14.00" prototype="corevector.compound"/>
+                <node name="compound2" position="2.00,10.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="rotate1" position="8.00,10.00" prototype="corevector.rotate">
+                    <port name="angle" type="float" value="-30.0"/>
+                </node>
+                <node name="translate1" position="8.00,9.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="40.00,0.00"/>
+                </node>
+                <port childReference="compound2.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <conn input="rotate1.shape" output="translate1"/>
+                <conn input="compound1.shape2" output="rotate1"/>
+                <conn input="compound2.shape2" output="arc1"/>
+                <conn input="compound1.shape1" output="compound2"/>
+            </node>
+            <node name="curve_top3" position="-5.00,12.00" prototype="core.network" renderedChild="compound1">
+                <node name="compound1" position="3.00,8.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="rotate1" position="5.00,4.00" prototype="corevector.rotate">
+                    <port name="angle" type="float" value="90.0"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="stroke" range="value" type="geometry" widget="none"/>
+                <port childReference="rotate1.shape" description="The input shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape2" output="rotate1"/>
+            </node>
+            <node name="decor1" position="3.00,0.00" prototype="core.network" renderedChild="compound4">
+                <node name="compound3" position="5.00,6.00" prototype="corevector.compound"/>
+                <node name="compound4" position="7.00,9.00" prototype="corevector.compound"/>
+                <node name="rect1" position="3.00,3.00" prototype="corevector.rect">
+                    <port name="position" type="point" value="0.00,-5.00"/>
+                    <port name="height" type="float" value="2.0"/>
+                </node>
+                <node name="rect2" position="7.00,3.00" prototype="corevector.rect">
+                    <port name="height" type="float" value="4.0"/>
+                </node>
+                <node name="rect3" position="11.00,3.00" prototype="corevector.rect">
+                    <port name="position" type="point" value="0.00,5.00"/>
+                    <port name="height" type="float" value="2.0"/>
+                </node>
+                <conn input="compound3.shape1" output="rect1"/>
+                <conn input="compound3.shape2" output="rect2"/>
+                <conn input="compound4.shape2" output="rect3"/>
+                <conn input="compound4.shape1" output="compound3"/>
+            </node>
+            <node name="decor_top" position="7.00,0.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="9.00,9.00" prototype="corevector.compound"/>
+                <node name="compound2" position="10.00,12.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="rect1" position="7.00,6.00" prototype="corevector.rect">
+                    <port name="width" type="float" value="20.0"/>
+                    <port name="height" type="float" value="20.0"/>
+                </node>
+                <node name="star1" position="11.00,6.00" prototype="corevector.star">
+                    <port name="position" type="point" value="0.00,-15.00"/>
+                    <port name="points" type="int" value="6"/>
+                    <port name="outer" type="float" value="50.0"/>
+                    <port name="inner" type="float" value="27.0"/>
+                </node>
+                <node name="star2" position="15.00,6.00" prototype="corevector.star">
+                    <port name="position" type="point" value="0.00,-15.00"/>
+                    <port name="points" type="int" value="6"/>
+                    <port name="outer" type="float" value="40.0"/>
+                    <port name="inner" type="float" value="22.0"/>
+                </node>
+                <conn input="compound1.shape1" output="rect1"/>
+                <conn input="compound2.shape2" output="star2"/>
+                <conn input="compound1.shape2" output="star1"/>
+                <conn input="compound2.shape1" output="compound1"/>
+            </node>
+            <node name="flourish" position="11.00,0.00" prototype="core.network" renderedChild="translate1">
+                <node name="angle" position="14.00,17.00" prototype="math.number">
+                    <port name="value" type="float" value="720.0"/>
+                </node>
+                <node name="colorize2" position="12.00,31.00" prototype="corevector.colorize"/>
+                <node name="combine1" position="12.00,27.00" prototype="list.combine"/>
+                <node name="compound1" position="14.00,35.00" prototype="corevector.compound"/>
+                <node name="connect2" position="12.00,29.00" prototype="corevector.connect"/>
+                <node name="coordinates1" position="9.00,24.00" prototype="math.coordinates">
+                    <port name="position" type="point" value="-7.00,29.00"/>
+                </node>
+                <node name="coordinates2" position="17.00,24.00" prototype="math.coordinates">
+                    <port name="position" type="point" value="-7.00,29.00"/>
+                </node>
+                <node name="divide1" position="11.00,22.00" prototype="math.divide">
+                    <port name="value2" type="float" value="8.0"/>
+                </node>
+                <node name="divide2" position="19.00,22.00" prototype="math.divide">
+                    <port name="value2" type="float" value="11.0"/>
+                </node>
+                <node name="ellipse1" position="16.00,33.00" prototype="corevector.ellipse">
+                    <port name="position" type="point" value="11.00,27.00"/>
+                    <port name="width" type="float" value="30.0"/>
+                    <port name="height" type="float" value="30.0"/>
+                </node>
+                <node name="range1" position="9.00,20.00" prototype="math.range">
+                    <port name="end" type="float" value="720.0"/>
+                </node>
+                <node name="range2" position="18.00,20.00" prototype="math.range">
+                    <port name="start" type="float" value="720.0"/>
+                    <port name="end" type="float" value="0.0"/>
+                    <port name="step" type="float" value="-1.0"/>
+                </node>
+                <node name="scale1" position="12.00,33.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="-100.00,100.00"/>
+                </node>
+                <node name="scale2" position="14.00,37.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="25.00,25.00"/>
+                </node>
+                <node name="translate1" position="14.00,42.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="-15.50,30.00"/>
+                </node>
+                <port childReference="translate1.translate" description="The amount of translation." label="" name="position" range="value" type="point" value="-15.50,30.00" widget="point"/>
+                <conn input="coordinates1.angle" output="range1"/>
+                <conn input="divide1.value1" output="range1"/>
+                <conn input="coordinates1.distance" output="divide1"/>
+                <conn input="coordinates2.angle" output="range2"/>
+                <conn input="divide2.value1" output="range2"/>
+                <conn input="coordinates2.distance" output="divide2"/>
+                <conn input="combine1.list1" output="coordinates1"/>
+                <conn input="combine1.list2" output="coordinates2"/>
+                <conn input="connect2.points" output="combine1"/>
+                <conn input="colorize2.shape" output="connect2"/>
+                <conn input="scale1.shape" output="colorize2"/>
+                <conn input="compound1.shape1" output="scale1"/>
+                <conn input="compound1.shape2" output="ellipse1"/>
+                <conn input="range1.end" output="angle"/>
+                <conn input="range2.start" output="angle"/>
+                <conn input="scale2.shape" output="compound1"/>
+                <conn input="translate1.shape" output="scale2"/>
+            </node>
+            <node name="letter_a" position="-13.00,26.00" prototype="core.network" renderedChild="compound1">
+                <node name="compound1" position="5.00,5.00" prototype="corevector.compound"/>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="compound1.shape2" description="The second shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+            </node>
+            <node name="letter_b" position="-9.00,26.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="1.00,6.00" prototype="corevector.compound"/>
+                <node name="compound2" position="5.00,9.00" prototype="corevector.compound"/>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="compound1.shape2" description="The second shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <port childReference="compound2.shape2" description="The second shape." label="" name="shape3" range="value" type="geometry" widget="none"/>
+                <conn input="compound2.shape1" output="compound1"/>
+            </node>
+            <node name="letter_c" position="-5.00,26.00" prototype="core.network" renderedChild="compound1">
+                <node name="compound1" position="-4.00,3.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="ellipse1" position="-1.00,1.00" prototype="corevector.ellipse">
+                    <port name="position" type="point" value="70.00,0.00"/>
+                </node>
+                <node name="translate1" position="-5.00,1.00" prototype="corevector.translate"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape1" output="translate1"/>
+                <conn input="compound1.shape2" output="ellipse1"/>
+            </node>
+            <node name="letter_d" position="-1.00,26.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="1.00,6.00" prototype="corevector.compound"/>
+                <node name="compound2" position="5.00,9.00" prototype="corevector.compound"/>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="compound1.shape2" description="The second shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <port childReference="compound2.shape2" description="The second shape." label="" name="shape3" range="value" type="geometry" widget="none"/>
+                <conn input="compound2.shape1" output="compound1"/>
+            </node>
+            <node name="letter_e" position="3.00,26.00" prototype="core.network" renderedChild="compound2">
+                <node name="arc1" position="-1.00,1.00" prototype="corevector.arc">
+                    <port name="width" type="float" value="200.0"/>
+                </node>
+                <node name="compound1" position="-4.00,3.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="compound2" position="-2.00,8.00" prototype="corevector.compound"/>
+                <node name="compound3" position="2.00,5.00" prototype="corevector.compound"/>
+                <node name="rect1" position="1.00,3.00" prototype="corevector.rect">
+                    <port name="height" type="float" value="2.0"/>
+                </node>
+                <node name="rect2" position="4.00,3.00" prototype="corevector.rect">
+                    <port name="position" type="point" value="0.00,-4.00"/>
+                    <port name="height" type="float" value="2.0"/>
+                </node>
+                <node name="rect3" position="11.00,3.00" prototype="corevector.rect">
+                    <port name="position" type="point" value="0.00,5.00"/>
+                    <port name="height" type="float" value="2.0"/>
+                </node>
+                <node name="translate1" position="-5.00,1.00" prototype="corevector.translate"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape1" output="translate1"/>
+                <conn input="compound1.shape2" output="arc1"/>
+                <conn input="compound2.shape1" output="compound1"/>
+                <conn input="compound3.shape1" output="rect1"/>
+                <conn input="compound3.shape2" output="rect2"/>
+                <conn input="compound2.shape2" output="compound3"/>
+            </node>
+            <node name="letter_f" position="7.00,26.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="5.00,7.00" prototype="corevector.compound"/>
+                <node name="compound2" position="7.00,10.00" prototype="corevector.compound"/>
+                <node name="translate1" position="5.00,3.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,50.00"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <port childReference="compound2.shape2" description="The second shape." label="" name="flourish" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape2" output="translate1"/>
+                <conn input="compound2.shape1" output="compound1"/>
+            </node>
+            <node name="letter_g" position="11.00,26.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="2.00,6.00" prototype="corevector.compound"/>
+                <node name="compound2" position="2.00,10.00" prototype="corevector.compound"/>
+                <node name="translate1" position="5.00,3.00" prototype="corevector.translate"/>
+                <node name="translate2" position="9.00,5.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,70.00"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <port childReference="translate2.shape" description="The input shape." label="" name="shape3" range="value" type="geometry" widget="none"/>
+                <conn input="compound2.shape1" output="compound1"/>
+                <conn input="compound1.shape2" output="translate1"/>
+                <conn input="compound2.shape2" output="translate2"/>
+            </node>
+            <node name="letter_h" position="15.00,26.00" prototype="core.network" renderedChild="compound3">
+                <node name="compound1" position="7.00,5.00" prototype="corevector.compound"/>
+                <node name="compound2" position="3.00,5.00" prototype="corevector.compound"/>
+                <node name="compound3" position="5.00,9.00" prototype="corevector.compound"/>
+                <port childReference="compound2.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="compound2.shape2" description="The second shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape3" range="value" type="geometry" widget="none"/>
+                <port childReference="compound1.shape2" description="The second shape." label="" name="shape4" range="value" type="geometry" widget="none"/>
+                <conn input="compound3.shape1" output="compound2"/>
+                <conn input="compound3.shape2" output="compound1"/>
+            </node>
+            <node name="letter_i" position="19.00,26.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="3.00,6.00" prototype="corevector.compound"/>
+                <node name="compound2" position="6.00,12.00" prototype="corevector.compound"/>
+                <node name="reflect1" position="9.00,9.00" prototype="corevector.reflect">
+                    <port name="angle" type="float" value="90.0"/>
+                </node>
+                <node name="rotate1" position="5.00,2.00" prototype="corevector.rotate">
+                    <port name="angle" type="float" value="180.0"/>
+                </node>
+                <node name="scale1" position="9.00,7.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="100.00,-100.00"/>
+                </node>
+                <node name="translate1" position="5.00,4.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,-50.00"/>
+                </node>
+                <node name="translate2" position="9.00,2.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="40.00,0.00"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="rotate1.shape" description="The input shape." label="" name="serif1" range="value" type="geometry" widget="none"/>
+                <port childReference="translate2.shape" description="The input shape." label="" name="serif2" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape2" output="translate1"/>
+                <conn input="compound2.shape1" output="compound1"/>
+                <conn input="translate1.shape" output="rotate1"/>
+                <conn input="scale1.shape" output="translate2"/>
+                <conn input="reflect1.shape" output="scale1"/>
+                <conn input="compound2.shape2" output="reflect1"/>
+            </node>
+            <node name="letter_j" position="23.00,26.00" prototype="core.network" renderedChild="compound1">
+                <node name="compound1" position="-3.00,8.00" prototype="corevector.compound"/>
+                <node name="translate4" position="-3.00,4.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,96.00"/>
+                </node>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="translate4.shape" description="The input shape." label="" name="curve" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape2" output="translate4"/>
+            </node>
+            <node name="letter_k" position="27.00,26.00" prototype="core.network" renderedChild="compound3">
+                <node name="compound1" position="1.00,6.00" prototype="corevector.compound"/>
+                <node name="compound2" position="1.00,11.00" prototype="corevector.compound"/>
+                <node name="compound3" position="1.00,14.00" prototype="corevector.compound"/>
+                <node name="rotate1" position="3.00,1.00" prototype="corevector.rotate">
+                    <port name="angle" type="float" value="180.0"/>
+                </node>
+                <node name="scale1" position="11.00,6.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="80.00,33.00"/>
+                </node>
+                <node name="scale2" position="7.00,6.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="100.00,50.00"/>
+                </node>
+                <node name="translate1" position="-1.00,3.00" prototype="corevector.translate"/>
+                <node name="translate2" position="3.00,3.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,-97.00"/>
+                </node>
+                <node name="translate3" position="7.00,3.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="31.00,50.00"/>
+                </node>
+                <node name="translate4" position="11.00,3.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="34.00,-39.00"/>
+                </node>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="rotate1.shape" description="The input shape." label="" name="serif" range="value" type="geometry" widget="none"/>
+                <port childReference="translate3.shape" description="The input shape." label="" name="shape3" range="value" type="geometry" widget="none"/>
+                <port childReference="translate4.shape" description="The input shape." label="" name="shape4" range="value" type="geometry" widget="none"/>
+                <conn input="compound1.shape1" output="translate1"/>
+                <conn input="compound1.shape2" output="translate2"/>
+                <conn input="translate2.shape" output="rotate1"/>
+                <conn input="scale1.shape" output="translate4"/>
+                <conn input="compound2.shape2" output="scale1"/>
+                <conn input="compound2.shape1" output="compound1"/>
+                <conn input="compound3.shape1" output="compound2"/>
+                <conn input="scale2.shape" output="translate3"/>
+                <conn input="compound3.shape2" output="scale2"/>
+            </node>
+            <node name="letter_l" position="31.00,26.00" prototype="core.network" renderedChild="compound2">
+                <node name="compound1" position="1.00,9.00" prototype="corevector.compound"/>
+                <node name="compound2" position="4.00,13.00" prototype="corevector.compound"/>
+                <node name="compound3" position="3.00,6.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="rect1" position="6.00,3.00" prototype="corevector.rect">
+                    <port name="position" type="point" value="0.00,30.00"/>
+                    <port name="height" type="float" value="50.0"/>
+                </node>
+                <node name="scale1" position="10.00,4.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="-100.00,100.00"/>
+                </node>
+                <node name="translate1" position="10.00,7.00" prototype="corevector.translate">
+                    <port name="translate" type="point" value="0.00,50.00"/>
+                </node>
+                <node name="translate2" position="3.00,3.00" prototype="corevector.translate"/>
+                <port childReference="compound1.shape1" description="The first shape." label="" name="shape1" range="value" type="geometry" widget="none"/>
+                <port childReference="scale1.shape" description="The input shape." label="" name="shape2" range="value" type="geometry" widget="none"/>
+                <port childReference="translate2.shape" description="The input shape." label="" name="shape3" range="value" type="geometry" widget="none"/>
+                <conn input="compound2.shape1" output="compound1"/>
+                <conn input="translate1.shape" output="scale1"/>
+                <conn input="compound2.shape2" output="translate1"/>
+                <conn input="compound3.shape2" output="rect1"/>
+                <conn input="compound3.shape1" output="translate2"/>
+                <conn input="compound1.shape2" output="compound3"/>
+            </node>
+            <node name="letter_o" position="41.00,26.00" prototype="core.network" renderedChild="translate1">
+                <node name="translate1" position="-5.00,3.00" prototype="corevector.translate"/>
+                <port childReference="translate1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+            </node>
+            <node name="serif" position="-2.00,0.00" prototype="core.network" renderedChild="compound4">
+                <node name="arc1" position="10.00,8.00" prototype="corevector.arc">
+                    <port name="position" type="point" value="0.00,2.00"/>
+                    <port name="width" type="float" value="20.0"/>
+                    <port name="height" type="float" value="20.0"/>
+                    <port name="degrees" type="float" value="180.0"/>
+                </node>
+                <node name="arc2" position="9.00,0.00" prototype="corevector.arc">
+                    <port name="position" type="point" value="12.00,4.00"/>
+                    <port name="width" type="float" value="10.0"/>
+                    <port name="height" type="float" value="10.0"/>
+                    <port name="start_angle" type="float" value="-90.0"/>
+                    <port name="degrees" type="float" value="90.0"/>
+                </node>
+                <node name="arc3" position="13.00,0.00" prototype="corevector.arc">
+                    <port name="position" type="point" value="12.00,4.00"/>
+                    <port name="width" type="float" value="8.0"/>
+                    <port name="height" type="float" value="6.0"/>
+                    <port name="start_angle" type="float" value="-90.0"/>
+                    <port name="degrees" type="float" value="90.0"/>
+                </node>
+                <node name="compound1" position="6.00,8.00" prototype="corevector.compound"/>
+                <node name="compound2" position="8.00,14.00" prototype="corevector.compound"/>
+                <node name="compound3" position="14.00,14.00" prototype="corevector.compound"/>
+                <node name="compound4" position="10.00,17.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="compound5" position="11.00,3.00" prototype="corevector.compound">
+                    <port name="function" type="string" value="subtracted"/>
+                </node>
+                <node name="ellipse1" position="12.00,12.00" prototype="corevector.ellipse">
+                    <port name="position" type="point" value="-5.00,8.00"/>
+                    <port name="width" type="float" value="3.0"/>
+                    <port name="height" type="float" value="3.0"/>
+                </node>
+                <node name="ellipse2" position="15.00,12.00" prototype="corevector.ellipse">
+                    <port name="position" type="point" value="5.00,8.00"/>
+                    <port name="width" type="float" value="3.0"/>
+                    <port name="height" type="float" value="3.0"/>
+                </node>
+                <node name="rect1" position="3.00,0.00" prototype="corevector.rect">
+                    <port name="width" type="float" value="25.0"/>
+                    <port name="height" type="float" value="2.0"/>
+                </node>
+                <node name="reflect1" position="11.00,5.00" prototype="corevector.reflect">
+                    <port name="angle" type="float" value="90.0"/>
+                </node>
+                <node name="scale1" position="11.00,10.00" prototype="corevector.scale">
+                    <port name="scale" type="point" value="100.00,150.00"/>
+                </node>
+                <node name="translate2" position="11.00,4.00" prototype="corevector.translate"/>
+                <conn input="reflect1.shape" output="translate2"/>
+                <conn input="compound1.shape1" output="rect1"/>
+                <conn input="compound1.shape2" output="reflect1"/>
+                <conn input="compound2.shape1" output="compound1"/>
+                <conn input="scale1.shape" output="arc1"/>
+                <conn input="compound2.shape2" output="scale1"/>
+                <conn input="compound3.shape1" output="ellipse1"/>
+                <conn input="compound3.shape2" output="ellipse2"/>
+                <conn input="compound4.shape1" output="compound2"/>
+                <conn input="compound4.shape2" output="compound3"/>
+                <conn input="compound5.shape1" output="arc2"/>
+                <conn input="compound5.shape2" output="arc3"/>
+                <conn input="translate2.shape" output="compound5"/>
+            </node>
+            <node name="slant" position="-18.00,12.00" prototype="core.network" renderedChild="skew1">
+                <node name="skew1" position="4.00,4.00" prototype="corevector.skew">
+                    <port name="skew" type="point" value="20.00,0.00"/>
+                </node>
+                <port childReference="skew1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+            </node>
+            <node name="slant1" position="-22.00,12.00" prototype="core.network" renderedChild="skew1">
+                <node name="skew1" position="4.00,4.00" prototype="corevector.skew">
+                    <port name="skew" type="point" value="-20.00,0.00"/>
+                </node>
+                <port childReference="skew1.shape" description="The input shape." label="" name="shape" range="value" type="geometry" widget="none"/>
+            </node>
+            <node name="string1" position="-18.00,26.00" prototype="string.string">
+                <port name="value" type="string" value="abcdefghijklo"/>
+            </node>
+            <node name="vertical" position="-7.00,0.00" prototype="core.network" renderedChild="rect1">
+                <node name="rect1" position="4.00,3.00" prototype="corevector.rect">
+                    <port name="width" type="float" value="20.0"/>
+                </node>
+            </node>
+            <node name="zip_map1" position="21.00,53.00" prototype="list.zip_map"/>
+            <conn input="curve_top1.stroke" output="curve_top"/>
+            <conn input="curve_top1.serif" output="serif"/>
+            <conn input="circle.shape1" output="curve_top"/>
+            <conn input="circle.shape2" output="curve_bot"/>
+            <conn input="letter_o.shape" output="circle"/>
+            <conn input="letter_a.shape1" output="circle"/>
+            <conn input="bar_left.stroke" output="vertical"/>
+            <conn input="bar_right.stroke" output="vertical"/>
+            <conn input="letter_a.shape2" output="bar_right"/>
+            <conn input="letter_b.shape1" output="circle"/>
+            <conn input="letter_b.shape2" output="bar_left"/>
+            <conn input="letter_c.shape" output="circle"/>
+            <conn input="letter_d.shape1" output="circle"/>
+            <conn input="letter_d.shape2" output="bar_right"/>
+            <conn input="letter_e.shape" output="circle"/>
+            <conn input="letter_f.shape1" output="curve_top2"/>
+            <conn input="letter_b.shape3" output="bar_top_left"/>
+            <conn input="letter_d.shape3" output="bar_top_right"/>
+            <conn input="letter_f.shape2" output="bar_left"/>
+            <conn input="curve_top2.shape1" output="curve_top"/>
+            <conn input="curve_top2.shape2" output="serif"/>
+            <conn input="curve_bot1.serif" output="serif"/>
+            <conn input="curve_bot1.stroke" output="curve_bot"/>
+            <conn input="circle.decor" output="decor1"/>
+            <conn input="bar_left.decor" output="decor1"/>
+            <conn input="curve_bot2.stroke" output="curve_bot"/>
+            <conn input="curve_bot2.serif" output="serif"/>
+            <conn input="bar_top_left.shape" output="bar_top"/>
+            <conn input="bar_top_right.shape" output="bar_top"/>
+            <conn input="letter_f.flourish" output="flourish"/>
+            <conn input="letter_g.shape3" output="curve_bot1"/>
+            <conn input="bar_top.stroke" output="vertical"/>
+            <conn input="bar_top.decor" output="decor_top"/>
+            <conn input="bar_bot.decor" output="bite"/>
+            <conn input="bar_bot.stroke" output="vertical"/>
+            <conn input="bar_bot_left.stroke" output="bar_bot"/>
+            <conn input="bar_bot_right.stroke" output="bar_bot"/>
+            <conn input="letter_g.shape2" output="bar_bot_right"/>
+            <conn input="circle2.shape1" output="curve_top"/>
+            <conn input="circle2.decor" output="bite"/>
+            <conn input="circle2.shape2" output="curve_bot"/>
+            <conn input="letter_g.shape1" output="circle2"/>
+            <conn input="curve_top3.stroke" output="curve_top"/>
+            <conn input="curve_top3.shape2" output="decor1"/>
+            <conn input="letter_h.shape1" output="bar_top_left"/>
+            <conn input="letter_h.shape2" output="bar_left"/>
+            <conn input="letter_h.shape3" output="curve_top3"/>
+            <conn input="letter_h.shape4" output="bar_bot_right"/>
+            <conn input="bar.shape" output="vertical"/>
+            <conn input="letter_i.shape1" output="bar"/>
+            <conn input="letter_i.serif1" output="serif"/>
+            <conn input="letter_i.serif2" output="flourish"/>
+            <conn input="curve_bot3.shape" output="curve_bot"/>
+            <conn input="curve_flourish.flourish" output="flourish"/>
+            <conn input="curve_flourish.bow" output="curve_bot3"/>
+            <conn input="letter_j.curve" output="curve_flourish"/>
+            <conn input="bar_bite.stroke" output="vertical"/>
+            <conn input="bar_bite.bite" output="bite"/>
+            <conn input="letter_j.shape1" output="bar_bite"/>
+            <conn input="letter_k.shape1" output="bar_bite"/>
+            <conn input="letter_k.serif" output="curve_flourish"/>
+            <conn input="slant.shape" output="vertical"/>
+            <conn input="slant1.shape" output="vertical"/>
+            <conn input="letter_k.shape3" output="slant1"/>
+            <conn input="letter_k.shape4" output="slant"/>
+            <conn input="letter_l.shape1" output="bar_top"/>
+            <conn input="letter_l.shape2" output="curve_flourish"/>
+            <conn input="letter_l.shape3" output="bar_bite"/>
+            <conn input="characters1.string" output="string1"/>
+            <conn input="zip_map1.keys" output="characters1"/>
+            <conn input="combine1.list1" output="letter_a"/>
+            <conn input="combine1.list2" output="letter_b"/>
+            <conn input="combine1.list3" output="letter_c"/>
+            <conn input="combine1.list4" output="letter_d"/>
+            <conn input="combine1.list5" output="letter_e"/>
+            <conn input="combine1.list7" output="letter_g"/>
+            <conn input="combine1.list6" output="letter_f"/>
+            <conn input="combine2.list1" output="letter_h"/>
+            <conn input="combine2.list2" output="letter_i"/>
+            <conn input="combine2.list3" output="letter_j"/>
+            <conn input="combine2.list4" output="letter_k"/>
+            <conn input="combine2.list5" output="letter_l"/>
+            <conn input="combine3.list1" output="combine1"/>
+            <conn input="combine3.list2" output="combine2"/>
+            <conn input="zip_map1.values" output="combine3"/>
+            <conn input="combine4.list1" output="letter_o"/>
+            <conn input="combine3.list3" output="combine4"/>
+        </node>
+        <node name="spacing" position="-30.00,44.00" prototype="math.number">
+            <port name="value" type="float" value="120.0"/>
+        </node>
+        <node name="text" position="-38.00,44.00" prototype="string.string">
+            <port name="value" type="string" value="abcdefghijklmnopqrstuvwxyz"/>
+        </node>
+        <node name="typeset" position="-33.00,49.00" prototype="core.network" renderedChild="translate1">
+            <node name="characters2" position="-36.00,48.00" prototype="string.characters"/>
+            <node name="colorize1" position="-35.00,61.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#0000001e"/>
+            </node>
+            <node name="combine2" position="-35.00,62.00" prototype="list.combine"/>
+            <node name="count1" position="-33.00,55.00" prototype="list.count"/>
+            <node name="lookup1" position="-37.00,51.00" prototype="data.lookup"/>
+            <node name="make_point1" position="-27.00,66.00" prototype="corevector.make_point"/>
+            <node name="multiply1" position="-23.00,63.00" prototype="math.multiply">
+                <port name="value2" type="float" value="298.0"/>
+            </node>
+            <node name="range1" position="-27.00,61.00" prototype="math.range"/>
+            <node name="range2" position="-35.00,58.00" prototype="math.range"/>
+            <node name="rect1" position="-35.00,59.00" prototype="corevector.rect">
+                <port name="height" type="float" value="275.0"/>
+            </node>
+            <node name="switch1" position="-37.00,65.00" prototype="list.switch">
+                <port name="index" type="int" value="1"/>
+            </node>
+            <node name="translate1" position="-32.00,69.00" prototype="corevector.translate"/>
+            <node name="translate2" position="-35.00,60.00" prototype="corevector.translate">
+                <port name="translate" type="point" value="0.00,-20.00"/>
+            </node>
+            <port childReference="characters2.string" description="" label="" name="string" range="value" type="string" value="default" widget="string"/>
+            <port childReference="lookup1.list" description="The input value." label="" name="list" range="value" type="list" widget="none"/>
+            <port childReference="multiply1.value2" description="" label="" name="spacing" range="value" type="float" value="298.0" widget="float"/>
+            <port childReference="switch1.index" description="The index of the input list to select. If the index is greater than the number of inputs, it wraps around." label="" name="debug" range="value" type="int" value="1" widget="int"/>
+            <conn input="lookup1.key" output="characters2"/>
+            <conn input="translate1.translate" output="make_point1"/>
+            <conn input="multiply1.value1" output="range1"/>
+            <conn input="make_point1.x" output="multiply1"/>
+            <conn input="combine2.list1" output="colorize1"/>
+            <conn input="combine2.list2" output="lookup1"/>
+            <conn input="rect1.position" output="range2"/>
+            <conn input="translate2.shape" output="rect1"/>
+            <conn input="colorize1.shape" output="translate2"/>
+            <conn input="range2.end" output="count1"/>
+            <conn input="range1.end" output="count1"/>
+            <conn input="switch1.input1" output="lookup1"/>
+            <conn input="translate1.shape" output="switch1"/>
+            <conn input="switch1.input2" output="combine2"/>
+            <conn input="count1.list" output="lookup1"/>
+        </node>
+        <conn input="typeset.list" output="font_dict"/>
+        <conn input="typeset.string" output="text"/>
+        <conn input="typeset.debug" output="debug"/>
+        <conn input="typeset.spacing" output="spacing"/>
+    </node>
+</ndbx>
