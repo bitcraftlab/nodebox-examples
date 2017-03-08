@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="926f7f47-b536-4d36-b60e-d2f59559d838">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="delete3">
+        <node name="align1" position="10.00,44.00" prototype="corevector.align"/>
+        <node name="colorize4" position="5.00,44.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffd300ff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="colorize5" position="10.00,46.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffffffff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="combine2" position="5.00,51.00" prototype="list.combine"/>
+        <node name="delete3" position="10.00,57.00" prototype="corevector.delete">
+            <port name="operation" type="string" value="non-selected"/>
+        </node>
+        <node name="ellipse2" position="15.00,49.00" prototype="corevector.ellipse"/>
+        <node name="frame2" position="15.00,41.00" prototype="core.frame"/>
+        <node name="multiply7" position="15.00,46.00" prototype="math.multiply">
+            <port name="value2" type="float" value="2.0"/>
+        </node>
+        <node name="resample1" position="5.00,53.00" prototype="corevector.resample">
+            <port name="length" type="float" value="1.0"/>
+            <port name="points" type="int" value="100"/>
+            <port name="per_contour" type="boolean" value="true"/>
+        </node>
+        <node name="star1" position="5.00,41.00" prototype="corevector.star">
+            <port name="points" type="int" value="6"/>
+            <port name="outer" type="float" value="172.0"/>
+            <port name="inner" type="float" value="75.0"/>
+        </node>
+        <node name="textpath1" position="10.00,41.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="STAR"/>
+            <port name="font_name" type="string" value="Verdana-Bold"/>
+            <port name="font_size" type="float" value="61.0"/>
+        </node>
+        <node name="wave1" position="15.00,44.00" prototype="math.wave"/>
+        <conn input="align1.shape" output="textpath1"/>
+        <conn input="colorize4.shape" output="star1"/>
+        <conn input="colorize5.shape" output="align1"/>
+        <conn input="combine2.list2" output="colorize5"/>
+        <conn input="resample1.shape" output="combine2"/>
+        <conn input="delete3.shape" output="resample1"/>
+        <conn input="combine2.list1" output="colorize4"/>
+        <conn input="wave1.offset" output="frame2"/>
+        <conn input="delete3.bounding" output="ellipse2"/>
+        <conn input="multiply7.value1" output="wave1"/>
+        <conn input="ellipse2.width" output="multiply7"/>
+        <conn input="ellipse2.height" output="multiply7"/>
+    </node>
+</ndbx>
