@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="926f7f47-b536-4d36-b60e-d2f59559d838">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="rotate1">
+        <node name="copy1" position="5.00,24.00" prototype="corevector.copy">
+            <port name="copies" type="int" value="6"/>
+            <port name="rotate" type="float" value="60.0"/>
+        </node>
+        <node name="line_angle1" position="5.00,18.00" prototype="corevector.line_angle">
+            <port name="distance" type="float" value="266.0"/>
+        </node>
+        <node name="line_angle2" position="5.00,20.00" prototype="corevector.line_angle"/>
+        <node name="line_angle3" position="5.00,22.00" prototype="corevector.line_angle"/>
+        <node name="multiply1" position="7.00,14.00" prototype="math.multiply">
+            <port name="value2" type="float" value="0.35"/>
+        </node>
+        <node name="range1" position="5.00,10.00" prototype="math.range">
+            <port name="end" type="float" value="800.0"/>
+            <port name="step" type="float" value="3.0"/>
+        </node>
+        <node name="rotate1" position="5.00,26.00" prototype="corevector.rotate">
+            <port name="angle" type="float" value="18.0"/>
+        </node>
+        <conn input="line_angle1.position" output="range1"/>
+        <conn input="multiply1.value1" output="range1"/>
+        <conn input="line_angle1.angle" output="multiply1"/>
+        <conn input="line_angle2.position" output="line_angle1"/>
+        <conn input="line_angle2.angle" output="multiply1"/>
+        <conn input="line_angle3.position" output="line_angle2"/>
+        <conn input="line_angle3.angle" output="multiply1"/>
+        <conn input="copy1.shape" output="line_angle3"/>
+        <conn input="rotate1.shape" output="copy1"/>
+    </node>
+</ndbx>
