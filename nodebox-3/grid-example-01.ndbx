@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="926f7f47-b536-4d36-b60e-d2f59559d838">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="colorize1">
+        <node name="colorize1" position="-29.00,7.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#92929200"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="ellipse1" position="-33.00,-1.00" prototype="corevector.ellipse"/>
+        <node name="fit_to1" position="-29.00,6.00" prototype="corevector.fit_to"/>
+        <node name="grid1" position="-33.00,-5.00" prototype="corevector.grid">
+            <port name="width" type="float" value="1100.0"/>
+            <port name="height" type="float" value="1100.0"/>
+        </node>
+        <node name="polygon1" position="-29.00,-3.00" prototype="corevector.polygon">
+            <port name="sides" type="int" value="6"/>
+        </node>
+        <node name="rotate1" position="-29.00,-2.00" prototype="corevector.rotate">
+            <port name="angle" type="float" value="30.0"/>
+        </node>
+        <node name="scale1" position="-33.00,-2.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="71.00,61.50"/>
+        </node>
+        <node name="skew1" position="-33.00,-3.00" prototype="corevector.skew">
+            <port name="skew" type="point" value="26.50,0.00"/>
+        </node>
+        <conn input="skew1.shape" output="grid1"/>
+        <conn input="scale1.shape" output="skew1"/>
+        <conn input="fit_to1.bounding" output="ellipse1"/>
+        <conn input="ellipse1.position" output="scale1"/>
+        <conn input="rotate1.shape" output="polygon1"/>
+        <conn input="fit_to1.shape" output="rotate1"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+    </node>
+</ndbx>
